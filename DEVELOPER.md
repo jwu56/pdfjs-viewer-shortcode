@@ -4,8 +4,8 @@ This guide contains developer-focused setup, commands, and structure details. En
 
 ## Requirements
 
-- Node.js 18+ (use [nvm](https://github.com/nvm-sh/nvm) to manage versions)
-- npm 10+
+-   Node.js 18+ (use [nvm](https://github.com/nvm-sh/nvm) to manage versions)
+-   npm 10+
 
 ## Quick Start
 
@@ -29,13 +29,13 @@ npm run start
 
 ## Available Commands
 
-| Command            | Description                          |
-|--------------------|--------------------------------------|
-| `npm run build`    | Build production assets              |
-| `npm run start`    | Watch & rebuild during development   |
-| `npm run lint:js`  | Lint JavaScript files                |
-| `npm run lint:css` | Lint CSS/SCSS                        |
-| `npm run format`   | Format code with Prettier            |
+| Command            | Description                        |
+| ------------------ | ---------------------------------- |
+| `npm run build`    | Build production assets            |
+| `npm run start`    | Watch & rebuild during development |
+| `npm run lint:js`  | Lint JavaScript files              |
+| `npm run lint:css` | Lint CSS/SCSS                      |
+| `npm run format`   | Format code with Prettier          |
 
 ## File Structure
 
@@ -51,24 +51,24 @@ readme.md   # User-focused documentation
 
 ## Key PHP Components
 
-- `inc/render-viewer.php` – Shared rendering logic for block & shortcode.
-- `inc/shortcode.php` – Shortcode handler using shared renderer.
-- `inc/embed.php` – Legacy wrapper (kept for backward compatibility).
-- `inc/gutenberg-block.php` – Block registration & script localization.
-- `inc/options-page.php` – Admin settings page.
+-   `inc/render-viewer.php` – Shared rendering logic for block & shortcode.
+-   `inc/shortcode.php` – Shortcode handler using shared renderer.
+-   `inc/embed.php` – Legacy wrapper (kept for backward compatibility).
+-   `inc/gutenberg-block.php` – Block registration & script localization.
+-   `inc/options-page.php` – Admin settings page.
 
 ## Shared Helpers
 
-- `pdfjs_get_options()` – Consistent retrieval of plugin options.
-- `pdfjs_render_viewer()` – Builds iframe + fullscreen link.
-- `pdfjs_sanitize_option()` – Sanitizes stored options.
+-   `pdfjs_get_options()` – Consistent retrieval of plugin options.
+-   `pdfjs_render_viewer()` – Builds iframe + fullscreen link.
+-   `pdfjs_sanitize_option()` – Sanitizes stored options.
 
 ## Development Tips
 
-- Avoid editing anything inside `blocks/build/`; it is generated.
-- Use `attachment_id` when possible instead of raw `url` for security.
-- Keep changes atomic; avoid patching built bundles manually.
-- Run `npm run build` before committing to ensure assets are current.
+-   Avoid editing anything inside `blocks/build/`; it is generated.
+-   Use `attachment_id` when possible instead of raw `url` for security.
+-   Keep changes atomic; avoid patching built bundles manually.
+-   Run `npm run build` before committing to ensure assets are current.
 
 ## Updating Dependencies
 
@@ -77,6 +77,29 @@ npm outdated          # See what can be updated
 npm update            # Apply safe updates
 npm audit             # View security issues
 npm audit fix         # Attempt fixes
+```
+
+## Updating Bundled PDF.js
+
+When upgrading the vendored `pdfjs/` directory from Mozilla's legacy build:
+
+1. Download and extract the legacy PDF.js package from Mozilla.
+2. Run:
+
+```bash
+npm run update:pdfjs -- /path/to/extracted/pdfjs-legacy
+```
+
+This command will:
+
+-   Sync `build/` and `web/` into this repo's `pdfjs/` folder.
+-   Mirror key `.mjs` files to `.js` equivalents (`pdf`, `pdf.worker`, `pdf.sandbox`, `viewer`, `debugger`) so classic browser loading paths continue to work.
+-   Keep the `.mjs` files alongside the `.js` files.
+
+After running, compare viewer templates before release:
+
+```bash
+diff -u pdfjs/web/viewer.html pdfjs/web/viewer.php
 ```
 
 ## Releasing
@@ -89,19 +112,19 @@ npm audit fix         # Attempt fixes
 
 ## Troubleshooting
 
-| Issue                          | Fix                                               |
-|--------------------------------|----------------------------------------------------|
-| PDF not loading                | Check file URL / attachment permissions            |
-| Block invalid in editor        | Use "Attempt Block Recovery"                      |
-| Buttons missing                | Verify settings page options + transient values    |
-| Build fails on syntax          | Ensure Node 18+ and clean install (`rm -rf node_modules && npm install`) |
-| Sass deprecation warning       | Updated tooling already; ensure latest `sass-loader` |
+| Issue                    | Fix                                                                      |
+| ------------------------ | ------------------------------------------------------------------------ |
+| PDF not loading          | Check file URL / attachment permissions                                  |
+| Block invalid in editor  | Use "Attempt Block Recovery"                                             |
+| Buttons missing          | Verify settings page options + transient values                          |
+| Build fails on syntax    | Ensure Node 18+ and clean install (`rm -rf node_modules && npm install`) |
+| Sass deprecation warning | Updated tooling already; ensure latest `sass-loader`                     |
 
 ## Contributing
 
-- Fork, branch, and submit PRs with clear descriptions.
-- Follow WordPress coding standards (PHP & JS).
-- Keep PRs focused—prefer multiple small PRs to one large one.
+-   Fork, branch, and submit PRs with clear descriptions.
+-   Follow WordPress coding standards (PHP & JS).
+-   Keep PRs focused—prefer multiple small PRs to one large one.
 
 ## License
 
