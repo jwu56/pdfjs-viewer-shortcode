@@ -140,16 +140,27 @@ msgid "Auto"
 msgstr "Otomatik"
 
 #: inc/options-page.php:138
-msgid "These settings control how all PDFs appear on your site. Any changes you make here will affect all PDFs that use PDF.js."
-msgstr "Bu ayarlar, tüm PDF'lerin sitenizde nasıl görüneceğini kontrol eder. Burada yaptığınız tüm değişiklikler, PDF.js kullanan tüm PDF'leri etkiler."
+msgid ""
+"These settings control how all PDFs appear on your site. Any changes you "
+"make here will affect all PDFs that use PDF.js."
+msgstr ""
+"Bu ayarlar, tüm PDF'lerin sitenizde nasıl görüneceğini kontrol eder. Burada "
+"yaptığınız tüm değişiklikler, PDF.js kullanan tüm PDF'leri etkiler."
 
 #: inc/options-page.php:136
 msgid "Global Defaults"
 msgstr "Global varsayılan ayarlar"
 
 #: inc/options-page.php:100
-msgid "These are the initial settings applied when a PDF is embedded. You can adjust them in the editor at any time. Updates to these default settings only apply to new PDF embeds, not existing ones."
-msgstr "Bunlar, bir PDF gömüldüğünde uygulanan ilk ayarlardır. Bunları düzenleyicide istediğiniz zaman değiştirebilirsiniz. Bu varsayılan ayarlardaki güncellemeler yalnızca yeni PDF gömülerine uygulanır, mevcut gömülere uygulanmaz."
+msgid ""
+"These are the initial settings applied when a PDF is embedded. You can "
+"adjust them in the editor at any time. Updates to these default settings "
+"only apply to new PDF embeds, not existing ones."
+msgstr ""
+"Bunlar, bir PDF gömüldüğünde uygulanan ilk ayarlardır. Bunları düzenleyicide "
+"istediğiniz zaman değiştirebilirsiniz. Bu varsayılan ayarlardaki "
+"güncellemeler yalnızca yeni PDF gömülerine uygulanır, mevcut gömülere "
+"uygulanmaz."
 
 #: inc/options-page.php:74
 msgid "You do not have sufficient permissions to access this page."
@@ -188,20 +199,31 @@ msgstr "Bildirimi kapat"
 msgid ""
 "PDFjs Viewer has been updated.\n"
 "\n"
-"If you edit a post that contains a PDF, you may see a message with an \"Attempt Block Recovery\" button. Simply click it as this is a normal part of how WordPress handles updates.\n"
+"If you edit a post that contains a PDF, you may see a message with an "
+"\"Attempt Block Recovery\" button. Simply click it as this is a normal part "
+"of how WordPress handles updates.\n"
 "\n"
-"If you choose not to recover the block, your existing PDFs will still work perfectly, and your visitors won't see any changes."
+"If you choose not to recover the block, your existing PDFs will still work "
+"perfectly, and your visitors won't see any changes."
 msgstr ""
 "PDFjs Viewer güncellendi.\n"
 "\n"
-"PDF içeren bir gönderiyi düzenlerseniz, “Blok kurtarmayı dene” düğmesi içeren bir mesaj görebilirsiniz. Bu, WordPress'in güncellemeleri işleme biçiminin normal bir parçası olduğundan, düğmeye tıklamanız yeterlidir.\n"
+"PDF içeren bir gönderiyi düzenlerseniz, “Blok kurtarmayı dene” düğmesi "
+"içeren bir mesaj görebilirsiniz. Bu, WordPress'in güncellemeleri işleme "
+"biçiminin normal bir parçası olduğundan, düğmeye tıklamanız yeterlidir.\n"
 "\n"
-"Bloğu kurtarmamayı seçerseniz, mevcut PDF'leriniz yine de mükemmel şekilde çalışmaya devam edecek ve ziyaretçileriniz herhangi bir değişiklik görmeyecektir."
+"Bloğu kurtarmamayı seçerseniz, mevcut PDF'leriniz yine de mükemmel şekilde "
+"çalışmaya devam edecek ve ziyaretçileriniz herhangi bir değişiklik "
+"görmeyecektir."
 
 #. Author of the plugin
 #: pdfjs-viewer.php
-msgid "<a href=\"https://www.twistermc.com/\">Thomas McMahon</a>, <a href=\"https://byterevel.com/\">Ben Lawson</a>"
-msgstr "<a href=\"https://www.twistermc.com/\">Thomas McMahon</a>, <a href=\"https://byterevel.com/\">Ben Lawson</a>"
+msgid ""
+"<a href=\"https://www.twistermc.com/\">Thomas McMahon</a>, <a href=\"https://"
+"byterevel.com/\">Ben Lawson</a>"
+msgstr ""
+"<a href=\"https://www.twistermc.com/\">Thomas McMahon</a>, <a href=\"https://"
+"byterevel.com/\">Ben Lawson</a>"
 
 #. Plugin URI of the plugin
 #: pdfjs-viewer.php
@@ -351,3 +373,11 @@ msgstr "Muhteşem PDF.js görüntüleyici ile PDF'leri gömün"
 #: inc/render-viewer.php:214 templates/fullscreen.php:11
 msgid "PDF Viewer"
 msgstr "PDF Görüntüleyici"
+
+#: inc/options-page.php:184
+msgid "Save Changes"
+msgstr "Değişiklikleri Kaydet"
+
+#: inc/options-page.php:185
+msgid "Support this plugin"
+msgstr "Bu eklentiyi destekle"

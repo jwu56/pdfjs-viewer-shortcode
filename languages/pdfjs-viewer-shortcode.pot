@@ -441,3 +441,11 @@ msgstr ""
 #: inc/render-viewer.php:101
 msgid "PDF is hosted on: %1$s but this site is: %2$s"
 msgstr ""
+
+#: inc/options-page.php:184
+msgid "Save Changes"
+msgstr ""
+
+#: inc/options-page.php:185
+msgid "Support this plugin"
+msgstr ""

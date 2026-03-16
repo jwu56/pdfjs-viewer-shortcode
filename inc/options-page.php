@@ -183,7 +183,10 @@ function pdfjs_options_page() {
 					<td><input type="checkbox" id="pdfjs_custom_page" name="pdfjs_custom_page" <?php checked( $pdfjs_custom_page, 'on' ); ?> /> <span style="color:rebeccapurple;"> - <?php esc_html_e( 'Beta. Test with caution and', 'pdfjs-viewer-shortcode' ); ?> <a href="https://wordpress.org/support/plugin/pdfjs-viewer-shortcode/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'leave feedback', 'pdfjs-viewer-shortcode' ); ?></a> <?php esc_html_e( 'on how it works.', 'pdfjs-viewer-shortcode' ); ?></span></td>
 				</tr>
 			</table>
-			<?php submit_button(); ?>
+			<div style="display: flex; gap: 10px; align-items: center; padding-top: 10px;">
+				<?php submit_button( __( 'Save Changes', 'pdfjs-viewer-shortcode' ), 'primary', 'submit', false ); ?>
+				<a href="https://ko-fi.com/twistermc" target="_blank" rel="noopener noreferrer" class="button button-secondary"><?php esc_html_e( 'Support this plugin', 'pdfjs-viewer-shortcode' ); ?></a>
+			</div>
 		
 		</form>
 	</div>
