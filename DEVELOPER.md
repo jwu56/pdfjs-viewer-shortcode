@@ -87,7 +87,7 @@ When upgrading the vendored `pdfjs/` directory from Mozilla's legacy build:
 2. Run:
 
 ```bash
-npm run update:pdfjs -- /path/to/extracted/pdfjs-legacy
+npm run update:pdfjs -- update/pdfjs-5.5.207-legacy-dist
 ```
 
 This command will:

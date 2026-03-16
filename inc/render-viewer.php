@@ -156,12 +156,10 @@ function pdfjs_render_viewer( $args ) {
 	$fullscreen_target_attr = ( 'true' === $fullscreen_target ) ? 'target="_blank"' : '';
 
 	// Build viewer URL with all parameters.
-	// Only encode the file URL if it contains special characters that need encoding
-	// This keeps URLs more consistent and readable
-	$file_url_for_param = $file_url;
-	if ( preg_match('/[^A-Za-z0-9_\-\.~:\/\?#\[\]@!$&\'\(\)\*\+,;=%]/', $file_url ) ) {
-		$file_url_for_param = urlencode( $file_url );
-	}
+	// Always encode the file URL so it can safely be passed as a query value.
+	// This prevents the file URL from being truncated when it contains its own query string.
+	$file_url_for_param = rawurlencode( $file_url );
+
 	// Build base query args in a structured way for consistency and performance
 	$query_args = array(
 		'file'         => $file_url_for_param,
