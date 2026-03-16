@@ -70,6 +70,12 @@ PDF.js (included in this plugin) is developed by Mozilla and licensed under the 
 
 ## Changelog
 
+## 3.0.3
+
+-   PDFjs 5.5.207
+-   Improved URL encoding for PDF files with special characters in filenames/URLs
+-   Enhanced security with better sanitization of file parameters
+
 ### 3.0.2
 
 -   Added cache busing to PDFjs files to prevent caching issues after updates
