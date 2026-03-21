@@ -4,7 +4,7 @@
 -   Tags: pdf, pdfjs, viewer, embed, mozilla
 -   Requires at least: 5.0
 -   Tested up to: 6.9
--   Stable tag: 3.0.2
+-   Stable tag: 3.0.3
 -   License: GPLv2 or later
 -   License URI: http://www.gnu.org/licenses/gpl-2.0.html
 -   Requires PHP: 7.4
@@ -31,15 +31,11 @@ Features:
 
 Shortcode Syntax:
 
-```
-[pdfjs-viewer attachment_id=123 viewer_width=600px viewer_height=700px fullscreen=true download=true print=true]
-```
+`[pdfjs-viewer attachment_id=123 viewer_width=600px viewer_height=700px fullscreen=true download=true print=true]`
 
 Or use a direct URL:
 
-```
-[pdfjs-viewer url=http://www.website.com/test.pdf viewer_width=600px viewer_height=700px fullscreen=true download=true print=true]
-```
+`[pdfjs-viewer url=http://www.website.com/test.pdf viewer_width=600px viewer_height=700px fullscreen=true download=true print=true]`
 
 **Shortcode Parameters:**
 
@@ -73,6 +69,12 @@ This WordPress plugin is licensed under GPLv2 or later.
 PDF.js (included in this plugin) is developed by Mozilla and licensed under the Apache License 2.0. See the [PDF.js repository](https://github.com/mozilla/pdf.js) for details.
 
 ## Changelog
+
+## 3.0.3
+
+-   PDFjs 5.5.207
+-   Improved URL encoding for PDF files with special characters in filenames/URLs
+-   Enhanced security with better sanitization of file parameters
 
 ### 3.0.2
 

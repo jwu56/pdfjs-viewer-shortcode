@@ -540,6 +540,7 @@ pdfjs-editor-undo-bar-message-freetext = Text odstraněn
 pdfjs-editor-undo-bar-message-ink = Kresba odstraněna
 pdfjs-editor-undo-bar-message-stamp = Obrázek odebrán
 pdfjs-editor-undo-bar-message-signature = Podpis odebrán
+pdfjs-editor-undo-bar-message-comment = Komentář odebrán
 # Variables:
 #   $count (Number) - the number of removed annotations.
 pdfjs-editor-undo-bar-message-multiple =
@@ -583,11 +584,11 @@ pdfjs-editor-add-signature-draw-thickness-range-label = Tloušťka
 #   $thickness (Number) - the thickness (in pixels) of the line used to draw a signature.
 pdfjs-editor-add-signature-draw-thickness-range =
     .title = Tloušťka kresby: { $thickness }
-pdfjs-editor-add-signature-image-placeholder = Pro nahrání přetáhněte soubor sem
+pdfjs-editor-add-signature-image-placeholder = Přetáhněte sem soubor, který chcete nahrát
 pdfjs-editor-add-signature-image-browse-link =
     { PLATFORM() ->
-        [macos] Nebo vyberte soubory s obrázky
-       *[other] Nebo vyberte soubory s obrázky
+        [macos] Nebo vyberte soubory obrazu
+       *[other] Nebo vyberte soubory obrazu
     }
 
 ## Controls
@@ -600,7 +601,7 @@ pdfjs-editor-add-signature-clear-button-label = Vymazání podpisu
 pdfjs-editor-add-signature-clear-button =
     .title = Vymazání podpisu
 pdfjs-editor-add-signature-save-checkbox = Uložit podpis
-pdfjs-editor-add-signature-save-warning-message = Dosáhli jste limitu 5 uložených podpisů. Odstraňte jeden a uložte další.
+pdfjs-editor-add-signature-save-warning-message = Dosáhli jste limitu 5 uložených podpisů. Chcete-li uložit další, jeden odstraňte.
 pdfjs-editor-add-signature-image-upload-error-title = Obrázek se nepodařilo nahrát
 pdfjs-editor-add-signature-image-upload-error-description = Zkontrolujte připojení k síti nebo zkuste jiný obrázek.
 pdfjs-editor-add-signature-image-no-data-error-title = Nelze převést tento obrázek na podpis
@@ -638,10 +639,89 @@ pdfjs-editor-edit-comment-dialog-cancel-button = Zrušit
 
 ## Edit a comment button in the editor toolbar
 
-pdfjs-editor-edit-comment-button =
-    .title = Upravit komentář
 pdfjs-editor-add-comment-button =
     .title = Přidání komentáře
+
+## The view manager is a sidebar displaying different views:
+##  - thumbnails;
+##  - outline;
+##  - attachments;
+##  - layers.
+## The thumbnails view is used to edit the pdf: remove/insert pages, ...
+
+pdfjs-toggle-views-manager-button =
+    .title = Přepnout postranní lištu
+pdfjs-toggle-views-manager-notification-button =
+    .title = Přepnout postranní lištu (dokument obsahuje náhledy/osnovu/přílohy/vrstvy)
+pdfjs-toggle-views-manager-button-label = Přepnout postranní lištu
+pdfjs-views-manager-sidebar =
+    .aria-label = Postranní lišta
+pdfjs-views-manager-view-selector-button =
+    .title = Zobrazení
+pdfjs-views-manager-view-selector-button-label = Zobrazení
+pdfjs-views-manager-pages-title = Stránky
+pdfjs-views-manager-outlines-title = Osnova dokumentu
+pdfjs-views-manager-attachments-title = Přílohy
+pdfjs-views-manager-layers-title = Vrstvy
+pdfjs-views-manager-pages-option-label = Stránky
+pdfjs-views-manager-outlines-option-label = Osnova dokumentu
+pdfjs-views-manager-attachments-option-label = Přílohy
+pdfjs-views-manager-layers-option-label = Vrstvy
+pdfjs-views-manager-add-file-button =
+    .title = Přidat soubor
+pdfjs-views-manager-add-file-button-label = Přidat soubor
+# Variables:
+#   $count (Number) - the number of selected pages.
+pdfjs-views-manager-pages-status-action-label =
+    { $count ->
+        [one] { $count } vybrán
+        [few] { $count } vybrány
+        [many] { $count } vybráno
+       *[other] { $count } vybráno
+    }
+pdfjs-views-manager-pages-status-none-action-label = Vyberte stránky
+pdfjs-views-manager-pages-status-action-button-label = Správa
+pdfjs-views-manager-pages-status-copy-button-label = Kopírovat
+pdfjs-views-manager-pages-status-cut-button-label = Vyjmout
+pdfjs-views-manager-pages-status-delete-button-label = Smazat
+pdfjs-views-manager-pages-status-save-as-button-label = Uložit jako…
+# Variables:
+#   $count (Number) - the number of selected pages to be cut.
+pdfjs-views-manager-status-undo-cut-label =
+    { $count ->
+        [one] 1 stránka vyjmuta
+        [few] { $count } stránky vyjmuty
+        [many] { $count } stránek vyjmuto
+       *[other] { $count } stránek vyjmuto
+    }
+# Variables:
+#   $count (Number) - the number of selected pages to be copied.
+pdfjs-views-manager-pages-status-undo-copy-label =
+    { $count ->
+        [one] 1 stránka zkopírována
+        [few] { $count } stránky zkopírovány
+        [many] { $count } stránek zkopírováno
+       *[other] { $count } stránek zkopírováno
+    }
+# Variables:
+#   $count (Number) - the number of selected pages to be deleted.
+pdfjs-views-manager-pages-status-undo-delete-label =
+    { $count ->
+        [one] 1 stránka smazána
+        [few] { $count } stránky smazány
+        [many] { $count } stránek smazáno
+       *[other] { $count } stránek smazáno
+    }
+pdfjs-views-manager-pages-status-waiting-ready-label = Příprava vašeho souboru…
+pdfjs-views-manager-pages-status-waiting-uploading-label = Nahrávání souboru…
+pdfjs-views-manager-status-warning-cut-label = Nelze vyjmout. Obnovte stránku a zkuste to znovu.
+pdfjs-views-manager-status-warning-copy-label = Kopírování se nezdařilo. Obnovte stránku a zkuste to znovu.
+pdfjs-views-manager-status-warning-delete-label = Smazání se nezdařilo. Obnovte stránku a zkuste to znovu.
+pdfjs-views-manager-status-warning-save-label = Nepodařilo se uložit. Obnovte stránku a zkuste to znovu.
+pdfjs-views-manager-status-undo-button-label = Zpět
+pdfjs-views-manager-status-close-button =
+    .title = Zavřít
+pdfjs-views-manager-status-close-button-label = Zavřít
 
 ## Main menu for adding/removing signatures
 

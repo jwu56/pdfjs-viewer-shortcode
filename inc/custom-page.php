@@ -3,9 +3,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
 
 add_filter( 'init', function() {
 	if ( isset( $_GET['pdfjs_id'] ) ) {
+		if ( ! isset( $_REQUEST['_wpnonce'] ) ) {
+			wp_die( esc_html__( 'Security Check Failed', 'pdfjs-viewer-shortcode' ) );
+		}
 
-		$nonce = sanitize_text_field( $_REQUEST['_wpnonce'] );
-		if ( ! wp_verify_nonce( $nonce, 'pdfjs_full_screen' ) ) {
+		$nonce = sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) );
+		if ( '' === $nonce || ! wp_verify_nonce( $nonce, 'pdfjs_full_screen' ) ) {
 			die( esc_html__( 'Security Check Failed', 'pdfjs-viewer-shortcode' ) );
 		}
 
@@ -13,7 +16,7 @@ add_filter( 'init', function() {
 		 * Custom Template
 		 */
 
-		$attachment_pdfjs_id = sanitize_text_field( $_GET['pdfjs_id'] );
+		$attachment_pdfjs_id = sanitize_text_field( wp_unslash( $_GET['pdfjs_id'] ) );
 		$attachment_id       = isset( $attachment_pdfjs_id ) && is_numeric( $attachment_pdfjs_id ) ? absint( $attachment_pdfjs_id ) : 0;
 
 		if ( 0 !== $attachment_id ) {

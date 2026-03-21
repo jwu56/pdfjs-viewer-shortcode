@@ -362,3 +362,11 @@ msgid ""
 "<a href=\"https://www.twistermc.com/\">Thomas McMahon</a>, <a href=\"https://"
 "byterevel.com/\">Ben Lawson</a>"
 msgstr ""
+
+#: inc/options-page.php:184
+msgid "Save Changes"
+msgstr ""
+
+#: inc/options-page.php:185
+msgid "Support this plugin"
+msgstr ""
