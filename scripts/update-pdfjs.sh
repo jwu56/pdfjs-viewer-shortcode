@@ -95,5 +95,50 @@ rewrite_js_references "${TARGET_WEB_DIR}/viewer.js" \
 	"../build/pdf.worker.mjs" "../build/pdf.worker.js" \
 	"../build/pdf.sandbox.mjs" "../build/pdf.sandbox.js" \
 	"sourceMappingURL=viewer.mjs.map" "sourceMappingURL=viewer.js.map"
+
+# Add cache busting version parameters to HTML template references
+# This ensures assets are refreshed when PDF.js is updated
+# The %PDFJS_VERSION% placeholder will be replaced by viewer.php at runtime
+# with the actual version from the URL parameter
+rewrite_html_references() {
+	local file_path="$1"
+	shift
+
+	if [[ ! -f "${file_path}" ]]; then
+		return
+	fi
+
+	while [[ $# -gt 0 ]]; do
+		local from="$1"
+		local to="$2"
+		shift 2
+		FROM="${from}" TO="${to}" perl -0pi -e 's/\Q$ENV{FROM}\E/$ENV{TO}/g' "${file_path}"
+	done
+}
+
+# Patch viewer.html to mark asset references for cache busting
+# These markers (e.g., ?v=%PDFJS_VER%) will be replaced by viewer.php
+rewrite_html_references "${TARGET_WEB_DIR}/viewer.html" \
+	'locale/locale.json"' 'locale/locale.json?v=%PDFJS_VER%"' \
+	'../build/pdf.mjs"' '../build/pdf.js?v=%PDFJS_VER%"' \
+	'../build/pdf.js"' '../build/pdf.js?v=%PDFJS_VER%"' \
+	'viewer.css"' 'viewer.css?v=%PDFJS_VER%"' \
+	'viewer.mjs"' 'viewer.js?v=%PDFJS_VER%"' \
+	'viewer.js"' 'viewer.js?v=%PDFJS_VER%"' \
+	'../build/pdf.worker.mjs' '../build/pdf.worker.js?v=%PDFJS_VER%' \
+	'../build/pdf.worker.js' '../build/pdf.worker.js?v=%PDFJS_VER%' \
+	'../build/pdf.sandbox.mjs' '../build/pdf.sandbox.js?v=%PDFJS_VER%' \
+	'../build/pdf.sandbox.js' '../build/pdf.sandbox.js?v=%PDFJS_VER%'
+
+# Patch viewer.php to also add these cache-bust markers 
+# These replacements in viewer.php will handle runtime substitution
+sed -i.bak 's/'\''\.\.\/build\/pdf\.mjs"'\''/..\/build\/pdf.js?v=%PDFJS_VER%"/g' "${TARGET_WEB_DIR}/viewer.php"
+sed -i.bak 's/'\''viewer\.mjs"'\''/viewer.js?v=%PDFJS_VER%"/g' "${TARGET_WEB_DIR}/viewer.php"
+sed -i.bak 's/'\''viewer\.css"'\''/viewer.css?v=%PDFJS_VER%"/g' "${TARGET_WEB_DIR}/viewer.php"
+sed -i.bak 's/'\''locale\/locale\.json"'\''/locale\/locale.json?v=%PDFJS_VER%"/g' "${TARGET_WEB_DIR}/viewer.php"
+
+# Clean up backup files from sed
+rm -f "${TARGET_WEB_DIR}/viewer.php.bak"
+
 echo
 echo "Update complete."
