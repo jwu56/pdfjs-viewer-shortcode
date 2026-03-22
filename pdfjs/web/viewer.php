@@ -21,22 +21,23 @@ if ( false === $html ) {
 $version = rawurlencode( $asset_version );
 
 // Cache busting query parameters for all critical assets.
-// These ensure assets are refreshed when PDF.js is updated.
-// Replacements handle both markers from update-pdfjs.sh (%PDFJS_VER%) 
-// and direct file references that may appear in HTML.
+// These ensure browser cache refreshes when PDF.js is updated.
+// Patterns match the original Mozilla asset references in viewer.html.
 $replacements = array(
-	// Handle markers from update-pdfjs.sh script
-	'%PDFJS_VER%'         => $version,
-	// Fallback replacements for direct references (in case markers weren't applied)
-	'locale/locale.json"' => 'locale/locale.json?v=' . $version . '"',
+	// Main PDF library (Mozilla provides as .mjs, we mirror to .js)
 	'../build/pdf.mjs"'   => '../build/pdf.js?v=' . $version . '"',
 	'../build/pdf.js"'    => '../build/pdf.js?v=' . $version . '"',
-	'viewer.css"'         => 'viewer.css?v=' . $version . '"',
+	// Viewer script (Mozilla provides as .mjs, we mirror to .js)
 	'viewer.mjs"'         => 'viewer.js?v=' . $version . '"',
 	'viewer.js"'          => 'viewer.js?v=' . $version . '"',
-	// Cache bust worker and sandbox scripts (both in HTML and JavaScript references)
+	// Viewer stylesheet
+	'viewer.css"'         => 'viewer.css?v=' . $version . '"',
+	// Localization
+	'locale/locale.json"' => 'locale/locale.json?v=' . $version . '"',
+	// Worker scripts (referenced in viewer.js)
 	'../build/pdf.worker.mjs' => '../build/pdf.worker.js?v=' . $version,
 	'../build/pdf.worker.js'  => '../build/pdf.worker.js?v=' . $version,
+	// Sandbox script (referenced in PDF library)
 	'../build/pdf.sandbox.mjs' => '../build/pdf.sandbox.js?v=' . $version,
 	'../build/pdf.sandbox.js'  => '../build/pdf.sandbox.js?v=' . $version,
 );

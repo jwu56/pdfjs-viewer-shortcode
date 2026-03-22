@@ -95,8 +95,6 @@ This command will:
 -   Sync `build/` and `web/` into this repo's `pdfjs/` folder.
 -   Mirror key `.mjs` files to `.js` equivalents (`pdf`, `pdf.worker`, `pdf.sandbox`, `viewer`, `debugger`) so classic browser loading paths continue to work.
 -   Keep the `.mjs` files alongside the `.js` files.
--   **Patch `viewer.html` to add cache-busting version markers** (`?v=%PDFJS_VER%`) to all asset references
--   **Patch `viewer.php` replacements table** to include cache-busting for worker and sandbox scripts
 
 After running, compare viewer templates before release:
 
@@ -127,9 +125,10 @@ Cache busting is implemented at multiple levels to ensure PDF.js updates are ref
     - `../build/pdf.worker.js?v=%VERSION%`
     - `../build/pdf.sandbox.js?v=%VERSION%`
 
-3. **JavaScript dynamic references** – During `npm run update:pdfjs`:
-    - `update-pdfjs.sh` patches `viewer.html` to add version markers on asset references
-    - For runtime substitution, `viewer.php` also handles direct file references in case markers weren't applied
+3. **Runtime replacements** – `viewer.php` handles all cache-busting dynamically:
+    - Reads the version from the `?v=` query parameter passed in the iframe URL
+    - Intercepts all asset references when loading `viewer.html`
+    - No patching needed during `npm run update:pdfjs` — works with unmodified Mozilla files
 
 ### How It Works
 
@@ -142,8 +141,8 @@ When a user visits a page with the PDF viewer:
 
 2. Browser requests viewer.php?file=...&v=3.0.3.1&...
    → viewer.php reads GET['v'] parameter
-   → Loads viewer.html
-   → Replaces %PDFJS_VER% markers (or direct file refs) with actual version
+   → Loads unmodified viewer.html
+   → Replaces all asset references with versioned URLs (?v=VERSION)
    → Returns modified HTML with all assets versioned
 
 3. Browser loads versioned assets
@@ -155,22 +154,18 @@ When a user visits a page with the PDF viewer:
 
 ### Testing Cache Busting
 
-After updating PDF.js:
+After deploying an updated PDF.js version:
 
-1. Verify version markers in `viewer.html`:
+1. Open browser DevTools Network tab
+2. Reload a page with the PDF viewer
+3. Verify all assets have version parameters:
+    - `../build/pdf.js?v=X.Y.Z`
+    - `viewer.js?v=X.Y.Z`
+    - `viewer.css?v=X.Y.Z`
+    - `pdf.worker.js?v=X.Y.Z` (referenced in viewer.js)
+    - `pdf.sandbox.js?v=X.Y.Z` (referenced in pdf.js)
 
-    ```bash
-    grep '%PDFJS_VER%' pdfjs/web/viewer.html
-    ```
-
-2. Check `viewer.php` replacements include worker/sandbox scripts:
-
-    ```bash
-    grep 'pdf.worker.js' pdfjs/web/viewer.php
-    grep 'pdf.sandbox.js' pdfjs/web/viewer.php
-    ```
-
-3. In browser DevTools Network tab, confirm assets have ?v=VERSION parameters in URL
+Version parameters should increment with each plugin release, ensuring browsers fetch fresh copies rather than serving stale cached assets.
 
 ## Releasing
 
