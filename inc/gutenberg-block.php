@@ -38,6 +38,40 @@ function pdfjs_get_options() {
 }
 
 /**
+ * Block render callback
+ * Maps block attributes to pdfjs_render_viewer() arguments and returns HTML.
+ *
+ * @param array $attributes Block attributes from editor or saved post meta.
+ * @return string HTML output or empty string.
+ */
+function pdfjs_block_render( $attributes ) {
+	// Don't render in admin or REST requests
+	if ( is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
+		return '';
+	}
+
+	// Map block attributes to pdfjs_render_viewer() expected format
+	$render_args = array(
+		'url'               => isset( $attributes['imageURL'] ) ? $attributes['imageURL'] : '',
+		'attachment_id'     => isset( $attributes['imgID'] ) ? $attributes['imgID'] : '',
+		'viewer_height'     => isset( $attributes['viewerHeight'] ) ? $attributes['viewerHeight'] . 'px' : '800px',
+		'viewer_width'      => isset( $attributes['viewerWidth'] ) && 0 !== $attributes['viewerWidth'] ? $attributes['viewerWidth'] . 'px' : '100%',
+		'fullscreen'        => isset( $attributes['showFullscreen'] ) ? ( $attributes['showFullscreen'] ? 'true' : 'false' ) : 'true',
+		'fullscreen_text'   => isset( $attributes['fullscreenText'] ) ? $attributes['fullscreenText'] : 'View Fullscreen',
+		'fullscreen_target' => isset( $attributes['openFullscreen'] ) ? ( $attributes['openFullscreen'] ? 'true' : 'false' ) : 'false',
+		'download'          => isset( $attributes['showDownload'] ) ? ( $attributes['showDownload'] ? 'true' : 'false' ) : 'true',
+		'print'             => isset( $attributes['showPrint'] ) ? ( $attributes['showPrint'] ? 'true' : 'false' ) : 'true',
+		'openfile'          => 'false',
+		'zoom'              => isset( $attributes['viewerScale'] ) ? $attributes['viewerScale'] : 'auto',
+		'search'            => get_option( 'pdfjs_search_button', 'on' ) === 'on' ? 'true' : 'false',
+		'editing'           => get_option( 'pdfjs_editing_buttons', 'on' ) === 'on' ? 'true' : 'false',
+	);
+
+	// Use shared rendering function
+	return pdfjs_render_viewer( $render_args );
+}
+
+/**
  * Gutenberg Block
  */
 function pdfjs_register_gutenberg_card_block() {
@@ -94,7 +128,8 @@ function pdfjs_register_gutenberg_card_block() {
 	}
 
 	$block_args = array(
-		'editor_script' => $script_handle,
+		'editor_script'    => $script_handle,
+		'render_callback'  => 'pdfjs_block_render',
 	);
 
 	if ( $editor_style_handle ) {

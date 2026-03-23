@@ -146,10 +146,9 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 			} );
 		};
 
-		// Compute preview iframe src and width for editor preview
+		// Build viewer URL for editor live preview
 		const viewerBase = pdfjsOpts.pdfjs_viewer_url || null;
 
-		// Build viewer URL with current block settings for live preview
 		let iframeSrc = '';
 		if ( props.attributes.imageURL && viewerBase ) {
 			const params = new URLSearchParams( {
@@ -163,15 +162,12 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 				sButton:
 					pdfjsOpts.pdfjs_search_button === 'on' ? 'true' : 'false',
 			} );
-			// Build hash with zoom and pagemode (always include to override stored preferences)
 			const zoom = pdfjsOpts.pdfjs_viewer_scale || 'auto';
 			const pagemode = pdfjsOpts.pdfjs_viewer_pagemode || 'none';
 			const hash = `zoom=${ encodeURIComponent(
 				zoom
 			) }&pagemode=${ encodeURIComponent( pagemode ) }`;
 			iframeSrc = `${ viewerBase }?${ params.toString() }#${ hash }`;
-		} else if ( props.attributes.imageURL ) {
-			iframeSrc = props.attributes.imageURL;
 		}
 
 		const viewerWidthAttr =
@@ -179,6 +175,10 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 			props.attributes.viewerWidth === 0
 				? '100%'
 				: `${ props.attributes.viewerWidth }px`;
+
+		const viewerHeightAttr = props.attributes.viewerHeight
+			? `${ props.attributes.viewerHeight }px`
+			: `${ defaultHeight }px`;
 
 		return [
 			<InspectorControls key="i1">
@@ -338,11 +338,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 						{ /* Editor preview iframe */ }
 						<div
 							className="pdfjs-preview"
-							width={ viewerWidthAttr ? viewerWidthAttr : '100%' }
 							style={ { maxWidth: '100%' } }
-							height={
-								props.attributes.viewerHeight || defaultHeight
-							}
 							role="region"
 							aria-label={ __(
 								'PDF Preview',
