@@ -4,7 +4,7 @@
 -   Tags: pdf, pdfjs, viewer, embed, mozilla
 -   Requires at least: 5.0
 -   Tested up to: 6.9
--   Stable tag: 3.0.3.2
+-   Stable tag: 3.0.4
 -   License: GPLv2 or later
 -   License URI: http://www.gnu.org/licenses/gpl-2.0.html
 -   Requires PHP: 7.4
@@ -70,7 +70,7 @@ PDF.js (included in this plugin) is developed by Mozilla and licensed under the 
 
 ## Changelog
 
-## 3.0.3.2
+## 3.0.4
 
 -   Cache busting for PDF.js files to prevent caching issues after updates
 
