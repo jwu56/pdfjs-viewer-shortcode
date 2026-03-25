@@ -17,7 +17,7 @@ if ( ! defined( 'PDFJS_PLUGIN_VERSION' ) ) {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 	}
 	$plugin_data = get_plugin_data( __FILE__, false, false );
-	define( 'PDFJS_PLUGIN_VERSION', $plugin_data['Version'] );
+	define( 'PDFJS_PLUGIN_VERSION', ! empty( $plugin_data['Version'] ) ? $plugin_data['Version'] : gmdate( 'md' ) );
 }
 
 // Admin notice control key: set to a non-empty string in releases
