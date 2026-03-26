@@ -95,5 +95,6 @@ rewrite_js_references "${TARGET_WEB_DIR}/viewer.js" \
 	"../build/pdf.worker.mjs" "../build/pdf.worker.js" \
 	"../build/pdf.sandbox.mjs" "../build/pdf.sandbox.js" \
 	"sourceMappingURL=viewer.mjs.map" "sourceMappingURL=viewer.js.map"
+
 echo
 echo "Update complete."

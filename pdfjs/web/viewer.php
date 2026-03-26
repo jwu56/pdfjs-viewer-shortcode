@@ -20,11 +20,26 @@ if ( false === $html ) {
 
 $version = rawurlencode( $asset_version );
 
+// Cache busting query parameters for all critical assets.
+// These ensure browser cache refreshes when PDF.js is updated.
+// Patterns match the original Mozilla asset references in viewer.html.
 $replacements = array(
-	'locale/locale.json"' => 'locale/locale.json?v=' . $version . '"',
+	// Main PDF library (Mozilla provides as .mjs, we mirror to .js)
 	'../build/pdf.mjs"'   => '../build/pdf.js?v=' . $version . '"',
-	'viewer.css"'         => 'viewer.css?v=' . $version . '"',
+	'../build/pdf.js"'    => '../build/pdf.js?v=' . $version . '"',
+	// Viewer script (Mozilla provides as .mjs, we mirror to .js)
 	'viewer.mjs"'         => 'viewer.js?v=' . $version . '"',
+	'viewer.js"'          => 'viewer.js?v=' . $version . '"',
+	// Viewer stylesheet
+	'viewer.css"'         => 'viewer.css?v=' . $version . '"',
+	// Localization
+	'locale/locale.json"' => 'locale/locale.json?v=' . $version . '"',
+	// Worker scripts (referenced in viewer.js)
+	'../build/pdf.worker.mjs' => '../build/pdf.worker.js?v=' . $version,
+	'../build/pdf.worker.js'  => '../build/pdf.worker.js?v=' . $version,
+	// Sandbox script (referenced in PDF library)
+	'../build/pdf.sandbox.mjs' => '../build/pdf.sandbox.js?v=' . $version,
+	'../build/pdf.sandbox.js'  => '../build/pdf.sandbox.js?v=' . $version,
 );
 
 $customization_script = <<<'HTML'

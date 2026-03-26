@@ -102,6 +102,71 @@ After running, compare viewer templates before release:
 diff -u pdfjs/web/viewer.html pdfjs/web/viewer.php
 ```
 
+### Cache Busting Strategy
+
+Cache busting is implemented at multiple levels to ensure PDF.js updates are reflected in user browsers:
+
+1. **iframe src** – `render-viewer.php` appends `&v=PDFJS_PLUGIN_VERSION` to the viewer iframe URL
+
+    ```php
+    $query_args = array(
+        'file'         => $file_url,
+        // ... other params ...
+        'v'            => defined( 'PDFJS_PLUGIN_VERSION' ) ? PDFJS_PLUGIN_VERSION : date( 'Ym' ),
+    );
+    ```
+
+2. **HTML asset links** – `viewer.php` replaces file references in `viewer.html` at runtime:
+
+    - `locale/locale.json?v=%VERSION%`
+    - `../build/pdf.js?v=%VERSION%`
+    - `viewer.css?v=%VERSION%`
+    - `viewer.js?v=%VERSION%`
+    - `../build/pdf.worker.js?v=%VERSION%`
+    - `../build/pdf.sandbox.js?v=%VERSION%`
+
+3. **Runtime replacements** – `viewer.php` handles all cache-busting dynamically:
+    - Reads the version from the `?v=` query parameter passed in the iframe URL
+    - Intercepts all asset references when loading `viewer.html`
+    - No patching needed during `npm run update:pdfjs` — works with unmodified Mozilla files
+
+### How It Works
+
+When a user visits a page with the PDF viewer:
+
+```
+1. Block/Shortcode renders iframe
+   → calls pdfjs_render_viewer()
+   → generates URL with ?v=PLUGIN_VERSION
+
+2. Browser requests viewer.php?file=...&v=3.0.3.1&...
+   → viewer.php reads GET['v'] parameter
+   → Loads unmodified viewer.html
+   → Replaces all asset references with versioned URLs (?v=VERSION)
+   → Returns modified HTML with all assets versioned
+
+3. Browser loads versioned assets
+   → pdf.js?v=3.0.3.1
+   → pdf.worker.js?v=3.0.3.1
+   → etc.
+   → Browser cache sees version change → fetches fresh copies
+```
+
+### Testing Cache Busting
+
+After deploying an updated PDF.js version:
+
+1. Open browser DevTools Network tab
+2. Reload a page with the PDF viewer
+3. Verify all assets have version parameters:
+    - `../build/pdf.js?v=X.Y.Z`
+    - `viewer.js?v=X.Y.Z`
+    - `viewer.css?v=X.Y.Z`
+    - `pdf.worker.js?v=X.Y.Z` (referenced in viewer.js)
+    - `pdf.sandbox.js?v=X.Y.Z` (referenced in pdf.js)
+
+Version parameters should increment with each plugin release, ensuring browsers fetch fresh copies rather than serving stale cached assets.
+
 ## Releasing
 
 1. Update version in plugin header & stable tag in `readme.md`.

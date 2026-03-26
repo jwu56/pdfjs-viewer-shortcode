@@ -3,7 +3,7 @@
 Plugin Name: PDFjs Viewer - Embed PDFs
 Plugin URI: https://github.com/TwisterMc/pdfjs-viewer-shortcode
 Description: Embed PDFs with the gorgeous PDF.js viewer
-Version: 3.0.3
+Version: 3.0.4
 Author: <a href="https://www.twistermc.com/">Thomas McMahon</a>, <a href="https://byterevel.com/">Ben Lawson</a> | <a href="https://ko-fi.com/twistermc">Support this plugin</a>
 Contributors: FalconerWeb, twistermc
 License: GPLv2
@@ -17,7 +17,7 @@ if ( ! defined( 'PDFJS_PLUGIN_VERSION' ) ) {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 	}
 	$plugin_data = get_plugin_data( __FILE__, false, false );
-	define( 'PDFJS_PLUGIN_VERSION', $plugin_data['Version'] );
+	define( 'PDFJS_PLUGIN_VERSION', ! empty( $plugin_data['Version'] ) ? $plugin_data['Version'] : gmdate( 'md' ) );
 }
 
 // Admin notice control key: set to a non-empty string in releases
