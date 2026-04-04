@@ -42,7 +42,25 @@ $replacements = array(
 	'../build/pdf.sandbox.js'  => '../build/pdf.sandbox.js?v=' . $version,
 );
 
-$customization_script = <<<'HTML'
+$customization_script = <<<HTML
+<script>
+// Override Worker constructor to add version query parameter
+const OriginalWorker = window.Worker;
+window.Worker = class extends OriginalWorker {
+	constructor(scriptURL, options) {
+		// Add version to pdf.worker.js requests
+		let modifiedURL = scriptURL;
+		if (typeof scriptURL === 'string' && scriptURL.includes('pdf.worker.js') && !scriptURL.includes('?')) {
+			modifiedURL = scriptURL + '?v=$version';
+		}
+		super(modifiedURL, options);
+	}
+};
+// Preserve static properties
+Object.keys(OriginalWorker).forEach(key => {
+	window.Worker[key] = OriginalWorker[key];
+});
+</script>
 <script>
 (function () {
 	const params = new URLSearchParams(window.location.search);
