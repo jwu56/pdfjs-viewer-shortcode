@@ -141,9 +141,9 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 
 		const onFullscreenTextChange = ( value ) => {
 			// Remove potentially dangerous HTML/scripts from user text input
-			value = value.replace( /<script[^>]*>.*?<\/script>/gi, '' );  // Remove script tags
-			value = value.replace( /on\w+\s*=/gi, '' );  // Remove event handlers
-			value = value.replace( /<\/?[^>]*>/g, '' );  // Remove other HTML tags
+			value = value.replace( /<script[^>]*>.*?<\/script>/gi, '' ); // Remove script tags
+			value = value.replace( /on\w+\s*=/gi, '' ); // Remove event handlers
+			value = value.replace( /<\/?[^>]*>/g, '' ); // Remove other HTML tags
 			props.setAttributes( {
 				fullscreenText: value,
 			} );
