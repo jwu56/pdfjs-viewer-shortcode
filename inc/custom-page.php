@@ -8,16 +8,14 @@ add_filter( 'init', function() {
 		}
 
 		$nonce = sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) );
-		if ( '' === $nonce || ! wp_verify_nonce( $nonce, 'pdfjs_full_screen' ) ) {
-			die( esc_html__( 'Security Check Failed', 'pdfjs-viewer-shortcode' ) );
-		}
-
-		/**
-		 * Custom Template
-		 */
-
 		$attachment_pdfjs_id = sanitize_text_field( wp_unslash( $_GET['pdfjs_id'] ) );
 		$attachment_id       = isset( $attachment_pdfjs_id ) && is_numeric( $attachment_pdfjs_id ) ? absint( $attachment_pdfjs_id ) : 0;
+		
+		// Use unique nonce action per attachment
+		$nonce_action = 'pdfjs_full_screen_' . $attachment_id;
+		if ( '' === $nonce || ! wp_verify_nonce( $nonce, $nonce_action ) ) {
+			die( esc_html__( 'Security Check Failed', 'pdfjs-viewer-shortcode' ) );
+		}
 
 		if ( 0 !== $attachment_id ) {
 			// Verify attachment exists and is valid

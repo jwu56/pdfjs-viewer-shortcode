@@ -72,11 +72,13 @@ require 'inc/options-page.php';
 
 /**
  * Elementor Integration
- * Only loads if Elementor is active/available
+ * Loads when Elementor is ready, not at plugin initialization
  */
-if ( did_action( 'elementor/loaded' ) || class_exists( '\Elementor\Plugin' ) ) {
-	require 'inc/elementor-integration.php';
-}
+add_action( 'elementor/loaded', function() {
+	if ( file_exists( plugin_dir_path( __FILE__ ) . 'inc/elementor-integration.php' ) ) {
+		require 'inc/elementor-integration.php';
+	}
+} );
 
 /**
  * Custom URL - Work in Progress

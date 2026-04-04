@@ -140,7 +140,10 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 		};
 
 		const onFullscreenTextChange = ( value ) => {
-			value = value.replace( /(<([^>]+)>)/gi, '' );
+			// Remove potentially dangerous HTML/scripts from user text input
+			value = value.replace( /<script[^>]*>.*?<\/script>/gi, '' );  // Remove script tags
+			value = value.replace( /on\w+\s*=/gi, '' );  // Remove event handlers
+			value = value.replace( /<\/?[^>]*>/g, '' );  // Remove other HTML tags
 			props.setAttributes( {
 				fullscreenText: value,
 			} );
@@ -198,6 +201,10 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 							}
 							checked={ props.attributes.showDownload }
 							onChange={ onToggleDownload }
+							aria-label={ __(
+								'Show Save Option',
+								'pdfjs-viewer-shortcode'
+							) }
 						/>
 					</PanelRow>
 					<PanelRow>
@@ -213,6 +220,10 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 							}
 							checked={ props.attributes.showPrint }
 							onChange={ onTogglePrint }
+							aria-label={ __(
+								'Show Print Option',
+								'pdfjs-viewer-shortcode'
+							) }
 						/>
 					</PanelRow>
 					<PanelRow>
@@ -228,6 +239,10 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 							}
 							checked={ props.attributes.showFullscreen }
 							onChange={ onToggleFullscreen }
+							aria-label={ __(
+								'Show Fullscreen Option',
+								'pdfjs-viewer-shortcode'
+							) }
 						/>
 					</PanelRow>
 					<PanelRow>
@@ -243,6 +258,10 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 							}
 							checked={ props.attributes.openFullscreen }
 							onChange={ onToggleOpenFullscreen }
+							aria-label={ __(
+								'Open Fullscreen in new tab?',
+								'pdfjs-viewer-shortcode'
+							) }
 						/>
 					</PanelRow>
 					<PanelRow>
@@ -261,6 +280,10 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 							'Viewer Height (pixels)',
 							'pdfjs-viewer-shortcode'
 						) }
+						aria-label={ __(
+							'Set the PDF viewer height in pixels. Minimum 0, maximum 5000 pixels.',
+							'pdfjs-viewer-shortcode'
+						) }
 						value={ props.attributes.viewerHeight }
 						onChange={ onHeightChange }
 						min={ 0 }
@@ -275,6 +298,10 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 					<RangeControl
 						label={ __(
 							'Viewer Width (pixels)',
+							'pdfjs-viewer-shortcode'
+						) }
+						aria-label={ __(
+							'Set the PDF viewer width in pixels. Use 0 for 100% width. Minimum 0, maximum 5000 pixels.',
 							'pdfjs-viewer-shortcode'
 						) }
 						help="By default 0 will be 100%."

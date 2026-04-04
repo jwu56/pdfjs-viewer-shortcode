@@ -171,9 +171,10 @@ function pdfjs_render_viewer( $args ) {
 		'editButtons'  => $editingbuttons,
 		'v'            => PDFJS_PLUGIN_VERSION,
  	);
-	// Include a nonce in the viewer URL to align with historical behavior
-	// and installations that may expect it.
-	$query_args['_wpnonce'] = wp_create_nonce( 'pdfjs_full_screen' );
+	// Create unique nonce per PDF using attachment_id to prevent replay attacks
+	// If no attachment_id, use file URL hash for uniqueness
+	$nonce_action = 'pdfjs_full_screen_' . ( ! empty( $attachment_id ) ? $attachment_id : md5( $file_url ) );
+	$query_args['_wpnonce'] = wp_create_nonce( $nonce_action );
 	// Note: pagemode and zoom are applied via URL hash, PDF.js reads them from hash
 	// Always include both zoom and pagemode to override any stored preferences
 	$zoom_hash = 'zoom=' . rawurlencode( $zoom ) . '&pagemode=' . rawurlencode( $pagemode );

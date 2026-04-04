@@ -73,24 +73,25 @@ function pdfjs_block_render( $attributes ) {
 
 /**
  * Gutenberg Block
+ * Registers the PDF.js viewer block with proper script and style handling
  */
 function pdfjs_register_gutenberg_card_block() {
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
 
-	$base_dir         = plugin_dir_path( __FILE__ ) . '../blocks/build/';
-	$script_handle    = 'gutenberg-pdfjs';
-	$style_handle           = null;
-	$editor_style_handle    = null;
-	$asset_file       = $base_dir . 'index.asset.php';
-	$script_file      = $base_dir . 'index.js';
-	$style_file       = $base_dir . 'style-index.css';
+	$base_dir      = plugin_dir_path( __FILE__ ) . '../blocks/build/';
+	$script_handle = 'gutenberg-pdfjs';
+	$style_handle  = null;
+	$editor_style_handle = null;
+	$asset_file    = $base_dir . 'index.asset.php';
+	$script_file   = $base_dir . 'index.js';
+	$style_file    = $base_dir . 'style-index.css';
 	$editor_style_file = $base_dir . 'index.css';
 
 	$asset_data = array(
 		'dependencies' => array( 'wp-blocks', 'wp-element', 'wp-editor' ),
-		'version'      => file_exists( $script_file ) ? filemtime( $script_file ) : false,
+		'version'      => file_exists( $script_file ) ? filemtime( $script_file ) : gmdate( 'U' ),
 	);
 
 	if ( file_exists( $asset_file ) ) {
@@ -141,7 +142,7 @@ function pdfjs_register_gutenberg_card_block() {
 	}
 
 	register_block_type(
-		'blocks/pdfjs-block',
+		'pdfjsblock/pdfjs-embed',
 		$block_args
 	);
 }

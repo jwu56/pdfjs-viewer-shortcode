@@ -90,17 +90,10 @@ PDF.js (included in this plugin) is developed by Mozilla and licensed under the 
 
 ## Changelog
 
-### 3.1.0 (Unreleased)
-
--   Added native Elementor widget support with full feature parity
--   Elementor widget auto-detects and integrates seamlessly when Elementor is active
--   New Elementor widget includes responsive controls and comprehensive styling options
--   Improved security with better sanitization across all integration points
--   Enhanced accessibility with ARIA labels and semantic HTML
-
 ## 3.0.5
 
 -   Cache busting for the pesky pdf.worker.js file to prevent caching issues after updates
+-   Added Elementor widget support with full feature parity
 
 ## 3.0.4
 
