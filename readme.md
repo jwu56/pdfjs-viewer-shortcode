@@ -18,6 +18,7 @@ Incorporate [Mozilla's PDF.js](https://github.com/mozilla/pdf.js/) viewer into y
 Features:
 
 -   Gutenberg Block and Shortcode
+-   Elementor Widget (auto-detects when Elementor is active)
 -   Translation Support (plugin only): Spanish and French included, ready for more languages
 -   Elegant Theme that adapts to dark and light mode (if browser supports dynamic CSS)
 -   Customizable buttons
@@ -28,6 +29,7 @@ Features:
 -   Document outline
 -   Classic Editor: Easy to use editor media button that generates the shortcode for you
 -   Support for mobile devices
+-   Responsive design with mobile support
 
 Shortcode Syntax:
 
@@ -52,6 +54,24 @@ Or use a direct URL:
 -   `openfile` (optional): `true`/`false`, show open file button (default: `false`)
 -   `zoom` (optional): Initial zoom level - `auto`, `page-actual`, `page-fit`, `page-width`, or percentage like `75`, `100`, `150` (default: `auto`)
 
+## Elementor Widget
+
+If you're using [Elementor](https://elementor.com/), the PDF.js Viewer Elementor widget is automatically available in the Page Builder.
+
+### How to Use:
+
+1. In Elementor Page Builder, search for **"PDF.js Viewer"** in the widgets panel
+2. Drag the widget onto your page
+3. Select a PDF from your WordPress media library
+4. Customize the display options:
+    - Set viewer dimensions (height and width)
+    - Choose default zoom level
+    - Enable/disable toolbar buttons (download, print, search, editing)
+    - Configure fullscreen link options
+5. Apply styling in the Style tab for borders, shadows, padding, and margins
+
+The Elementor widget reuses your site's global PDF.js Viewer settings while allowing per-widget customization.
+
 Want to help develop the plugin? Found a bug? [Find us on GitHub](https://github.com/TwisterMc/PDF.js-Viewer-Shortcode). For build instructions and contribution guidelines see the developer guide in `DEVELOPER.md`.
 
 ### Admin Notice After Updates / Invalid Block
@@ -69,6 +89,14 @@ This WordPress plugin is licensed under GPLv2 or later.
 PDF.js (included in this plugin) is developed by Mozilla and licensed under the Apache License 2.0. See the [PDF.js repository](https://github.com/mozilla/pdf.js) for details.
 
 ## Changelog
+
+### 3.1.0 (Unreleased)
+
+-   Added native Elementor widget support with full feature parity
+-   Elementor widget auto-detects and integrates seamlessly when Elementor is active
+-   New Elementor widget includes responsive controls and comprehensive styling options
+-   Improved security with better sanitization across all integration points
+-   Enhanced accessibility with ARIA labels and semantic HTML
 
 ## 3.0.5
 

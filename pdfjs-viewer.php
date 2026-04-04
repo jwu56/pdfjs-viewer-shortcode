@@ -71,6 +71,14 @@ require 'inc/gutenberg-block.php';
 require 'inc/options-page.php';
 
 /**
+ * Elementor Integration
+ * Only loads if Elementor is active/available
+ */
+if ( did_action( 'elementor/loaded' ) || class_exists( '\Elementor\Plugin' ) ) {
+	require 'inc/elementor-integration.php';
+}
+
+/**
  * Custom URL - Work in Progress
  */
 $pdfjs_custom_page = get_option( 'pdfjs_custom_page', 0 );
