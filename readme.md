@@ -70,6 +70,10 @@ PDF.js (included in this plugin) is developed by Mozilla and licensed under the 
 
 ## Changelog
 
+## 3.0.5
+
+-   Cache busting for the pesky pdf.worker.js file to prevent caching issues after updates
+
 ## 3.0.4
 
 -   Cache busting for PDF.js files to prevent caching issues after updates
