@@ -73,7 +73,9 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 		},
 		viewerScale: {
 			type: 'string',
-			default: pdfjsOpts.pdfjs_viewer_scale || 'auto',
+			default: ( pdfjsOpts.pdfjs_viewer_scale && pdfjsOpts.pdfjs_viewer_scale !== '0' )
+				? pdfjsOpts.pdfjs_viewer_scale
+				: 'auto',
 		},
 	},
 	keywords: [ __( 'PDF Selector', 'pdfjs-viewer-shortcode' ) ],
@@ -149,6 +151,12 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 			} );
 		};
 
+		const onScaleChange = ( value ) => {
+			props.setAttributes( {
+				viewerScale: value,
+			} );
+		};
+
 		// Build viewer URL for editor live preview
 		const viewerBase = pdfjsOpts.pdfjs_viewer_url || null;
 
@@ -165,7 +173,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 				sButton:
 					pdfjsOpts.pdfjs_search_button === 'on' ? 'true' : 'false',
 			} );
-			const zoom = pdfjsOpts.pdfjs_viewer_scale || 'auto';
+			const zoom = props.attributes.viewerScale || 'auto';
 			const pagemode = pdfjsOpts.pdfjs_viewer_pagemode || 'none';
 			const hash = `zoom=${ encodeURIComponent(
 				zoom
@@ -271,6 +279,30 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 							onChange={ onFullscreenTextChange }
 						/>
 					</PanelRow>
+				</PanelBody>
+				<PanelBody
+					title={ __( 'Zoom Level', 'pdfjs-viewer-shortcode' ) }
+				>
+					<SelectControl
+						label={ __(
+							'Default Zoom Level',
+							'pdfjs-viewer-shortcode'
+						) }
+						value={ props.attributes.viewerScale }
+						options={ [
+							{ label: __( 'Auto', 'pdfjs-viewer-shortcode' ), value: 'auto' },
+							{ label: __( 'Actual Size', 'pdfjs-viewer-shortcode' ), value: 'page-actual' },
+							{ label: __( 'Fit Page', 'pdfjs-viewer-shortcode' ), value: 'page-fit' },
+							{ label: __( 'Fit Width', 'pdfjs-viewer-shortcode' ), value: 'page-width' },
+							{ label: '50%', value: '50' },
+							{ label: '75%', value: '75' },
+							{ label: '100%', value: '100' },
+							{ label: '125%', value: '125' },
+							{ label: '150%', value: '150' },
+							{ label: '200%', value: '200' },
+						] }
+						onChange={ onScaleChange }
+					/>
 				</PanelBody>
 				<PanelBody
 					title={ __( 'Embed Height', 'pdfjs-viewer-shortcode' ) }

@@ -27,7 +27,7 @@ function pdfjs_get_options() {
 		'pdfjs_fullscreen_link_target' => get_option( 'pdfjs_fullscreen_link_target', '' ),
 		'pdfjs_embed_height'           => get_option( 'pdfjs_embed_height', 800 ),
 		'pdfjs_embed_width'            => get_option( 'pdfjs_embed_width', 0 ),
-		'pdfjs_viewer_scale'           => get_option( 'pdfjs_viewer_scale', 0 ),
+		'pdfjs_viewer_scale'           => ( function() { $s = get_option( 'pdfjs_viewer_scale', 'auto' ); return ( '' === (string) $s || '0' === (string) $s || 0 === $s ) ? 'auto' : $s; } )(),
 		'pdfjs_viewer_pagemode'        => get_option( 'pdfjs_viewer_pagemode', 'none' ),
 	);
 	
