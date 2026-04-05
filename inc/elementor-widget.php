@@ -96,31 +96,38 @@ class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 			)
 		);
 
-		$this->add_responsive_control(
+		$this->add_control(
 			'viewer_height',
 			array(
 				'label'      => esc_html__( 'Viewer Height', 'pdfjs-viewer-shortcode' ),
 				'type'       => \Elementor\Controls_Manager::SLIDER,
-				'size_units' => array( 'px', 'em', 'rem', 'vh' ),
+				'size_units' => array( 'px', 'vh' ),
 				'range'      => array(
 					'px' => array(
 						'min' => 300,
 						'max' => 2000,
+					),
+					'vh' => array(
+						'min' => 10,
+						'max' => 100,
 					),
 				),
 				'default'    => array(
 					'unit' => 'px',
 					'size' => 800,
 				),
+				'selectors'  => array(
+					'{{WRAPPER}} .pdfjs-embed-container' => 'height: {{SIZE}}{{UNIT}};',
+				),
 			)
 		);
 
-		$this->add_responsive_control(
+		$this->add_control(
 			'viewer_width',
 			array(
 				'label'      => esc_html__( 'Viewer Width', 'pdfjs-viewer-shortcode' ),
 				'type'       => \Elementor\Controls_Manager::SLIDER,
-				'size_units' => array( 'px', '%', 'em', 'rem', 'vw' ),
+				'size_units' => array( '%', 'px' ),
 				'range'      => array(
 					'%'  => array(
 						'min' => 1,
@@ -134,6 +141,9 @@ class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 				'default'    => array(
 					'unit' => '%',
 					'size' => 100,
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .pdfjs-embed-container' => 'width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -418,7 +428,7 @@ class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 			. '<text x="3" y="20" font-size="4" fill="#888" stroke="none" font-family="sans-serif">PDFjs</text>'
 			. '</svg>';
 
-		return '<div style="'
+		return '<div class="pdfjs-editor-placeholder" style="'
 			. 'width:' . esc_attr( $width ) . ';'
 			. 'height:' . esc_attr( $height ) . ';'
 			. 'display:flex;flex-direction:column;align-items:center;justify-content:center;'
