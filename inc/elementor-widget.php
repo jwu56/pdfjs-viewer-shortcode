@@ -71,6 +71,7 @@ final class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 			array(
 				'label' => esc_html__( 'PDF Content', 'pdfjs-viewer-shortcode' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+				'state' => 'open',
 			)
 		);
 
@@ -92,6 +93,7 @@ final class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 			array(
 				'label' => esc_html__( 'Display Options', 'pdfjs-viewer-shortcode' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+				'state' => 'open',
 			)
 		);
 
@@ -167,6 +169,7 @@ final class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 			array(
 				'label' => esc_html__( 'Toolbar Options', 'pdfjs-viewer-shortcode' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+				'state' => 'open',
 			)
 		);
 
@@ -226,6 +229,7 @@ final class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 			array(
 				'label' => esc_html__( 'Fullscreen Link', 'pdfjs-viewer-shortcode' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+				'state' => 'open',
 			)
 		);
 
@@ -278,6 +282,7 @@ final class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 			array(
 				'label' => esc_html__( 'Style', 'pdfjs-viewer-shortcode' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+				'state' => 'open',
 			)
 		);
 
@@ -360,8 +365,10 @@ final class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 		}
 
 		if ( empty( $pdf_url ) ) {
-			echo '<div role="alert" aria-live="assertive" style="padding: 20px; border: 2px solid #dc3232; background: #f8d7da; color: #721c24; margin: 20px 0;">';
-			echo '<p style="margin: 0;"><strong>' . esc_html__( 'Error:', 'pdfjs-viewer-shortcode' ) . '</strong> ' . esc_html__( 'Please select a PDF file from your media library.', 'pdfjs-viewer-shortcode' ) . '</p>';
+			// Show friendly info message instead of error when no PDF selected
+			echo '<div role="status" aria-live="polite" style="padding: 20px; border: 2px solid #2271b1; background: #e7f3ff; color: #003a87; border-radius: 4px; margin: 20px 0;">';
+			echo '<p style="margin: 0;"><strong>' . esc_html__( 'PDF Viewer', 'pdfjs-viewer-shortcode' ) . '</strong></p>';
+			echo '<p style="margin: 8px 0 0 0; font-size: 14px;">' . esc_html__( 'Please select a PDF file from your media library to display the viewer.', 'pdfjs-viewer-shortcode' ) . '</p>';
 			echo '</div>';
 			return;
 		}
@@ -386,8 +393,16 @@ final class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 			'editing'           => 'yes' === $settings['show_editing'] ? 'true' : 'false',
 		);
 
-		// Wrap in a container for styling.
+		// Wrap in a container for styling and preview notice.
 		echo '<div class="pdfjs-embed-container">';
+		
+		// Show preview notice in Elementor editor
+		if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
+			echo '<div style="background: #fff8dc; border: 1px solid #ffd700; border-radius: 4px; padding: 12px; margin-bottom: 12px; font-size: 13px; color: #333;">';
+			echo '<strong>' . esc_html__( '📝 Preview:', 'pdfjs-viewer-shortcode' ) . '</strong> ' . esc_html__( 'The PDF viewer will display on the published page. Full preview may be limited in the editor.', 'pdfjs-viewer-shortcode' );
+			echo '</div>';
+		}
+		
 		echo wp_kses_post( pdfjs_render_viewer( $viewer_args ) );
 		echo '</div>';
 	}
