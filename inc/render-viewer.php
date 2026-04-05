@@ -128,19 +128,32 @@ function pdfjs_render_viewer( $args ) {
 	
 	// Check if PDF URL has a different host than the current site.
 	if ( ! empty( $parsed_file['host'] ) && $parsed_file['host'] !== $parsed_site['host'] ) {
-		// External URL detected - return error message with details.
-		return '<div class="pdfjs-error" role="alert" aria-live="assertive" style="padding: 20px; border: 2px solid #dc3232; background: #f8d7da; color: #721c24; margin: 20px 0;">' .
-			'<p style="margin: 0 0 10px 0;"><strong>' . esc_html__( 'Security Error:', 'pdfjs-viewer-shortcode' ) . '</strong> ' .
-			esc_html__( 'PDF files must be hosted on the same domain as this site.', 'pdfjs-viewer-shortcode' ) . '</p>' .
-			'<p style="margin: 0; font-size: 0.9em;">' .
-			sprintf(
-				/* translators: 1: PDF URL host, 2: Current site host */
-				esc_html__( 'PDF is hosted on: %1$s but this site is: %2$s', 'pdfjs-viewer-shortcode' ),
-				'<code>' . esc_html( $file_origin ) . '</code>',
-				'<code>' . esc_html( $site_origin ) . '</code>'
-			) .
-			'</p>' .
-			'</div>';
+		$domain_allowed = false;
+
+		// Check if the external domains feature is enabled and the host is whitelisted.
+		if ( 'on' === get_option( 'pdfjs_allow_external_domains', '' ) ) {
+			$allowed_domains = get_option( 'pdfjs_allowed_domains', '' );
+			$allowed_list    = array_filter( array_map( 'trim', explode( "\n", $allowed_domains ) ) );
+			// Exact hostname match only — subdomains are not implicitly trusted.
+			if ( in_array( strtolower( $parsed_file['host'] ), $allowed_list, true ) ) {
+				$domain_allowed = true;
+			}
+		}
+
+		if ( ! $domain_allowed ) {
+			return '<div class="pdfjs-error" role="alert" aria-live="assertive" style="padding: 20px; border: 2px solid #dc3232; background: #f8d7da; color: #721c24; margin: 20px 0;">' .
+				'<p style="margin: 0 0 10px 0;"><strong>' . esc_html__( 'Security Error:', 'pdfjs-viewer-shortcode' ) . '</strong> ' .
+				esc_html__( 'PDF files must be hosted on the same domain as this site.', 'pdfjs-viewer-shortcode' ) . '</p>' .
+				'<p style="margin: 0; font-size: 0.9em;">' .
+				sprintf(
+					/* translators: 1: PDF URL host, 2: Current site host */
+					esc_html__( 'PDF is hosted on: %1$s but this site is: %2$s', 'pdfjs-viewer-shortcode' ),
+					'<code>' . esc_html( $file_origin ) . '</code>',
+					'<code>' . esc_html( $site_origin ) . '</code>'
+				) .
+				'</p>' .
+				'</div>';
+		}
 	}
 
 	// Normalize dimensions.
