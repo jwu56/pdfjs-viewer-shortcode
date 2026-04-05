@@ -18,6 +18,7 @@ function pdfjs_get_options() {
 	// Build options array
 	$cached_options = array(
 		'pdfjs_viewer_url'             => plugin_dir_url( dirname( __FILE__ ) ) . 'pdfjs/web/viewer.php',
+		'pdfjs_plugin_version'         => PDFJS_PLUGIN_VERSION,
 		'pdfjs_download_button'        => get_option( 'pdfjs_download_button', 'on' ),
 		'pdfjs_print_button'           => get_option( 'pdfjs_print_button', 'on' ),
 		'pdfjs_search_button'          => get_option( 'pdfjs_search_button', 'on' ),

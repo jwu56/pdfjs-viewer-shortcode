@@ -172,6 +172,7 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 					pdfjsOpts.pdfjs_editing_buttons === 'on' ? 'true' : 'false',
 				sButton:
 					pdfjsOpts.pdfjs_search_button === 'on' ? 'true' : 'false',
+				v: pdfjsOpts.pdfjs_plugin_version || '',
 			} );
 			const zoom = props.attributes.viewerScale || 'auto';
 			const pagemode = pdfjsOpts.pdfjs_viewer_pagemode || 'none';
