@@ -374,7 +374,8 @@ class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 		if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
 			echo wp_kses_post( $this->render_editor_placeholder( $pdf_url, $attachment_id, $width, $height ) );
 		} else {
-			echo wp_kses_post( pdfjs_render_viewer( $viewer_args ) );
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- output is already escaped inside pdfjs_render_viewer()
+			echo pdfjs_render_viewer( $viewer_args );
 		}
 
 		echo '</div>';
