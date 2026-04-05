@@ -90,7 +90,7 @@ function pdfjs_register_gutenberg_card_block() {
 	$editor_style_file = $base_dir . 'index.css';
 
 	$asset_data = array(
-		'dependencies' => array( 'wp-blocks', 'wp-element', 'wp-editor' ),
+		'dependencies' => array( 'wp-blocks', 'wp-element', 'wp-block-editor' ),
 		'version'      => file_exists( $script_file ) ? filemtime( $script_file ) : gmdate( 'U' ),
 	);
 

@@ -64,8 +64,8 @@ function pdfjs_render_viewer( $args ) {
 		// Verify attachment exists and is valid
 		$attachment = get_post( $attachment_id );
 		if ( $attachment && 'attachment' === $attachment->post_type ) {
-			// Check if attachment is accessible
-			if ( 'private' !== $attachment->post_status || current_user_can( 'read_private_posts' ) ) {
+			// Check if attachment is accessible (scope permission check to this specific post)
+			if ( 'private' !== $attachment->post_status || current_user_can( 'read_post', $attachment_id ) ) {
 				// Verify the file is actually a PDF
 				$mime_type = get_post_mime_type( $attachment_id );
 				if ( 'application/pdf' === $mime_type ) {
@@ -99,7 +99,7 @@ function pdfjs_render_viewer( $args ) {
 		$file_url = esc_url( $file_url );
 	}
 	
-	$pdfjs_custom_page = false; // DISABLED get_option( 'pdfjs_custom_page', '' );
+	$pdfjs_custom_page = get_option( 'pdfjs_custom_page', false );
 
 	// Store settings in transients for viewer.php to access (expires in 1 hour).
 	set_transient( 'pdfjs_button_download_' . $attachment_id, $download, 3600 );

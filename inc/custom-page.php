@@ -1,20 +1,19 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
 
-add_filter( 'init', function() {
+add_action( 'init', function() {
 	if ( isset( $_GET['pdfjs_id'] ) ) {
 		if ( ! isset( $_REQUEST['_wpnonce'] ) ) {
 			wp_die( esc_html__( 'Security Check Failed', 'pdfjs-viewer-shortcode' ) );
 		}
 
-		$nonce = sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) );
-		$attachment_pdfjs_id = sanitize_text_field( wp_unslash( $_GET['pdfjs_id'] ) );
-		$attachment_id       = isset( $attachment_pdfjs_id ) && is_numeric( $attachment_pdfjs_id ) ? absint( $attachment_pdfjs_id ) : 0;
-		
+		$nonce         = sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) );
+		$attachment_id = absint( wp_unslash( $_GET['pdfjs_id'] ) );
+
 		// Use unique nonce action per attachment
 		$nonce_action = 'pdfjs_full_screen_' . $attachment_id;
 		if ( '' === $nonce || ! wp_verify_nonce( $nonce, $nonce_action ) ) {
-			die( esc_html__( 'Security Check Failed', 'pdfjs-viewer-shortcode' ) );
+			wp_die( esc_html__( 'Security Check Failed', 'pdfjs-viewer-shortcode' ) );
 		}
 
 		if ( 0 !== $attachment_id ) {
@@ -23,9 +22,9 @@ add_filter( 'init', function() {
 			if ( ! $attachment || 'attachment' !== $attachment->post_type ) {
 				wp_die( esc_html__( 'Invalid attachment.', 'pdfjs-viewer-shortcode' ) );
 			}
-			
-			// Check if attachment is accessible (not private/draft unless user has permission)
-			if ( 'private' === $attachment->post_status && ! current_user_can( 'read_private_posts' ) ) {
+
+			// Check if attachment is accessible (not private unless user has permission for this specific post)
+			if ( 'private' === $attachment->post_status && ! current_user_can( 'read_post', $attachment_id ) ) {
 				wp_die( esc_html__( 'You do not have permission to view this attachment.', 'pdfjs-viewer-shortcode' ) );
 			}
 			
