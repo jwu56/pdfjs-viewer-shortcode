@@ -1,13 +1,12 @@
 # French (France) Translation for PDFjs Viewer - Embed PDFs
-# Copyright (C) 2025 PDFjs Viewer - Embed PDFs
+# Copyright (C) 2026 PDFjs Viewer - Embed PDFs
 # This file is distributed under the GPLv2.
 msgid ""
 msgstr ""
-"Project-Id-Version: PDFjs Viewer - Embed PDFs 2.2.5\n"
-"Report-Msgid-Bugs-To: https://github.com/TwisterMc/PDF.js-Viewer-Shortcode/"
-"issues\n"
-"POT-Creation-Date: 2025-12-03 00:00:00+00:00\n"
-"PO-Revision-Date: 2025-12-03 00:00:00+00:00\n"
+"Project-Id-Version: PDFjs Viewer - Embed PDFs 3.0.4\n"
+"Report-Msgid-Bugs-To: https://github.com/TwisterMc/pdfjs-viewer-shortcode/issues\n"
+"POT-Creation-Date: 2026-04-05 00:00-0500\n"
+"PO-Revision-Date: 2026-04-05 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -16,26 +15,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: inc/options-page.php:77 inc/options-page.php:55
+#: inc/media-button.php:17
+msgid "Add PDF to content"
+msgstr "Ajouter un PDF au contenu"
+
+#: inc/media-button.php:17
+msgid "Add PDF"
+msgstr "Ajouter un PDF"
+
+#: inc/options-page.php:107
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Vous n'avez pas les permissions suffisantes pour accéder à cette page."
 
-#: inc/options-page.php:81 inc/options-page.php:59
+#: inc/options-page.php:111
 msgid "PDFjs Viewer Options"
 msgstr "Options de la visionneuse PDFjs"
 
-#: inc/options-page.php:103 inc/options-page.php:79
-#, fuzzy
+#: inc/options-page.php:133
 msgid "Defaults"
-msgstr ""
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Paramètres par défaut\n"
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Valeurs par défaut"
+msgstr "Valeurs par défaut"
 
-#: inc/options-page.php:100
+#: inc/options-page.php:135
 msgid ""
 "These are the initial settings applied when a PDF is embedded. You can "
 "adjust them in the editor at any time. Updates to these default settings "
@@ -46,101 +46,43 @@ msgstr ""
 "ces paramètres par défaut ne s'appliquent qu'aux nouvelles intégrations de "
 "PDF, pas aux intégrations existantes."
 
-#: inc/options-page.php:111 inc/options-page.php:85
-#, fuzzy
+#: inc/options-page.php:139
 msgid "Show Save Button"
-msgstr ""
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Afficher le bouton Enregistrer\n"
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Afficher le bouton de sauvegarde"
+msgstr "Afficher le bouton de sauvegarde"
 
-#: inc/options-page.php:116 inc/options-page.php:89
-#, fuzzy
+#: inc/options-page.php:143
 msgid "Show Print Button"
-msgstr ""
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Afficher le bouton Imprimer\n"
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Afficher le bouton d'impression"
+msgstr "Afficher le bouton d'impression"
 
-#: inc/options-page.php:121 inc/options-page.php:101
-#, fuzzy
+#: inc/options-page.php:147 inc/elementor-widget.php:240
 msgid "Show Fullscreen Link"
-msgstr ""
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Afficher le lien Plein écran\n"
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Afficher le lien plein écran"
+msgstr "Afficher le lien plein écran"
 
-#: inc/options-page.php:126 inc/options-page.php:105
-#, fuzzy
+#: inc/options-page.php:151
 msgid "Fullscreen Link Text"
-msgstr ""
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Texte du lien Plein écran\n"
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Texte du lien plein écran"
+msgstr "Texte du lien plein écran"
 
-#: inc/options-page.php:131 inc/options-page.php:109
-#, fuzzy
+#: inc/options-page.php:155
 msgid "Fullscreen Links in New Tabs"
-msgstr ""
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Liens plein écran dans les nouveaux onglets\n"
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Liens plein écran dans de nouveaux onglets"
+msgstr "Liens plein écran dans de nouveaux onglets"
 
-#: inc/options-page.php:136 blocks/src/block/block.js:240
-#: inc/options-page.php:113
-#, fuzzy
+#: inc/options-page.php:159
 msgid "Embed Height"
-msgstr ""
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Hauteur de l'intégration\n"
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Hauteur d'intégration"
+msgstr "Hauteur d'intégration"
 
-#: inc/options-page.php:141 blocks/src/block/block.js:254
-#: inc/options-page.php:117
-#, fuzzy
+#: inc/options-page.php:163
 msgid "Embed Width"
-msgstr ""
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Largeur de l'intégration\n"
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Largeur d'intégration"
+msgstr "Largeur d'intégration"
 
-#: inc/options-page.php:145 inc/options-page.php:120
-#, fuzzy
+#: inc/options-page.php:166
 msgid "Note: 0 = 100%"
-msgstr ""
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Remarque: 0 = 100%\n"
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Note : 0 = 100%"
+msgstr "Note : 0 = 100%"
 
-#: inc/options-page.php:149
+#: inc/options-page.php:171
 msgid "Global Defaults"
 msgstr "Paramètres par défaut globaux"
 
-#: inc/options-page.php:150
+#: inc/options-page.php:173
 msgid ""
 "These settings control how all PDFs appear on your site. Any changes you "
 "make here will affect all PDFs that use PDF.js."
@@ -148,276 +90,406 @@ msgstr ""
 "Ces paramètres contrôlent l'apparence de tous les PDF sur votre site. Toute "
 "modification apportée ici affectera tous les PDF qui utilisent PDF.js."
 
-#: inc/options-page.php:154 inc/options-page.php:93
-#, fuzzy
+#: inc/options-page.php:179
 msgid "Show Search Button"
-msgstr ""
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Afficher le bouton Rechercher\n"
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Afficher le bouton de recherche"
+msgstr "Afficher le bouton de recherche"
 
-#: inc/options-page.php:159 inc/options-page.php:97
+#: inc/options-page.php:183
 msgid "Show Editing Buttons"
 msgstr "Afficher les boutons d'édition"
 
-#: inc/options-page.php:164 inc/options-page.php:124
+#: inc/options-page.php:188
 msgid "Viewer Scale"
 msgstr "Échelle de la visionneuse"
 
-#: inc/options-page.php:166
+#: inc/options-page.php:191 inc/elementor-widget.php:157
 msgid "Auto"
 msgstr "Automatique"
 
-#: inc/options-page.php:167
+#: inc/options-page.php:192
 msgid "Actual Size"
 msgstr "Taille réelle"
 
-#: inc/options-page.php:168
+#: inc/options-page.php:193
 msgid "Page Fit"
 msgstr "Ajustement de la page"
 
-#: inc/options-page.php:169
+#: inc/options-page.php:194
 msgid "Page Width"
 msgstr "Largeur de la page"
 
-#: inc/options-page.php:170
+#: inc/options-page.php:195
 msgid "50%"
 msgstr "50%"
 
-#: inc/options-page.php:171
+#: inc/options-page.php:196
 msgid "75%"
 msgstr "75%"
 
-#: inc/options-page.php:172
+#: inc/options-page.php:197
 msgid "100%"
 msgstr "100%"
 
-#: inc/options-page.php:173
+#: inc/options-page.php:198
 msgid "125%"
 msgstr "125%"
 
-#: inc/options-page.php:174
+#: inc/options-page.php:199
 msgid "150%"
 msgstr "150%"
 
-#: inc/options-page.php:175
+#: inc/options-page.php:200
 msgid "200%"
 msgstr "200%"
 
-#: inc/options-page.php:178 inc/options-page.php:142
+#: inc/options-page.php:206
 msgid "Page Mode (aka Sidebar)"
 msgstr "Mode de page (barre latérale)"
 
-#: inc/options-page.php:180
+#: inc/options-page.php:209
 msgid "None"
 msgstr "Aucun"
 
-#: inc/options-page.php:181
+#: inc/options-page.php:210
 msgid "Thumbs"
 msgstr "Vignettes"
 
-#: inc/options-page.php:182
+#: inc/options-page.php:211
 msgid "Bookmarks"
 msgstr "Signets"
 
-#: inc/options-page.php:183
+#: inc/options-page.php:212
 msgid "Attachments"
 msgstr "Pièces jointes"
 
-#: inc/options-page.php:188 inc/options-page.php:153
-#, fuzzy
+#: inc/options-page.php:217
 msgid "Alternative PDF Loading"
-msgstr ""
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Chargement alternatif du PDF\n"
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Chargement PDF alternatif"
+msgstr "Chargement PDF alternatif"
 
-#: inc/options-page.php:189
+#: inc/options-page.php:218
 msgid "Beta. Test with caution and"
 msgstr "Bêta. Testez avec prudence et"
 
-#: inc/options-page.php:183 inc/options-page.php:154
+#: inc/options-page.php:218
 msgid "leave feedback"
-msgstr "laisser un commentaire"
+msgstr "laissez un commentaire"
 
-#: inc/options-page.php:183 inc/options-page.php:154
+#: inc/options-page.php:218
 msgid "on how it works."
 msgstr "sur son fonctionnement."
 
-#: inc/options-page.php:189 inc/options-page.php:159
-#, fuzzy
+#: inc/options-page.php:221
+msgid "External Domain PDFs"
+msgstr "PDFs de domaines externes"
+
+#: inc/options-page.php:223
 msgid ""
-"When editing existing content, it may cause existing blocks to have "
-"\"unexpected or invalid content\" upon editing. Don't worry, just click the "
-"three little dots, choose \"Attempt Block Recovery\", and everything should "
-"be working again. This \"unexpected or invalid content\" will not affect "
-"live content, just content in the editor."
+"By default, PDFs must be hosted on this site. Enable this to allow PDFs from "
+"other domains, such as a CDN."
 msgstr ""
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Lors de la modification du contenu existant, les blocs existants peuvent "
-"avoir un \"contenu inattendu ou invalide\" lors de la modification. Ne vous "
-"inquiétez pas, cliquez simplement sur les trois petits points, choisissez "
-"\"Tenter la récupération du bloc\", et tout devrait fonctionner à nouveau. "
-"Ce \"contenu inattendu ou invalide\" n'affectera pas le contenu en direct, "
-"seulement le contenu dans l'éditeur.\n"
-"#-#-#-#-#  pdfjs-viewer-shortcode-fr_FR.po (PDFjs Viewer - Embed PDFs "
-"2.2.5)  #-#-#-#-#\n"
-"Lors de la modification de contenu existant, cela peut entraîner "
-"l'apparition de \"contenu inattendu ou non valide\" dans les blocs "
-"existants. Ne vous inquiétez pas, cliquez simplement sur les trois petits "
-"points, choisissez \"Tentative de récupération du bloc\" et tout devrait "
-"fonctionner à nouveau. Ce \"contenu inattendu ou non valide\" n'affectera "
-"pas le contenu en direct, seulement le contenu dans l'éditeur."
+"Par défaut, les PDFs doivent être hébergés sur ce site. Activez cette option "
+"pour autoriser les PDFs provenant d'autres domaines, comme un CDN."
 
-#: blocks/src/block/block.js:23
-msgid "Embed PDF.js Viewer"
-msgstr "Intégrer la visionneuse PDF.js"
+#: inc/options-page.php:227
+msgid "Allow External Domains"
+msgstr "Autoriser les domaines externes"
 
-#: blocks/src/block/block.js:206
-msgid "Show Fullscreen Option"
-msgstr "Afficher l'option plein écran"
+#: inc/options-page.php:234
+msgid "Security Notice"
+msgstr "Avis de sécurité"
 
-#: blocks/src/block/block.js:220
-msgid "Open Fullscreen in new tab?"
-msgstr "Ouvrir le plein écran dans un nouvel onglet ?"
-
-#: blocks/src/block/block.js:244
-msgid "Viewer Height (pixels)"
-msgstr "Hauteur de la visionneuse (pixels)"
-
-#: blocks/src/block/block.js:258
-msgid "Viewer Width (pixels)"
-msgstr "Largeur de la visionneuse (pixels)"
-
-#: blocks/src/block/block.js:274
-msgid "PDF.js Embed"
-msgstr "Intégration PDF.js"
-
-#: blocks/src/block/block.js:285
-msgid "Remove PDF"
-msgstr "Supprimer le PDF"
-
-#: blocks/src/block/block.js:289
-msgid "Remove the current PDF file"
-msgstr "Supprimer le fichier PDF actuel"
-
-#: blocks/src/block/block.js:297
-msgid "Choose a PDF file"
-msgstr "Choisir un fichier PDF"
-
-#: blocks/src/block/block.js:301
-msgid "Open media library to choose a PDF file"
-msgstr "Ouvrir la bibliothèque de médias pour choisir un fichier PDF"
-
-#: blocks/src/block/block.js:325
-msgid "PDF Preview"
-msgstr "Aperçu du PDF"
-
-#: blocks/src/block/block.js:342
-msgid "PDF document preview"
-msgstr "Aperçu du document PDF"
-
-#: inc/custom-page.php:9
-msgid "Security Check Failed"
-msgstr "Échec de la vérification de sécurité"
-
-#: inc/media-button.php:14
-msgid "Add PDF"
-msgstr "Ajouter un PDF"
-
-#: inc/media-button.php:17
-msgid "Add PDF to content"
-msgstr "Ajouter un PDF au contenu"
-
-#: inc/render-viewer.php:99
-msgid "Open PDF in fullscreen mode"
-msgstr "Ouvrir le PDF en mode plein écran"
-
-#: inc/render-viewer.php:106
-msgid "PDF Viewer"
-msgstr "Visionneuse PDF"
-
-#. translators: %s: PDF file name
-#: inc/render-viewer.php:112
-msgid "PDF document: %s"
-msgstr "Document PDF : %s"
-
-#: inc/options-page.php:81
+#: inc/options-page.php:236
 msgid ""
-"Most defaults only affect new posts and existing posts when you edit them. "
-"Not all options work with the shortcode."
+"Whitelisted domains are trusted site-wide. Any user who can insert "
+"shortcodes or blocks can load any PDF from these domains."
 msgstr ""
-"La plupart des valeurs par défaut n'affectent que les nouvelles publications "
-"et les publications existantes lorsque vous les modifiez. Toutes les options "
-"ne fonctionnent pas avec le shortcode."
+"Les domaines en liste blanche sont approuvés sur l'ensemble du site. Tout "
+"utilisateur pouvant insérer des shortcodes ou des blocs peut charger n'importe "
+"quel PDF depuis ces domaines."
 
-#: inc/options-page.php:162
+#: inc/options-page.php:237
 msgid ""
-"These options are not customizable per page/post at this time. Only globally."
+"The external server must send CORS headers (Access-Control-Allow-Origin) for "
+"PDFs to load. Most CDNs support this. Standard web servers typically do not."
 msgstr ""
-"Ces options ne sont pas personnalisables par page/publication pour le "
-"moment. Seulement globalement."
+"Le serveur externe doit envoyer des en-têtes CORS (Access-Control-Allow-Origin) "
+"pour que les PDFs se chargent. La plupart des CDN le supportent. Les serveurs "
+"web standard ne le font généralement pas."
 
-#: inc/options-page.php:183
-msgid "Settings"
-msgstr "Paramètres"
+#: inc/options-page.php:238
+msgid "Only add domains you fully control or explicitly trust."
+msgstr "N'ajoutez que des domaines que vous contrôlez entièrement ou en lesquels vous faites explicitement confiance."
 
-#: pdfjs-media-button.js:14
-msgid "Insert a PDF"
-msgstr "Insérer un PDF"
+#: inc/options-page.php:243
+msgid "Allowed Domains"
+msgstr "Domaines autorisés"
 
-#: pdfjs-media-button.js:17
-msgid "Insert"
-msgstr "Insérer"
-
-#: inc/admin-notice.php:51
+#: inc/options-page.php:246
 msgid ""
-"PDFjs Viewer has been updated.\\n\\nIf you edit a post that contains a PDF, "
-"you may see a message with an \\\"Attempt Block Recovery\\\" button. Simply "
-"click it—this is a normal part of how WordPress handles updates.\\n\\nIf you "
-"choose not to recover the block, your existing PDFs will still work "
-"perfectly, and your visitors won't see any changes."
+"One hostname per line. Do not include http:// or paths. Example: "
+"cdn.example.com"
 msgstr ""
-"PDFjs Viewer a été mis à jour.\\n\\nSi vous modifiez un article contenant un "
-"PDF, vous pourriez voir un message avec un bouton \\\"Tentative de "
-"récupération du bloc\\\". Cliquez simplement dessus : c'est une partie "
-"normale de la façon dont WordPress gère les mises à jour.\\n\\nSi vous "
-"choisissez de ne pas récupérer le bloc, vos PDFs existants continueront de "
-"fonctionner parfaitement et vos visiteurs ne verront aucun changement."
+"Un nom d'hôte par ligne. N'incluez pas http:// ni les chemins. Exemple : "
+"cdn.example.com"
 
-#: inc/admin-notice.php:56
-msgid "Dismiss"
-msgstr "Ignorer"
-
-#: inc/admin-notice.php:123
-msgid "Insufficient permissions."
-msgstr "Permissions insuffisantes."
-
-#: inc/render-viewer.php:96
-msgid "Security Error:"
-msgstr "Erreur de sécurité :"
-
-#: inc/render-viewer.php:97
-msgid "PDF files must be hosted on the same domain as this site."
-msgstr ""
-"Les fichiers PDF doivent être hébergés sur le même domaine que ce site."
-
-#. translators: 1: PDF URL host, 2: Current site host
-#: inc/render-viewer.php:101
-msgid "PDF is hosted on: %1$s but this site is: %2$s"
-msgstr "Le PDF est hébergé sur : %1$s mais ce site est : %2$s"
-
-#: inc/options-page.php:184
+#: inc/options-page.php:265
 msgid "Save Changes"
 msgstr "Enregistrer les modifications"
 
-#: inc/options-page.php:185
+#: inc/options-page.php:266
 msgid "Support this plugin"
 msgstr "Soutenir ce plugin"
+
+#: inc/options-page.php:288
+msgid "Settings"
+msgstr "Paramètres"
+
+#: inc/admin-notice.php:66
+msgid ""
+"PDFjs Viewer has been updated.\n"
+"\n"
+"If you edit a post that contains a PDF, you may see a message with an "
+"\"Attempt Block Recovery\" button. Simply click it as this is a normal part "
+"of how WordPress handles updates.\n"
+"\n"
+"If you choose not to recover the block, your existing PDFs will still work "
+"perfectly, and your visitors won't see any changes."
+msgstr ""
+"PDFjs Viewer a été mis à jour.\n"
+"\n"
+"Si vous modifiez un article contenant un PDF, vous pourriez voir un message "
+"avec un bouton \"Tentative de récupération du bloc\". Cliquez simplement "
+"dessus : c'est une partie normale de la façon dont WordPress gère les mises "
+"à jour.\n"
+"\n"
+"Si vous choisissez de ne pas récupérer le bloc, vos PDFs existants "
+"continueront de fonctionner parfaitement et vos visiteurs ne verront aucun "
+"changement."
+
+#: inc/admin-notice.php:74
+msgid "Dismiss notice"
+msgstr "Ignorer l'avis"
+
+#: inc/admin-notice.php:74
+msgid "Dismiss"
+msgstr "Ignorer"
+
+#: inc/admin-notice.php:124
+msgid "Insufficient permissions."
+msgstr "Permissions insuffisantes."
+
+#: inc/elementor-widget.php:32 inc/elementor-integration.php:24
+msgid "PDF.js Viewer"
+msgstr "Visionneuse PDF.js"
+
+#: inc/elementor-widget.php:73
+msgid "PDF Content"
+msgstr "Contenu PDF"
+
+#: inc/elementor-widget.php:81
+msgid "Select PDF"
+msgstr "Sélectionner un PDF"
+
+#: inc/elementor-widget.php:84
+msgid "Select a PDF file from your media library."
+msgstr "Sélectionnez un fichier PDF dans votre bibliothèque de médias."
+
+#: inc/elementor-widget.php:94
+msgid "Display Options"
+msgstr "Options d'affichage"
+
+#: inc/elementor-widget.php:102
+msgid "Viewer Height"
+msgstr "Hauteur de la visionneuse"
+
+#: inc/elementor-widget.php:128
+msgid "Viewer Width"
+msgstr "Largeur de la visionneuse"
+
+#: inc/elementor-widget.php:154
+msgid "Default Zoom Level"
+msgstr "Niveau de zoom par défaut"
+
+#: inc/elementor-widget.php:158
+msgid "Fit Page"
+msgstr "Adapter à la page"
+
+#: inc/elementor-widget.php:159
+msgid "Fit Width"
+msgstr "Adapter à la largeur"
+
+#: inc/elementor-widget.php:177
+msgid "Toolbar Options"
+msgstr "Options de la barre d'outils"
+
+#: inc/elementor-widget.php:185
+msgid "Download Button"
+msgstr "Bouton de téléchargement"
+
+#: inc/elementor-widget.php:187 inc/elementor-widget.php:198
+#: inc/elementor-widget.php:209 inc/elementor-widget.php:220
+msgid "Show"
+msgstr "Afficher"
+
+#: inc/elementor-widget.php:188 inc/elementor-widget.php:199
+#: inc/elementor-widget.php:210 inc/elementor-widget.php:221
+msgid "Hide"
+msgstr "Masquer"
+
+#: inc/elementor-widget.php:196
+msgid "Print Button"
+msgstr "Bouton d'impression"
+
+#: inc/elementor-widget.php:207
+msgid "Search Button"
+msgstr "Bouton de recherche"
+
+#: inc/elementor-widget.php:218
+msgid "Editing Buttons"
+msgstr "Boutons d'édition"
+
+#: inc/elementor-widget.php:232
+msgid "Fullscreen Link"
+msgstr "Lien plein écran"
+
+#: inc/elementor-widget.php:242 inc/elementor-widget.php:266
+msgid "Yes"
+msgstr "Oui"
+
+#: inc/elementor-widget.php:243 inc/elementor-widget.php:267
+msgid "No"
+msgstr "Non"
+
+#: inc/elementor-widget.php:251
+msgid "Link Text"
+msgstr "Texte du lien"
+
+#: inc/elementor-widget.php:253 inc/elementor-widget.php:254
+msgid "View Fullscreen"
+msgstr "Voir en plein écran"
+
+#: inc/elementor-widget.php:264
+msgid "Open in New Tab"
+msgstr "Ouvrir dans un nouvel onglet"
+
+#: inc/elementor-widget.php:281
+msgid "Style"
+msgstr "Style"
+
+#: inc/elementor-widget.php:289
+msgid "Background Color"
+msgstr "Couleur d'arrière-plan"
+
+#: inc/elementor-widget.php:316
+msgid "Padding"
+msgstr "Rembourrage"
+
+#: inc/elementor-widget.php:328
+msgid "Margin"
+msgstr "Marge"
+
+#: inc/elementor-widget.php:358 inc/render-viewer.php:226
+#: templates/fullscreen.php:11
+msgid "PDF Viewer"
+msgstr "Visionneuse PDF"
+
+#: inc/elementor-widget.php:359
+msgid "Please select a PDF file from your media library to display the viewer."
+msgstr "Veuillez sélectionner un fichier PDF dans votre bibliothèque de médias pour afficher la visionneuse."
+
+#: inc/elementor-widget.php:422 inc/render-viewer.php:217
+msgid "PDF Document"
+msgstr "Document PDF"
+
+#: inc/elementor-widget.php:440
+msgid "PDFjs Viewer — visible on the published page"
+msgstr "Visionneuse PDFjs — visible sur la page publiée"
+
+#: inc/custom-page.php:7 inc/custom-page.php:16
+msgid "Security Check Failed"
+msgstr "Échec de la vérification de sécurité"
+
+#: inc/custom-page.php:23
+msgid "Invalid attachment."
+msgstr "Pièce jointe non valide."
+
+#: inc/custom-page.php:28
+msgid "You do not have permission to view this attachment."
+msgstr "Vous n'avez pas la permission de consulter cette pièce jointe."
+
+#: inc/custom-page.php:34
+msgid "This attachment is not a PDF file."
+msgstr "Cette pièce jointe n'est pas un fichier PDF."
+
+#: inc/render-viewer.php:145
+msgid "Security Error:"
+msgstr "Erreur de sécurité :"
+
+#: inc/render-viewer.php:146
+msgid "PDF files must be hosted on the same domain as this site."
+msgstr "Les fichiers PDF doivent être hébergés sur le même domaine que ce site."
+
+#. translators: 1: PDF URL host, 2: Current site host
+#: inc/render-viewer.php:150
+#, php-format
+msgid "PDF is hosted on: %1$s but this site is: %2$s"
+msgstr "Le PDF est hébergé sur : %1$s mais ce site est : %2$s"
+
+#: inc/render-viewer.php:199
+msgid "Open PDF in fullscreen mode"
+msgstr "Ouvrir le PDF en mode plein écran"
+
+#. translators: %s: PDF file name
+#: inc/render-viewer.php:221
+#, php-format
+msgid "PDF document: %s"
+msgstr "Document PDF : %s"
+
+#: inc/render-viewer.php:226
+msgid "Skip to PDF content"
+msgstr "Aller au contenu PDF"
+
+#~ msgid "Embed PDF.js Viewer"
+#~ msgstr "Intégrer la visionneuse PDF.js"
+
+#~ msgid "Show Fullscreen Option"
+#~ msgstr "Afficher l'option plein écran"
+
+#~ msgid "PDF.js Embed"
+#~ msgstr "Intégration PDF.js"
+
+#~ msgid "Remove the current PDF file"
+#~ msgstr "Supprimer le fichier PDF actuel"
+
+#~ msgid "Choose a PDF file"
+#~ msgstr "Choisir un fichier PDF"
+
+#~ msgid "Open media library to choose a PDF file"
+#~ msgstr "Ouvrir la bibliothèque de médias pour choisir un fichier PDF"
+
+#~ msgid "PDF Preview"
+#~ msgstr "Aperçu du PDF"
+
+#~ msgid "PDF document preview"
+#~ msgstr "Aperçu du document PDF"
+
+#~ msgid ""
+#~ "Most defaults only affect new posts and existing posts when you edit "
+#~ "them. Not all options work with the shortcode."
+#~ msgstr ""
+#~ "La plupart des valeurs par défaut n'affectent que les nouvelles "
+#~ "publications et les publications existantes lorsque vous les modifiez. "
+#~ "Toutes les options ne fonctionnent pas avec le shortcode."
+
+#~ msgid ""
+#~ "These options are not customizable per page/post at this time. Only "
+#~ "globally."
+#~ msgstr ""
+#~ "Ces options ne sont pas personnalisables par page/publication pour le "
+#~ "moment. Seulement globalement."
+
+#~ msgid "Insert a PDF"
+#~ msgstr "Insérer un PDF"
+
+#~ msgid "Insert"
+#~ msgstr "Insérer"

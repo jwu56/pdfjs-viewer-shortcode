@@ -1,111 +1,232 @@
+# PDFjs Viewer - Embed PDFs
+# Copyright (C) 2026 Thomas McMahon
+# This file is distributed under the same license as the PDFjs Viewer - Embed PDFs plugin.
+#
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PDFjs Viewer - Embed PDFs\n"
-"POT-Creation-Date: 2026-01-14 18:08+0100\n"
-"PO-Revision-Date: 2026-01-14 18:08+0100\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"Project-Id-Version: PDFjs Viewer - Embed PDFs 3.0.4\n"
+"Report-Msgid-Bugs-To: https://github.com/TwisterMc/pdfjs-viewer-shortcode/issues\n"
+"POT-Creation-Date: 2026-04-04 23:57-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"X-Generator: Poedit 3.7\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
-"X-Poedit-WPHeader: pdfjs-viewer.php\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: "
-"__;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:28
-msgid "Embed PDF.js Viewer"
+#: inc/media-button.php:17
+msgid "Add PDF to content"
 msgstr ""
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:79
-msgid "PDF Selector"
+#: inc/media-button.php:17
+msgid "Add PDF"
 msgstr ""
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:186
-msgid "PDF.js Options"
+#: inc/options-page.php:107
+msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:191
-msgid "Show Save Option"
+#: inc/options-page.php:111
+msgid "PDFjs Viewer Options"
 msgstr ""
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:196
-#: blocks/src/block/block.js:211 blocks/src/block/block.js:226
-#: blocks/src/block/block.js:241
-msgid "Yes"
+#: inc/options-page.php:133
+msgid "Defaults"
 msgstr ""
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:197
-#: blocks/src/block/block.js:212 blocks/src/block/block.js:227
-#: blocks/src/block/block.js:242
-msgid "No"
+#: inc/options-page.php:135
+msgid ""
+"These are the initial settings applied when a PDF is embedded. You can "
+"adjust them in the editor at any time. Updates to these default settings "
+"only apply to new PDF embeds, not existing ones."
 msgstr ""
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:206
-msgid "Show Print Option"
+#: inc/options-page.php:139
+msgid "Show Save Button"
 msgstr ""
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:221
-msgid "Show Fullscreen Option"
+#: inc/options-page.php:143
+msgid "Show Print Button"
 msgstr ""
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:236
-msgid "Open Fullscreen in new tab?"
+#: inc/options-page.php:147 inc/elementor-widget.php:240
+msgid "Show Fullscreen Link"
 msgstr ""
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:257
-#: inc/options-page.php:124
+#: inc/options-page.php:151
+msgid "Fullscreen Link Text"
+msgstr ""
+
+#: inc/options-page.php:155
+msgid "Fullscreen Links in New Tabs"
+msgstr ""
+
+#: inc/options-page.php:159
 msgid "Embed Height"
 msgstr ""
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:261
-msgid "Viewer Height (pixels)"
-msgstr ""
-
-#: blocks/build/index.js:1 blocks/src/block/block.js:273
-#: inc/options-page.php:128
+#: inc/options-page.php:163
 msgid "Embed Width"
 msgstr ""
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:277
-msgid "Viewer Width (pixels)"
+#: inc/options-page.php:166
+msgid "Note: 0 = 100%"
 msgstr ""
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:293
-msgid "PDF.js Embed"
+#: inc/options-page.php:171
+msgid "Global Defaults"
 msgstr ""
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:307
-msgid "Remove the current PDF file"
+#: inc/options-page.php:173
+msgid ""
+"These settings control how all PDFs appear on your site. Any changes you "
+"make here will affect all PDFs that use PDF.js."
 msgstr ""
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:311
-msgid "Remove PDF"
+#: inc/options-page.php:179
+msgid "Show Search Button"
 msgstr ""
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:323
-msgid "Open media library to choose a PDF file"
+#: inc/options-page.php:183
+msgid "Show Editing Buttons"
 msgstr ""
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:328
-msgid "Choose a PDF file"
+#: inc/options-page.php:188
+msgid "Viewer Scale"
 msgstr ""
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:348
-#: blocks/src/block/block.js:367
-msgid "PDF Preview"
+#: inc/options-page.php:191 inc/elementor-widget.php:157
+msgid "Auto"
 msgstr ""
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:374
-#: blocks/src/block/block.js:378
-msgid "PDF document preview"
+#: inc/options-page.php:192
+msgid "Actual Size"
+msgstr ""
+
+#: inc/options-page.php:193
+msgid "Page Fit"
+msgstr ""
+
+#: inc/options-page.php:194
+msgid "Page Width"
+msgstr ""
+
+#: inc/options-page.php:195
+msgid "50%"
+msgstr ""
+
+#: inc/options-page.php:196
+msgid "75%"
+msgstr ""
+
+#: inc/options-page.php:197
+msgid "100%"
+msgstr ""
+
+#: inc/options-page.php:198
+msgid "125%"
+msgstr ""
+
+#: inc/options-page.php:199
+msgid "150%"
+msgstr ""
+
+#: inc/options-page.php:200
+msgid "200%"
+msgstr ""
+
+#: inc/options-page.php:206
+msgid "Page Mode (aka Sidebar)"
+msgstr ""
+
+#: inc/options-page.php:209
+msgid "None"
+msgstr ""
+
+#: inc/options-page.php:210
+msgid "Thumbs"
+msgstr ""
+
+#: inc/options-page.php:211
+msgid "Bookmarks"
+msgstr ""
+
+#: inc/options-page.php:212
+msgid "Attachments"
+msgstr ""
+
+#: inc/options-page.php:217
+msgid "Alternative PDF Loading"
+msgstr ""
+
+#: inc/options-page.php:218
+msgid "Beta. Test with caution and"
+msgstr ""
+
+#: inc/options-page.php:218
+msgid "leave feedback"
+msgstr ""
+
+#: inc/options-page.php:218
+msgid "on how it works."
+msgstr ""
+
+#: inc/options-page.php:221
+msgid "External Domain PDFs"
+msgstr ""
+
+#: inc/options-page.php:223
+msgid ""
+"By default, PDFs must be hosted on this site. Enable this to allow PDFs from "
+"other domains, such as a CDN."
+msgstr ""
+
+#: inc/options-page.php:227
+msgid "Allow External Domains"
+msgstr ""
+
+#: inc/options-page.php:234
+msgid "Security Notice"
+msgstr ""
+
+#: inc/options-page.php:236
+msgid ""
+"Whitelisted domains are trusted site-wide. Any user who can insert "
+"shortcodes or blocks can load any PDF from these domains."
+msgstr ""
+
+#: inc/options-page.php:237
+msgid ""
+"The external server must send CORS headers (Access-Control-Allow-Origin) for "
+"PDFs to load. Most CDNs support this. Standard web servers typically do not."
+msgstr ""
+
+#: inc/options-page.php:238
+msgid "Only add domains you fully control or explicitly trust."
+msgstr ""
+
+#: inc/options-page.php:243
+msgid "Allowed Domains"
+msgstr ""
+
+#: inc/options-page.php:246
+msgid ""
+"One hostname per line. Do not include http:// or paths. Example: "
+"cdn.example.com"
+msgstr ""
+
+#: inc/options-page.php:265
+msgid "Save Changes"
+msgstr ""
+
+#: inc/options-page.php:266
+msgid "Support this plugin"
+msgstr ""
+
+#: inc/options-page.php:288
+msgid "Settings"
 msgstr ""
 
 #: inc/admin-notice.php:66
@@ -132,7 +253,134 @@ msgstr ""
 msgid "Insufficient permissions."
 msgstr ""
 
-#: inc/custom-page.php:9
+#: inc/elementor-widget.php:32 inc/elementor-integration.php:24
+msgid "PDF.js Viewer"
+msgstr ""
+
+#: inc/elementor-widget.php:73
+msgid "PDF Content"
+msgstr ""
+
+#: inc/elementor-widget.php:81
+msgid "Select PDF"
+msgstr ""
+
+#: inc/elementor-widget.php:84
+msgid "Select a PDF file from your media library."
+msgstr ""
+
+#: inc/elementor-widget.php:94
+msgid "Display Options"
+msgstr ""
+
+#: inc/elementor-widget.php:102
+msgid "Viewer Height"
+msgstr ""
+
+#: inc/elementor-widget.php:128
+msgid "Viewer Width"
+msgstr ""
+
+#: inc/elementor-widget.php:154
+msgid "Default Zoom Level"
+msgstr ""
+
+#: inc/elementor-widget.php:158
+msgid "Fit Page"
+msgstr ""
+
+#: inc/elementor-widget.php:159
+msgid "Fit Width"
+msgstr ""
+
+#: inc/elementor-widget.php:177
+msgid "Toolbar Options"
+msgstr ""
+
+#: inc/elementor-widget.php:185
+msgid "Download Button"
+msgstr ""
+
+#: inc/elementor-widget.php:187 inc/elementor-widget.php:198
+#: inc/elementor-widget.php:209 inc/elementor-widget.php:220
+msgid "Show"
+msgstr ""
+
+#: inc/elementor-widget.php:188 inc/elementor-widget.php:199
+#: inc/elementor-widget.php:210 inc/elementor-widget.php:221
+msgid "Hide"
+msgstr ""
+
+#: inc/elementor-widget.php:196
+msgid "Print Button"
+msgstr ""
+
+#: inc/elementor-widget.php:207
+msgid "Search Button"
+msgstr ""
+
+#: inc/elementor-widget.php:218
+msgid "Editing Buttons"
+msgstr ""
+
+#: inc/elementor-widget.php:232
+msgid "Fullscreen Link"
+msgstr ""
+
+#: inc/elementor-widget.php:242 inc/elementor-widget.php:266
+msgid "Yes"
+msgstr ""
+
+#: inc/elementor-widget.php:243 inc/elementor-widget.php:267
+msgid "No"
+msgstr ""
+
+#: inc/elementor-widget.php:251
+msgid "Link Text"
+msgstr ""
+
+#: inc/elementor-widget.php:253 inc/elementor-widget.php:254
+msgid "View Fullscreen"
+msgstr ""
+
+#: inc/elementor-widget.php:264
+msgid "Open in New Tab"
+msgstr ""
+
+#: inc/elementor-widget.php:281
+msgid "Style"
+msgstr ""
+
+#: inc/elementor-widget.php:289
+msgid "Background Color"
+msgstr ""
+
+#: inc/elementor-widget.php:316
+msgid "Padding"
+msgstr ""
+
+#: inc/elementor-widget.php:328
+msgid "Margin"
+msgstr ""
+
+#: inc/elementor-widget.php:358 inc/render-viewer.php:226
+#: templates/fullscreen.php:11
+msgid "PDF Viewer"
+msgstr ""
+
+#: inc/elementor-widget.php:359
+msgid "Please select a PDF file from your media library to display the viewer."
+msgstr ""
+
+#: inc/elementor-widget.php:422 inc/render-viewer.php:217
+msgid "PDF Document"
+msgstr ""
+
+#: inc/elementor-widget.php:440
+msgid "PDFjs Viewer — visible on the published page"
+msgstr ""
+
+#: inc/custom-page.php:7 inc/custom-page.php:16
 msgid "Security Check Failed"
 msgstr ""
 
@@ -148,225 +396,30 @@ msgstr ""
 msgid "This attachment is not a PDF file."
 msgstr ""
 
-#: inc/media-button.php:17
-msgid "Add PDF to content"
-msgstr ""
-
-#: inc/media-button.php:17
-msgid "Add PDF"
-msgstr ""
-
-#: inc/options-page.php:74
-msgid "You do not have sufficient permissions to access this page."
-msgstr ""
-
-#: inc/options-page.php:78
-msgid "PDFjs Viewer Options"
-msgstr ""
-
-#: inc/options-page.php:98
-msgid "Defaults"
-msgstr ""
-
-#: inc/options-page.php:100
-msgid ""
-"These are the initial settings applied when a PDF is embedded. You can "
-"adjust them in the editor at any time. Updates to these default settings "
-"only apply to new PDF embeds, not existing ones."
-msgstr ""
-
-#: inc/options-page.php:104
-msgid "Show Save Button"
-msgstr ""
-
-#: inc/options-page.php:108
-msgid "Show Print Button"
-msgstr ""
-
-#: inc/options-page.php:112
-msgid "Show Fullscreen Link"
-msgstr ""
-
-#: inc/options-page.php:116
-msgid "Fullscreen Link Text"
-msgstr ""
-
-#: inc/options-page.php:120
-msgid "Fullscreen Links in New Tabs"
-msgstr ""
-
-#: inc/options-page.php:131
-msgid "Note: 0 = 100%"
-msgstr ""
-
-#: inc/options-page.php:136
-msgid "Global Defaults"
-msgstr ""
-
-#: inc/options-page.php:138
-msgid ""
-"These settings control how all PDFs appear on your site. Any changes you "
-"make here will affect all PDFs that use PDF.js."
-msgstr ""
-
-#: inc/options-page.php:144
-msgid "Show Search Button"
-msgstr ""
-
-#: inc/options-page.php:148
-msgid "Show Editing Buttons"
-msgstr ""
-
-#: inc/options-page.php:153
-msgid "Viewer Scale"
-msgstr ""
-
-#: inc/options-page.php:156
-msgid "Auto"
-msgstr ""
-
-#: inc/options-page.php:157
-msgid "Actual Size"
-msgstr ""
-
-#: inc/options-page.php:158
-msgid "Page Fit"
-msgstr ""
-
-#: inc/options-page.php:159
-msgid "Page Width"
-msgstr ""
-
-#: inc/options-page.php:160
-msgid "50%"
-msgstr ""
-
-#: inc/options-page.php:161
-msgid "75%"
-msgstr ""
-
-#: inc/options-page.php:162
-msgid "100%"
-msgstr ""
-
-#: inc/options-page.php:163
-msgid "125%"
-msgstr ""
-
-#: inc/options-page.php:164
-msgid "150%"
-msgstr ""
-
-#: inc/options-page.php:165
-msgid "200%"
-msgstr ""
-
-#: inc/options-page.php:171
-msgid "Page Mode (aka Sidebar)"
-msgstr ""
-
-#: inc/options-page.php:174
-msgid "None"
-msgstr ""
-
-#: inc/options-page.php:175
-msgid "Thumbs"
-msgstr ""
-
-#: inc/options-page.php:176
-msgid "Bookmarks"
-msgstr ""
-
-#: inc/options-page.php:177
-msgid "Attachments"
-msgstr ""
-
-#: inc/options-page.php:182
-msgid "Alternative PDF Loading"
-msgstr ""
-
-#: inc/options-page.php:183
-msgid "Beta. Test with caution and"
-msgstr ""
-
-#: inc/options-page.php:183
-msgid "leave feedback"
-msgstr ""
-
-#: inc/options-page.php:183
-msgid "on how it works."
-msgstr ""
-
-#: inc/options-page.php:207
-msgid "Settings"
-msgstr ""
-
-#: inc/render-viewer.php:133
+#: inc/render-viewer.php:145
 msgid "Security Error:"
 msgstr ""
 
-#: inc/render-viewer.php:134
+#: inc/render-viewer.php:146
 msgid "PDF files must be hosted on the same domain as this site."
 msgstr ""
 
 #. translators: 1: PDF URL host, 2: Current site host
-#: inc/render-viewer.php:138
+#: inc/render-viewer.php:150
 #, php-format
 msgid "PDF is hosted on: %1$s but this site is: %2$s"
 msgstr ""
 
-#: inc/render-viewer.php:187
+#: inc/render-viewer.php:199
 msgid "Open PDF in fullscreen mode"
 msgstr ""
 
-#: inc/render-viewer.php:205
-msgid "PDF Document"
-msgstr ""
-
 #. translators: %s: PDF file name
-#: inc/render-viewer.php:209
+#: inc/render-viewer.php:221
 #, php-format
 msgid "PDF document: %s"
 msgstr ""
 
-#: inc/render-viewer.php:214
+#: inc/render-viewer.php:226
 msgid "Skip to PDF content"
-msgstr ""
-
-#: inc/render-viewer.php:214 templates/fullscreen.php:11
-msgid "PDF Viewer"
-msgstr ""
-
-#: pdfjs-media-button.js:14
-msgid "Insert a PDF"
-msgstr ""
-
-#: pdfjs-media-button.js:17
-msgid "Insert"
-msgstr ""
-
-#. Plugin Name of the plugin/theme
-msgid "PDFjs Viewer - Embed PDFs"
-msgstr ""
-
-#. Plugin URI of the plugin/theme
-msgid "https://github.com/TwisterMc/pdfjs-viewer-shortcode"
-msgstr ""
-
-#. Description of the plugin/theme
-msgid "Embed PDFs with the gorgeous PDF.js viewer"
-msgstr ""
-
-#. Author of the plugin/theme
-msgid ""
-"<a href=\"https://www.twistermc.com/\">Thomas McMahon</a>, <a href=\"https://"
-"byterevel.com/\">Ben Lawson</a>"
-msgstr ""
-
-#: inc/options-page.php:184
-msgid "Save Changes"
-msgstr ""
-
-#: inc/options-page.php:185
-msgid "Support this plugin"
 msgstr ""
