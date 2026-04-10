@@ -3,7 +3,7 @@
 -   Contributors: FalconerWeb, twistermc
 -   Tags: pdf, pdfjs, viewer, embed, mozilla
 -   Requires at least: 5.0
--   Tested up to: 6.9
+-   Tested up to: 7.0
 -   Stable tag: 3.0.4
 -   License: GPLv2 or later
 -   License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -58,22 +58,6 @@ Or use a direct URL:
 
 If you're using [Elementor](https://elementor.com/), the PDF.js Viewer Elementor widget is automatically available in the Page Builder.
 
-### How to Use:
-
-1. In Elementor Page Builder, search for **"PDF.js Viewer"** in the widgets panel
-2. Drag the widget onto your page
-3. Select a PDF from your WordPress media library
-4. Customize the display options:
-    - Set viewer dimensions (height and width)
-    - Choose default zoom level
-    - Enable/disable toolbar buttons (download, print, search, editing)
-    - Configure fullscreen link options
-5. Apply styling in the Style tab for borders, shadows, padding, and margins
-
-The Elementor widget reuses your site's global PDF.js Viewer settings while allowing per-widget customization.
-
-Want to help develop the plugin? Found a bug? [Find us on GitHub](https://github.com/TwisterMc/PDF.js-Viewer-Shortcode). For build instructions and contribution guidelines see the developer guide in `DEVELOPER.md`.
-
 ### Admin Notice After Updates / Invalid Block
 
 When you update the plugin, editors may see an admin banner explaining that Gutenberg could show an “Attempt Block Recovery” prompt when editing older posts with PDFs. Clicking it updates the block format; it does not affect what visitors see. You can dismiss the banner, and it won’t reappear until a future release enables it again.
@@ -93,7 +77,7 @@ PDF.js (included in this plugin) is developed by Mozilla and licensed under the 
 ## 3.0.5
 
 -   Cache busting for the pesky pdf.worker.js file to prevent caching issues after updates
--   Added Elementor widget 
+-   Added Elementor widget
 -   Brought Zoom back
 -   Ability to whitelist other domains (like CDNs) to load PDFs from.
 
