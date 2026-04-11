@@ -82,6 +82,14 @@ msgid "Select a PDF file from your media library."
 msgstr "Selecciona un archivo PDF de tu biblioteca de medios."
 
 #: inc/elementor-widget.php
+msgid "External PDF URL"
+msgstr "URL del PDF externo"
+
+#: inc/elementor-widget.php
+msgid "Enter the full URL to a PDF from an allowed domain"
+msgstr "Introduce la URL completa a un PDF de un dominio permitido"
+
+#: inc/elementor-widget.php
 msgid "Display Options"
 msgstr "Opciones de visualización"
 
@@ -400,10 +408,10 @@ msgstr "Dominios permitidos"
 
 #: inc/options-page.php
 msgid ""
-"One hostname per line. Do not include http:// or paths. Example: "
+"One hostname per line. Do not include https:// or paths. Example: "
 "cdn.example.com"
 msgstr ""
-"Un nombre de host por línea. No incluyas http:// ni rutas. Ejemplo: "
+"Un nombre de host por línea. No incluyas https:// ni rutas. Ejemplo: "
 "cdn.example.com"
 
 #: inc/options-page.php
