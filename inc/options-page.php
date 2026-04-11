@@ -218,7 +218,7 @@ function pdfjs_options_page() {
 					<td><input type="checkbox" id="pdfjs_custom_page" name="pdfjs_custom_page" <?php checked( $pdfjs_custom_page, 'on' ); ?> /> <span style="color:rebeccapurple;"> - <?php esc_html_e( 'Beta. Test with caution and', 'pdfjs-viewer-shortcode' ); ?> <a href="https://wordpress.org/support/plugin/pdfjs-viewer-shortcode/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'leave feedback', 'pdfjs-viewer-shortcode' ); ?></a> <?php esc_html_e( 'on how it works.', 'pdfjs-viewer-shortcode' ); ?></span></td>
 				</tr>
 			</table>
-			<h2 class="title"><?php esc_html_e( 'External Domain PDFs', 'pdfjs-viewer-shortcode' ); ?></h2>
+			<h2 class="title"><?php esc_html_e( 'External Domain PDFs *BETA*', 'pdfjs-viewer-shortcode' ); ?></h2>
 				<p id="pdfjs-external-help">
 					<?php esc_html_e( 'By default, PDFs must be hosted on this site. Enable this to allow PDFs from other domains, such as a CDN.', 'pdfjs-viewer-shortcode' ); ?>
 				</p>
