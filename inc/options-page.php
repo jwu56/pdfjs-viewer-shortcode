@@ -285,7 +285,7 @@ function pdfjs_settings_link( $links ) {
 		)
 	);
 	// Create the link.
-	$settings_link = '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Settings', 'pdfjs-viewer-shortcode' ) . '</a>';
+	$settings_link = '<a href="' . $url . '">' . esc_html__( 'Settings', 'pdfjs-viewer-shortcode' ) . '</a>';
 	// Adds the link to the end of the array.
 	$links[] = $settings_link;
 	return $links;

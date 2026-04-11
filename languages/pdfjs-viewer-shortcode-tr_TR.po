@@ -187,9 +187,7 @@ msgstr "PDF Görüntüleyici"
 
 #: inc/elementor-widget.php
 msgid "Please select a PDF file from your media library to display the viewer."
-msgstr "Görüntüleyiciyi göstermek için medya kütüphanenizden bir PDF dosyası seçiniz."
-"Görüntüleyiciyi görüntülemek için medya kitaplığınızdan bir PDF dosyası "
-"seçin."
+msgstr "Görüntüleyiciyi görüntülemek için medya kitaplığınızdan bir PDF dosyası seçin."
 
 #: inc/elementor-widget.php inc/render-viewer.php
 msgid "PDF Document"
@@ -355,9 +353,8 @@ msgid "on how it works."
 msgstr "nasıl çalıştığı hakkında."
 
 #: inc/options-page.php
-#, fuzzy
 msgid "External Domain PDFs *BETA*"
-msgstr "Harici Alan PDF'leri"
+msgstr "Harici Alan PDF'leri *BETA*"
 
 #: inc/options-page.php
 msgid ""
@@ -395,9 +392,7 @@ msgstr ""
 
 #: inc/options-page.php
 msgid "Only add domains you fully control or explicitly trust."
-msgstr "Yalnızca tamamen kontrol ettiğiniz veya açıkça güvendiğiniz etki alanlarını ekleyiniz."
-"Yalnızca tamamen kontrol ettiğiniz veya açıkça güvendiğiniz etki alanlarını "
-"ekleyin."
+msgstr "Yalnızca tamamen kontrol ettiğiniz veya açıkça güvendiğiniz etki alanlarını ekleyin."
 
 #: inc/options-page.php
 msgid "Allowed Domains"
@@ -460,9 +455,8 @@ msgid "PDF Selector"
 msgstr "PDF seçici"
 
 #: blocks/src/block/block.js
-#, fuzzy
 msgid "PDF.js Options"
-msgstr "PDFjs görüntüleyici seçenekleri"
+msgstr "PDF.js Seçenekleri"
 
 #: blocks/src/block/block.js
 msgid "Show Save Option"
@@ -477,34 +471,32 @@ msgid "Show Fullscreen Option"
 msgstr "Tam ekran seçeneğini göster"
 
 #: blocks/src/block/block.js
-#, fuzzy
 msgid "Open Fullscreen in new tab?"
-msgstr "Tam ekran bağlantıları yeni sekmelerde"
+msgstr "Tam ekranda yeni sekmede açılsın mı?"
 
 #: blocks/src/block/block.js
-#, fuzzy
 msgid "Zoom Level"
-msgstr "Varsayılan Yakınlaştırma Seviyesi"
+msgstr "Yakınlaştırma Seviyesi"
 
 #: blocks/src/block/block.js
-#, fuzzy
 msgid "Viewer Height (pixels)"
-msgstr "Görüntüleyici yüksekliği"
+msgstr "Görüntüleyici yüksekliği (piksel)"
 
 #: blocks/src/block/block.js
 msgid "Set the PDF viewer height in pixels. Minimum 0, maximum 5000 pixels."
 msgstr "PDF görüntüleyici yüksekliğini piksel cinsinden ayarlayınız. Minimum 0, maksimum 5000 piksel."
 
 #: blocks/src/block/block.js
-#, fuzzy
 msgid "Viewer Width (pixels)"
-msgstr "Görüntüleyici genişliği"
+msgstr "Görüntüleyici genişliği (piksel)"
 
 #: blocks/src/block/block.js
 msgid ""
 "Set the PDF viewer width in pixels. Use 0 for 100% width. Minimum 0, maximum "
 "5000 pixels."
 msgstr ""
+"PDF görüntüleyici genişliğini piksel cinsinden ayarlayın. %100 genişlik için "
+"0 kullanın. Minimum 0, maksimum 5000 piksel."
 
 #: blocks/src/block/block.js
 msgid "PDF.js Embed"
@@ -515,9 +507,8 @@ msgid "Remove the current PDF file"
 msgstr "Mevcut PDF dosyasını kaldır"
 
 #: blocks/src/block/block.js
-#, fuzzy
 msgid "Remove PDF"
-msgstr "PDF Seç"
+msgstr "PDF'yi Kaldır"
 
 #: blocks/src/block/block.js
 msgid "Open media library to choose a PDF file"
