@@ -76,9 +76,11 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 		},
 		viewerScale: {
 			type: 'string',
-			default: ( pdfjsOpts.pdfjs_viewer_scale && pdfjsOpts.pdfjs_viewer_scale !== '0' )
-				? pdfjsOpts.pdfjs_viewer_scale
-				: 'auto',
+			default:
+				pdfjsOpts.pdfjs_viewer_scale &&
+				pdfjsOpts.pdfjs_viewer_scale !== '0'
+					? pdfjsOpts.pdfjs_viewer_scale
+					: 'auto',
 		},
 	},
 	keywords: [ __( 'PDF Selector', 'pdfjs-viewer-shortcode' ) ],
@@ -170,8 +172,11 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 		const viewerBase = pdfjsOpts.pdfjs_viewer_url || null;
 
 		// Use external URL if provided, otherwise use library URL
-		const effectiveURL = props.attributes.externalURL || props.attributes.imageURL;
-		const effectiveID = props.attributes.externalURL ? '' : props.attributes.imgID;
+		const effectiveURL =
+			props.attributes.externalURL || props.attributes.imageURL;
+		const effectiveID = props.attributes.externalURL
+			? ''
+			: props.attributes.imgID;
 
 		let iframeSrc = '';
 		if ( effectiveURL && viewerBase ) {
@@ -329,10 +334,31 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 						) }
 						value={ props.attributes.viewerScale }
 						options={ [
-							{ label: __( 'Auto', 'pdfjs-viewer-shortcode' ), value: 'auto' },
-							{ label: __( 'Actual Size', 'pdfjs-viewer-shortcode' ), value: 'page-actual' },
-							{ label: __( 'Fit Page', 'pdfjs-viewer-shortcode' ), value: 'page-fit' },
-							{ label: __( 'Fit Width', 'pdfjs-viewer-shortcode' ), value: 'page-width' },
+							{
+								label: __( 'Auto', 'pdfjs-viewer-shortcode' ),
+								value: 'auto',
+							},
+							{
+								label: __(
+									'Actual Size',
+									'pdfjs-viewer-shortcode'
+								),
+								value: 'page-actual',
+							},
+							{
+								label: __(
+									'Fit Page',
+									'pdfjs-viewer-shortcode'
+								),
+								value: 'page-fit',
+							},
+							{
+								label: __(
+									'Fit Width',
+									'pdfjs-viewer-shortcode'
+								),
+								value: 'page-width',
+							},
 							{ label: '50%', value: '50' },
 							{ label: '75%', value: '75' },
 							{ label: '100%', value: '100' },
@@ -394,12 +420,13 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 					<span className="pdfjs-title">
 						{ props.attributes.externalURL
 							? props.attributes.externalURL
-							: ( props.attributes.imgTitle
-									? props.attributes.imgTitle
-									: 'Choose a PDF file' ) }
+							: props.attributes.imgTitle
+							? props.attributes.imgTitle
+							: 'Choose a PDF file' }
 					</span>
 					&nbsp; - &nbsp;
-					{ props.attributes.imageURL || props.attributes.externalURL ? (
+					{ props.attributes.imageURL ||
+					props.attributes.externalURL ? (
 						<Button
 							className="pdfjs-button"
 							onClick={ onRemoveImg }
@@ -490,14 +517,15 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 
 	save( props ) {
 		// Use external URL if provided, otherwise use library URL
-		const effectiveURL = props.attributes.externalURL || props.attributes.imageURL;
-		const effectiveID = props.attributes.externalURL ? '' : props.attributes.imgID;
+		const effectiveURL =
+			props.attributes.externalURL || props.attributes.imageURL;
+		const effectiveID = props.attributes.externalURL
+			? ''
+			: props.attributes.imgID;
 
 		return (
 			<div className="pdfjs-wrapper">
-				{ `[pdfjs-viewer attachment_id=${
-					effectiveID
-				} url=${ effectiveURL } viewer_width=${
+				{ `[pdfjs-viewer attachment_id=${ effectiveID } url=${ effectiveURL } viewer_width=${
 					props.attributes.viewerWidth !== undefined
 						? props.attributes.viewerWidth
 						: defaultWidth
