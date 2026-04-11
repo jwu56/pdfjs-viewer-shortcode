@@ -188,8 +188,6 @@ msgstr "Visor de PDF"
 #: inc/elementor-widget.php
 msgid "Please select a PDF file from your media library to display the viewer."
 msgstr "Por favor, selecciona un archivo PDF de tu biblioteca de medios para mostrar el visor."
-"Por favor, selecciona un archivo PDF de tu biblioteca de medios para mostrar "
-"el visor."
 
 #: inc/elementor-widget.php inc/render-viewer.php
 msgid "PDF Document"
@@ -355,9 +353,8 @@ msgid "on how it works."
 msgstr "sobre cómo funciona."
 
 #: inc/options-page.php
-#, fuzzy
 msgid "External Domain PDFs *BETA*"
-msgstr "PDFs de dominios externos"
+msgstr "PDFs de dominios externos *BETA*"
 
 #: inc/options-page.php
 msgid ""
@@ -396,8 +393,6 @@ msgstr ""
 #: inc/options-page.php
 msgid "Only add domains you fully control or explicitly trust."
 msgstr "Solo añade dominios que controles completamente o en los que confíes explícitamente."
-"Solo añade dominios que controles completamente o en los que confíes "
-"explícitamente."
 
 #: inc/options-page.php
 msgid "Allowed Domains"
@@ -430,7 +425,6 @@ msgstr "Error de seguridad:"
 #: inc/render-viewer.php
 msgid "PDF files must be hosted on the same domain as this site."
 msgstr "Los archivos PDF deben estar alojados en el mismo dominio que este sitio."
-"Los archivos PDF deben estar alojados en el mismo dominio que este sitio."
 
 #. translators: 1: PDF URL host, 2: Current site host
 #: inc/render-viewer.php
@@ -457,58 +451,52 @@ msgid "Embed PDF.js Viewer"
 msgstr "Incrustar visor PDF.js"
 
 #: blocks/src/block/block.js
-#, fuzzy
 msgid "PDF Selector"
-msgstr "Visor de PDF"
+msgstr "Selector de PDF"
 
 #: blocks/src/block/block.js
-#, fuzzy
 msgid "PDF.js Options"
-msgstr "Opciones del visor PDFjs"
+msgstr "Opciones de PDF.js"
 
 #: blocks/src/block/block.js
-#, fuzzy
 msgid "Show Save Option"
-msgstr "Mostrar botón de guardar"
+msgstr "Mostrar opción de guardar"
 
 #: blocks/src/block/block.js
-#, fuzzy
 msgid "Show Print Option"
-msgstr "Mostrar botón de imprimir"
+msgstr "Mostrar opción de imprimir"
 
 #: blocks/src/block/block.js
 msgid "Show Fullscreen Option"
 msgstr "Mostrar opción de pantalla completa"
 
 #: blocks/src/block/block.js
-#, fuzzy
 msgid "Open Fullscreen in new tab?"
-msgstr "Enlaces de pantalla completa en nuevas pestañas"
+msgstr "¿Abrir pantalla completa en nueva pestaña?"
 
 #: blocks/src/block/block.js
-#, fuzzy
 msgid "Zoom Level"
-msgstr "Nivel de zoom predeterminado"
+msgstr "Nivel de zoom"
 
 #: blocks/src/block/block.js
-#, fuzzy
 msgid "Viewer Height (pixels)"
-msgstr "Altura del visor"
+msgstr "Altura del visor (píxeles)"
 
 #: blocks/src/block/block.js
 msgid "Set the PDF viewer height in pixels. Minimum 0, maximum 5000 pixels."
 msgstr "Establece la altura del visor de PDF en píxeles. Mínimo 0, máximo 5000 píxeles."
 
 #: blocks/src/block/block.js
-#, fuzzy
 msgid "Viewer Width (pixels)"
-msgstr "Ancho del visor"
+msgstr "Ancho del visor (píxeles)"
 
 #: blocks/src/block/block.js
 msgid ""
 "Set the PDF viewer width in pixels. Use 0 for 100% width. Minimum 0, maximum "
 "5000 pixels."
 msgstr ""
+"Establece el ancho del visor de PDF en píxeles. Usa 0 para ancho del 100%. "
+"Mínimo 0, máximo 5000 píxeles."
 
 #: blocks/src/block/block.js
 msgid "PDF.js Embed"
@@ -519,9 +507,8 @@ msgid "Remove the current PDF file"
 msgstr "Eliminar el archivo PDF actual"
 
 #: blocks/src/block/block.js
-#, fuzzy
 msgid "Remove PDF"
-msgstr "Seleccionar PDF"
+msgstr "Eliminar PDF"
 
 #: blocks/src/block/block.js
 msgid "Open media library to choose a PDF file"
