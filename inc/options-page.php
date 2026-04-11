@@ -243,7 +243,7 @@ function pdfjs_options_page() {
 							<th scope="row"><label for="pdfjs_allowed_domains"><?php esc_html_e( 'Allowed Domains', 'pdfjs-viewer-shortcode' ); ?></label></th>
 							<td>
 								<textarea id="pdfjs_allowed_domains" name="pdfjs_allowed_domains" rows="5" class="large-text code" aria-describedby="pdfjs-allowed-domains-help" placeholder="cdn.example.com"><?php echo esc_textarea( $allowed_domains ); ?></textarea>
-								<p id="pdfjs-allowed-domains-help" class="description"><?php esc_html_e( 'One hostname per line. Do not include http:// or paths. Example: cdn.example.com', 'pdfjs-viewer-shortcode' ); ?></p>
+								<p id="pdfjs-allowed-domains-help" class="description"><?php esc_html_e( 'One hostname per line. Do not include https:// or paths. Example: cdn.example.com', 'pdfjs-viewer-shortcode' ); ?></p>
 							</td>
 						</tr>
 					</table>

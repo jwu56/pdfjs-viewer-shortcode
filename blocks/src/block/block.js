@@ -39,6 +39,9 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 			type: 'string',
 			default: 'PDF File',
 		},
+		externalURL: {
+			type: 'string',
+		},
 		showDownload: {
 			type: 'boolean',
 			default: !! pdfjsOpts.pdfjs_download_button,
@@ -94,6 +97,12 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 				imageURL: null,
 				imgID: null,
 				imgTitle: null,
+			} );
+		};
+
+		const onExternalURLChange = ( value ) => {
+			props.setAttributes( {
+				externalURL: value,
 			} );
 		};
 
@@ -160,11 +169,15 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 		// Build viewer URL for editor live preview
 		const viewerBase = pdfjsOpts.pdfjs_viewer_url || null;
 
+		// Use external URL if provided, otherwise use library URL
+		const effectiveURL = props.attributes.externalURL || props.attributes.imageURL;
+		const effectiveID = props.attributes.externalURL ? '' : props.attributes.imgID;
+
 		let iframeSrc = '';
-		if ( props.attributes.imageURL && viewerBase ) {
+		if ( effectiveURL && viewerBase ) {
 			const params = new URLSearchParams( {
-				file: props.attributes.imageURL,
-				attachment_id: props.attributes.imgID || '',
+				file: effectiveURL,
+				attachment_id: effectiveID || '',
 				dButton: props.attributes.showDownload ? 'true' : 'false',
 				pButton: props.attributes.showPrint ? 'true' : 'false',
 				oButton: 'false',
@@ -194,6 +207,31 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 
 		return [
 			<InspectorControls key="i1">
+				<PanelBody
+					title={ __( 'PDF Source', 'pdfjs-viewer-shortcode' ) }
+				>
+					{ pdfjsOpts.pdfjs_allow_external_domains === 'on' && (
+						<PanelRow>
+							<TextControl
+								label={ __(
+									'External PDF URL',
+									'pdfjs-viewer-shortcode'
+								) }
+								help={ __(
+									'Enter the full URL to a PDF from an allowed domain',
+									'pdfjs-viewer-shortcode'
+								) }
+								value={ props.attributes.externalURL || '' }
+								onChange={ onExternalURLChange }
+								placeholder="https://cdn.example.com/document.pdf"
+								aria-label={ __(
+									'External PDF URL',
+									'pdfjs-viewer-shortcode'
+								) }
+							/>
+						</PanelRow>
+					) }
+				</PanelBody>
 				<PanelBody
 					title={ __( 'PDF.js Options', 'pdfjs-viewer-shortcode' ) }
 				>
@@ -354,12 +392,14 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 					</strong>
 					&nbsp; - &nbsp;
 					<span className="pdfjs-title">
-						{ props.attributes.imgTitle
-							? props.attributes.imgTitle
-							: 'Choose a PDF file' }
+						{ props.attributes.externalURL
+							? props.attributes.externalURL
+							: ( props.attributes.imgTitle
+									? props.attributes.imgTitle
+									: 'Choose a PDF file' ) }
 					</span>
 					&nbsp; - &nbsp;
-					{ props.attributes.imageURL ? (
+					{ props.attributes.imageURL || props.attributes.externalURL ? (
 						<Button
 							className="pdfjs-button"
 							onClick={ onRemoveImg }
@@ -449,11 +489,15 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 	},
 
 	save( props ) {
+		// Use external URL if provided, otherwise use library URL
+		const effectiveURL = props.attributes.externalURL || props.attributes.imageURL;
+		const effectiveID = props.attributes.externalURL ? '' : props.attributes.imgID;
+
 		return (
 			<div className="pdfjs-wrapper">
 				{ `[pdfjs-viewer attachment_id=${
-					props.attributes.imgID
-				} url=${ props.attributes.imageURL } viewer_width=${
+					effectiveID
+				} url=${ effectiveURL } viewer_width=${
 					props.attributes.viewerWidth !== undefined
 						? props.attributes.viewerWidth
 						: defaultWidth

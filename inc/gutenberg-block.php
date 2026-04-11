@@ -30,6 +30,7 @@ function pdfjs_get_options() {
 		'pdfjs_embed_width'            => get_option( 'pdfjs_embed_width', 0 ),
 		'pdfjs_viewer_scale'           => ( function() { $s = get_option( 'pdfjs_viewer_scale', 'auto' ); return ( '' === (string) $s || '0' === (string) $s || 0 === $s ) ? 'auto' : $s; } )(),
 		'pdfjs_viewer_pagemode'        => get_option( 'pdfjs_viewer_pagemode', 'none' ),
+		'pdfjs_allow_external_domains' => get_option( 'pdfjs_allow_external_domains', '' ),
 	);
 	
 	// Cache for 1 hour
@@ -52,9 +53,13 @@ function pdfjs_block_render( $attributes ) {
 	}
 
 	// Map block attributes to pdfjs_render_viewer() expected format
+	// Use external URL if provided, otherwise use library URL
+	$file_url           = isset( $attributes['externalURL'] ) && ! empty( $attributes['externalURL'] ) ? $attributes['externalURL'] : ( isset( $attributes['imageURL'] ) ? $attributes['imageURL'] : '' );
+	$attachment_id      = isset( $attributes['externalURL'] ) && ! empty( $attributes['externalURL'] ) ? '' : ( isset( $attributes['imgID'] ) ? $attributes['imgID'] : '' );
+	
 	$render_args = array(
-		'url'               => isset( $attributes['imageURL'] ) ? $attributes['imageURL'] : '',
-		'attachment_id'     => isset( $attributes['imgID'] ) ? $attributes['imgID'] : '',
+		'url'               => $file_url,
+		'attachment_id'     => $attachment_id,
 		'viewer_height'     => isset( $attributes['viewerHeight'] ) ? $attributes['viewerHeight'] . 'px' : '800px',
 		'viewer_width'      => isset( $attributes['viewerWidth'] ) && 0 !== $attributes['viewerWidth'] ? $attributes['viewerWidth'] . 'px' : '100%',
 		'fullscreen'        => isset( $attributes['showFullscreen'] ) ? ( $attributes['showFullscreen'] ? 'true' : 'false' ) : 'true',

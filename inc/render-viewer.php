@@ -137,6 +137,9 @@ function pdfjs_render_viewer( $args ) {
 			// Exact hostname match only — subdomains are not implicitly trusted.
 			if ( in_array( strtolower( $parsed_file['host'] ), $allowed_list, true ) ) {
 				$domain_allowed = true;
+				// Route external URL through proxy to bypass PDF.js cross-origin restrictions
+				$proxy_base = plugin_dir_url( dirname( __FILE__ ) ) . 'pdfjs/web/pdf-proxy.php';
+				$file_url = add_query_arg( 'url', rawurlencode( $file_url ), $proxy_base );
 			}
 		}
 
