@@ -1,6 +1,6 @@
 # PDF.js Viewer
 
--   Contributors: FalconerWeb, twistermc
+-   Contributors: twistermc, FalconerWeb
 -   Tags: pdf, pdfjs, viewer, embed, mozilla
 -   Requires at least: 5.0
 -   Tested up to: 7.0
