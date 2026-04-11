@@ -74,7 +74,7 @@ PDF.js (included in this plugin) is developed by Mozilla and licensed under the 
 
 ## Changelog
 
-## 3.0.5
+## 3.1.0
 
 -   Cache busting for the pesky pdf.worker.js file to prevent caching issues after updates
 -   Added Elementor widget
