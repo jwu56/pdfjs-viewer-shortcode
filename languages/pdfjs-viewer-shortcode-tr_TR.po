@@ -2,200 +2,21 @@
 # This file is distributed under the same license as the Plugins - PDF.js Viewer - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-01-12 16:28:21+0000\n"
+"Project-Id-Version: PDFjs Viewer - Embed PDFs 3.0.4\n"
+"Report-Msgid-Bugs-To: https://github.com/TwisterMc/pdfjs-viewer-shortcode/"
+"issues\n"
+"POT-Creation-Date: 2026-04-11 13:33\n"
+"PO-Revision-Date: 2026-04-05 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Turkish\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: GlotPress/4.0.3\n"
-"Language: tr\n"
-"Project-Id-Version: Plugins - PDF.js Viewer - Stable (latest release)\n"
 
-#: pdfjs-media-button.js:17
-msgid "Insert"
-msgstr "Ekle"
-
-#: pdfjs-media-button.js:14
-msgid "Insert a PDF"
-msgstr "PDF ekle"
-
-#: blocks/build/index.js:1 blocks/src/block/block.js:373
-#: blocks/src/block/block.js:377
-msgid "PDF document preview"
-msgstr "PDF belge önizlemesi"
-
-#: blocks/build/index.js:1 blocks/src/block/block.js:347
-#: blocks/src/block/block.js:366
-msgid "PDF Preview"
-msgstr "PDF Önizleme"
-
-#: blocks/build/index.js:1 blocks/src/block/block.js:327
-msgid "Choose a PDF file"
-msgstr "Bir PDF dosyası seçin"
-
-#: blocks/build/index.js:1 blocks/src/block/block.js:322
-msgid "Open media library to choose a PDF file"
-msgstr "PDF dosyasını seçmek için ortam kütüphanesini açın"
-
-#: blocks/build/index.js:1 blocks/src/block/block.js:306
-msgid "Remove the current PDF file"
-msgstr "Mevcut PDF dosyasını kaldır"
-
-#: inc/render-viewer.php:214
-msgid "Skip to PDF content"
-msgstr "PDF içeriğine geç"
-
-#. translators: %s: PDF file name
-#: inc/render-viewer.php:209
-msgid "PDF document: %s"
-msgstr "PDF belgesi: %s"
-
-#: inc/render-viewer.php:205
-msgid "PDF Document"
-msgstr "PDF Belgesi"
-
-#: inc/render-viewer.php:187
-msgid "Open PDF in fullscreen mode"
-msgstr "PDF'yi tam ekran modunda aç"
-
-#. translators: 1: PDF URL host, 2: Current site host
-#: inc/render-viewer.php:138
-msgid "PDF is hosted on: %1$s but this site is: %2$s"
-msgstr "PDF şu adreste barındırılmaktadır: %1$s ancak bu site: %2$s"
-
-#: inc/render-viewer.php:134
-msgid "PDF files must be hosted on the same domain as this site."
-msgstr "PDF dosyaları bu siteyle aynı etki alanında barındırılmalıdır."
-
-#: inc/render-viewer.php:133
-msgid "Security Error:"
-msgstr "Güvenlik hatası:"
-
-#: inc/options-page.php:183
-msgid "on how it works."
-msgstr "nasıl çalıştığı hakkında."
-
-#: inc/options-page.php:183
-msgid "leave feedback"
-msgstr "geri bildirim bırakın"
-
-#: inc/options-page.php:183
-msgid "Beta. Test with caution and"
-msgstr "Beta. Dikkatli bir şekilde test edin ve"
-
-#: inc/options-page.php:177
-msgid "Attachments"
-msgstr "Ekler"
-
-#: inc/options-page.php:176
-msgid "Bookmarks"
-msgstr "Yer imleri"
-
-#: inc/options-page.php:175
-msgid "Thumbs"
-msgstr "Küçük resimler"
-
-#: inc/options-page.php:174
-msgid "None"
-msgstr "Hiçbiri"
-
-#: inc/options-page.php:165
-msgid "200%"
-msgstr "%200"
-
-#: inc/options-page.php:164
-msgid "150%"
-msgstr "%150"
-
-#: inc/options-page.php:163
-msgid "125%"
-msgstr "%125"
-
-#: inc/options-page.php:162
-msgid "100%"
-msgstr "%100"
-
-#: inc/options-page.php:161
-msgid "75%"
-msgstr "%75"
-
-#: inc/options-page.php:160
-msgid "50%"
-msgstr "%50"
-
-#: inc/options-page.php:159
-msgid "Page Width"
-msgstr "Sayfa genişliği"
-
-#: inc/options-page.php:158
-msgid "Page Fit"
-msgstr "Sayfa sığdırma"
-
-#: inc/options-page.php:157
-msgid "Actual Size"
-msgstr "Gerçek boyut"
-
-#: inc/options-page.php:156
-msgid "Auto"
-msgstr "Otomatik"
-
-#: inc/options-page.php:138
-msgid ""
-"These settings control how all PDFs appear on your site. Any changes you "
-"make here will affect all PDFs that use PDF.js."
-msgstr ""
-"Bu ayarlar, tüm PDF'lerin sitenizde nasıl görüneceğini kontrol eder. Burada "
-"yaptığınız tüm değişiklikler, PDF.js kullanan tüm PDF'leri etkiler."
-
-#: inc/options-page.php:136
-msgid "Global Defaults"
-msgstr "Global varsayılan ayarlar"
-
-#: inc/options-page.php:100
-msgid ""
-"These are the initial settings applied when a PDF is embedded. You can "
-"adjust them in the editor at any time. Updates to these default settings "
-"only apply to new PDF embeds, not existing ones."
-msgstr ""
-"Bunlar, bir PDF gömüldüğünde uygulanan ilk ayarlardır. Bunları düzenleyicide "
-"istediğiniz zaman değiştirebilirsiniz. Bu varsayılan ayarlardaki "
-"güncellemeler yalnızca yeni PDF gömülerine uygulanır, mevcut gömülere "
-"uygulanmaz."
-
-#: inc/options-page.php:74
-msgid "You do not have sufficient permissions to access this page."
-msgstr "Bu sayfaya erişmek için yeterli izniniz yok."
-
-#: inc/media-button.php:17
-msgid "Add PDF to content"
-msgstr "İçeriğe PDF ekle"
-
-#: inc/custom-page.php:34
-msgid "This attachment is not a PDF file."
-msgstr "Bu ek, PDF dosyası değildir."
-
-#: inc/custom-page.php:28
-msgid "You do not have permission to view this attachment."
-msgstr "Bu eki görüntüleme izniniz yok."
-
-#: inc/custom-page.php:23
-msgid "Invalid attachment."
-msgstr "Geçersiz ek."
-
-#: inc/admin-notice.php:124
-msgid "Insufficient permissions."
-msgstr "Yetersiz izinler."
-
-#: inc/admin-notice.php:74
-msgid "Dismiss"
-msgstr "Kapat"
-
-#: inc/admin-notice.php:74
-msgid "Dismiss notice"
-msgstr "Bildirimi kapat"
-
-#. Translators: Message about block recovery after plugin updates.
-#: inc/admin-notice.php:66
+#: inc/admin-notice.php
 msgid ""
 "PDFjs Viewer has been updated.\n"
 "\n"
@@ -208,7 +29,7 @@ msgid ""
 msgstr ""
 "PDFjs Viewer güncellendi.\n"
 "\n"
-"PDF içeren bir gönderiyi düzenlerseniz, “Blok kurtarmayı dene” düğmesi "
+"PDF içeren bir gönderiyi düzenlerseniz, \"Blok kurtarmayı dene\" düğmesi "
 "içeren bir mesaj görebilirsiniz. Bu, WordPress'in güncellemeleri işleme "
 "biçiminin normal bir parçası olduğundan, düğmeye tıklamanız yeterlidir.\n"
 "\n"
@@ -216,168 +37,511 @@ msgstr ""
 "çalışmaya devam edecek ve ziyaretçileriniz herhangi bir değişiklik "
 "görmeyecektir."
 
-#. Author of the plugin
-#: pdfjs-viewer.php
-msgid ""
-"<a href=\"https://www.twistermc.com/\">Thomas McMahon</a>, <a href=\"https://"
-"byterevel.com/\">Ben Lawson</a>"
-msgstr ""
-"<a href=\"https://www.twistermc.com/\">Thomas McMahon</a>, <a href=\"https://"
-"byterevel.com/\">Ben Lawson</a>"
+#: inc/admin-notice.php
+msgid "Dismiss notice"
+msgstr "Bildirimi kapat"
 
-#. Plugin URI of the plugin
-#: pdfjs-viewer.php
-msgid "https://github.com/TwisterMc/pdfjs-viewer-shortcode"
-msgstr "https://github.com/TwisterMc/pdfjs-viewer-shortcode"
+#: inc/admin-notice.php
+msgid "Dismiss"
+msgstr "Kapat"
 
-#: inc/options-page.php:148
-msgid "Show Editing Buttons"
-msgstr "Düzenleme düğmelerini göster"
+#: inc/admin-notice.php
+msgid "Insufficient permissions."
+msgstr "Yetersiz izinler."
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:190
-msgid "Show Save Option"
-msgstr "Kaydetme seçeneğini göster"
-
-#: inc/options-page.php:104
-msgid "Show Save Button"
-msgstr "Kaydet düğmesini göster"
-
-#: inc/options-page.php:182
-msgid "Alternative PDF Loading"
-msgstr "Alternatif PDF yükleme"
-
-#: inc/custom-page.php:9
+#: inc/custom-page.php
 msgid "Security Check Failed"
 msgstr "Güvenlik kontrolü başarısız"
 
-#. Plugin Name of the plugin
-#: pdfjs-viewer.php
-msgid "PDFjs Viewer - Embed PDFs"
-msgstr "PDFjs görüntüleyici - PDF'leri gömün"
+#: inc/custom-page.php
+msgid "Invalid attachment."
+msgstr "Geçersiz ek."
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:311
-msgid "Remove PDF"
-msgstr "PDF'yi kaldır"
+#: inc/custom-page.php
+msgid "You do not have permission to view this attachment."
+msgstr "Bu eki görüntüleme izniniz yok."
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:293
-msgid "PDF.js Embed"
-msgstr "PDF.js yerleştirme"
+#: inc/custom-page.php
+msgid "This attachment is not a PDF file."
+msgstr "Bu ek, PDF dosyası değildir."
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:276
-msgid "Viewer Width (pixels)"
-msgstr "Görüntüleyici genişliği (piksel)"
+#: inc/elementor-integration.php inc/elementor-widget.php
+msgid "PDF.js Viewer"
+msgstr "PDF.js Görüntüleyici"
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:260
-msgid "Viewer Height (pixels)"
-msgstr "Görüntüleyici yüksekliği (piksel)"
+#: inc/elementor-widget.php
+msgid "PDF Content"
+msgstr "PDF İçeriği"
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:235
-msgid "Open Fullscreen in new tab?"
-msgstr "Yeni sekmede tam ekran açılsın mı?"
+#: inc/elementor-widget.php
+msgid "Select PDF"
+msgstr "PDF Seç"
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:220
-msgid "Show Fullscreen Option"
-msgstr "Tam ekran seçeneğini göster"
+#: inc/elementor-widget.php
+msgid "Select a PDF file from your media library."
+msgstr "Medya kitaplığınızdan bir PDF dosyası seçin."
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:205
-msgid "Show Print Option"
-msgstr "Yazdırma seçeneğini göster"
+#: inc/elementor-widget.php
+msgid "External PDF URL"
+msgstr "Harici PDF URL'si"
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:197
-#: blocks/src/block/block.js:212 blocks/src/block/block.js:227
-#: blocks/src/block/block.js:242
-msgid "No"
-msgstr "Hayır"
+#: inc/elementor-widget.php
+msgid "Enter the full URL to a PDF from an allowed domain"
+msgstr "İzin verilen bir alandan bir PDF'ye tam URL girin"
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:196
-#: blocks/src/block/block.js:211 blocks/src/block/block.js:226
-#: blocks/src/block/block.js:241
-msgid "Yes"
-msgstr "Evet"
+#: inc/elementor-widget.php
+msgid "Display Options"
+msgstr "Görüntüleme Seçenekleri"
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:186
-msgid "PDF.js Options"
-msgstr "PDF.js seçenekleri"
+#: inc/elementor-widget.php
+msgid "Viewer Height"
+msgstr "Görüntüleyici yüksekliği"
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:79
-msgid "PDF Selector"
-msgstr "PDF seçici"
+#: inc/elementor-widget.php
+msgid "Viewer Width"
+msgstr "Görüntüleyici genişliği"
 
-#: blocks/build/index.js:1 blocks/src/block/block.js:28
-msgid "Embed PDF.js Viewer"
-msgstr "PDF.js görüntüleyiciyi yerleştir"
+#: inc/elementor-widget.php blocks/src/block/block.js
+msgid "Default Zoom Level"
+msgstr "Varsayılan Yakınlaştırma Seviyesi"
 
-#: inc/media-button.php:17
-msgid "Add PDF"
-msgstr "PDF ekle"
+#: inc/elementor-widget.php inc/options-page.php blocks/src/block/block.js
+msgid "Auto"
+msgstr "Otomatik"
 
-#: inc/options-page.php:207
-msgid "Settings"
-msgstr "Ayarlar"
+#: inc/elementor-widget.php blocks/src/block/block.js
+msgid "Fit Page"
+msgstr "Sayfaya sığdır"
 
-#: inc/options-page.php:171
-msgid "Page Mode (aka Sidebar)"
-msgstr "Sayfa modu (diğer adıyla Kenar çubuğu)"
+#: inc/elementor-widget.php blocks/src/block/block.js
+msgid "Fit Width"
+msgstr "Genişliğe sığdır"
 
-#: inc/options-page.php:153
-msgid "Viewer Scale"
-msgstr "Görüntüleyici ölçeği"
+#: inc/elementor-widget.php
+msgid "Toolbar Options"
+msgstr "Araç Çubuğu Seçenekleri"
 
-#: inc/options-page.php:131
-msgid "Note: 0 = 100%"
-msgstr "Not: 0 = %100"
+#: inc/elementor-widget.php
+msgid "Download Button"
+msgstr "İndirme düğmesi"
 
-#: inc/options-page.php:128 blocks/build/index.js:1
-#: blocks/src/block/block.js:273
-msgid "Embed Width"
-msgstr "Gömme genişliği"
+#: inc/elementor-widget.php
+msgid "Show"
+msgstr "Göster"
 
-#: inc/options-page.php:124 blocks/build/index.js:1
-#: blocks/src/block/block.js:257
-msgid "Embed Height"
-msgstr "Gömme yüksekliği"
+#: inc/elementor-widget.php
+msgid "Hide"
+msgstr "Gizle"
 
-#: inc/options-page.php:120
-msgid "Fullscreen Links in New Tabs"
-msgstr "Tam ekran bağlantıları yeni sekmelerde"
+#: inc/elementor-widget.php
+msgid "Print Button"
+msgstr "Yazdırma düğmesi"
 
-#: inc/options-page.php:116
-msgid "Fullscreen Link Text"
-msgstr "Tam ekran bağlantı metni"
+#: inc/elementor-widget.php
+msgid "Search Button"
+msgstr "Arama düğmesi"
 
-#: inc/options-page.php:112
+#: inc/elementor-widget.php
+msgid "Editing Buttons"
+msgstr "Düzenleme düğmeleri"
+
+#: inc/elementor-widget.php
+msgid "Fullscreen Link"
+msgstr "Tam ekran bağlantısı"
+
+#: inc/elementor-widget.php inc/options-page.php
 msgid "Show Fullscreen Link"
 msgstr "Tam ekran bağlantısını göster"
 
-#: inc/options-page.php:144
-msgid "Show Search Button"
-msgstr "Arama düğmesini göster"
+#: inc/elementor-widget.php blocks/src/block/block.js
+msgid "Yes"
+msgstr "Evet"
 
-#: inc/options-page.php:108
-msgid "Show Print Button"
-msgstr "Yazdır düğmesini göster"
+#: inc/elementor-widget.php blocks/src/block/block.js
+msgid "No"
+msgstr "Hayır"
 
-#: inc/options-page.php:98
-msgid "Defaults"
-msgstr "Varsayılanlar"
+#: inc/elementor-widget.php
+msgid "Link Text"
+msgstr "Bağlantı metni"
 
-#: inc/options-page.php:78
-msgid "PDFjs Viewer Options"
-msgstr "PDFjs görüntüleyici seçenekleri"
+#: inc/elementor-widget.php
+msgid "View Fullscreen"
+msgstr "Tam ekranda görüntüle"
 
-#. Description of the plugin
-#: pdfjs-viewer.php
-msgid "Embed PDFs with the gorgeous PDF.js viewer"
-msgstr "Muhteşem PDF.js görüntüleyici ile PDF'leri gömün"
+#: inc/elementor-widget.php
+msgid "Open in New Tab"
+msgstr "Yeni sekmede aç"
 
-#: inc/render-viewer.php:214 templates/fullscreen.php:11
+#: inc/elementor-widget.php
+msgid "Style"
+msgstr "Stil"
+
+#: inc/elementor-widget.php
+msgid "Background Color"
+msgstr "Arka Plan Rengi"
+
+#: inc/elementor-widget.php
+msgid "Padding"
+msgstr "Dolgu"
+
+#: inc/elementor-widget.php
+msgid "Margin"
+msgstr "Kenar Boşluğu"
+
+#: inc/elementor-widget.php inc/render-viewer.php
 msgid "PDF Viewer"
 msgstr "PDF Görüntüleyici"
 
-#: inc/options-page.php:184
+#: inc/elementor-widget.php
+msgid "Please select a PDF file from your media library to display the viewer."
+msgstr "Görüntüleyiciyi görüntülemek için medya kitaplığınızdan bir PDF dosyası seçin."
+
+#: inc/elementor-widget.php inc/render-viewer.php
+msgid "PDF Document"
+msgstr "PDF Belgesi"
+
+#: inc/elementor-widget.php
+msgid "PDFjs Viewer — visible on the published page"
+msgstr "PDFjs Görüntüleyici — yayınlanan sayfada görünür"
+
+#: inc/media-button.php
+msgid "Add PDF to content"
+msgstr "İçeriğe PDF ekle"
+
+#: inc/media-button.php
+msgid "Add PDF"
+msgstr "PDF ekle"
+
+#: inc/options-page.php
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Bu sayfaya erişmek için yeterli izniniz yok."
+
+#: inc/options-page.php
+msgid "PDFjs Viewer Options"
+msgstr "PDFjs görüntüleyici seçenekleri"
+
+#: inc/options-page.php
+msgid "Defaults"
+msgstr "Varsayılanlar"
+
+#: inc/options-page.php
+msgid ""
+"These are the initial settings applied when a PDF is embedded. You can "
+"adjust them in the editor at any time. Updates to these default settings "
+"only apply to new PDF embeds, not existing ones."
+msgstr ""
+"Bunlar, bir PDF gömüldüğünde uygulanan ilk ayarlardır. Bunları düzenleyicide "
+"istediğiniz zaman değiştirebilirsiniz. Bu varsayılan ayarlardaki "
+"güncellemeler yalnızca yeni PDF gömülerine uygulanır, mevcut gömülere "
+"uygulanmaz."
+
+#: inc/options-page.php
+msgid "Show Save Button"
+msgstr "Kaydet düğmesini göster"
+
+#: inc/options-page.php
+msgid "Show Print Button"
+msgstr "Yazdır düğmesini göster"
+
+#: inc/options-page.php
+msgid "Fullscreen Link Text"
+msgstr "Tam ekran bağlantı metni"
+
+#: inc/options-page.php
+msgid "Fullscreen Links in New Tabs"
+msgstr "Tam ekran bağlantıları yeni sekmelerde"
+
+#: inc/options-page.php blocks/src/block/block.js
+msgid "Embed Height"
+msgstr "Gömme yüksekliği"
+
+#: inc/options-page.php blocks/src/block/block.js
+msgid "Embed Width"
+msgstr "Gömme genişliği"
+
+#: inc/options-page.php
+msgid "Note: 0 = 100%"
+msgstr "Not: 0 = %100"
+
+#: inc/options-page.php
+msgid "Global Defaults"
+msgstr "Global varsayılan ayarlar"
+
+#: inc/options-page.php
+msgid ""
+"These settings control how all PDFs appear on your site. Any changes you "
+"make here will affect all PDFs that use PDF.js."
+msgstr ""
+"Bu ayarlar, tüm PDF'lerin sitenizde nasıl görüneceğini kontrol eder. Burada "
+"yaptığınız tüm değişiklikler, PDF.js kullanan tüm PDF'leri etkiler."
+
+#: inc/options-page.php
+msgid "Show Search Button"
+msgstr "Arama düğmesini göster"
+
+#: inc/options-page.php
+msgid "Show Editing Buttons"
+msgstr "Düzenleme düğmelerini göster"
+
+#: inc/options-page.php
+msgid "Viewer Scale"
+msgstr "Görüntüleyici ölçeği"
+
+#: inc/options-page.php blocks/src/block/block.js
+msgid "Actual Size"
+msgstr "Gerçek boyut"
+
+#: inc/options-page.php
+msgid "Page Fit"
+msgstr "Sayfa sığdırma"
+
+#: inc/options-page.php
+msgid "Page Width"
+msgstr "Sayfa genişliği"
+
+#: inc/options-page.php
+msgid "50%"
+msgstr "%50"
+
+#: inc/options-page.php
+msgid "75%"
+msgstr "%75"
+
+#: inc/options-page.php
+msgid "100%"
+msgstr "%100"
+
+#: inc/options-page.php
+msgid "125%"
+msgstr "%125"
+
+#: inc/options-page.php
+msgid "150%"
+msgstr "%150"
+
+#: inc/options-page.php
+msgid "200%"
+msgstr "%200"
+
+#: inc/options-page.php
+msgid "Page Mode (aka Sidebar)"
+msgstr "Sayfa modu (diğer adıyla Kenar çubuğu)"
+
+#: inc/options-page.php
+msgid "None"
+msgstr "Hiçbiri"
+
+#: inc/options-page.php
+msgid "Thumbs"
+msgstr "Küçük resimler"
+
+#: inc/options-page.php
+msgid "Bookmarks"
+msgstr "Yer imleri"
+
+#: inc/options-page.php
+msgid "Attachments"
+msgstr "Ekler"
+
+#: inc/options-page.php
+msgid "Alternative PDF Loading"
+msgstr "Alternatif PDF yükleme"
+
+#: inc/options-page.php
+msgid "Beta. Test with caution and"
+msgstr "Beta. Dikkatli bir şekilde test edin ve"
+
+#: inc/options-page.php
+msgid "leave feedback"
+msgstr "geri bildirim bırakın"
+
+#: inc/options-page.php
+msgid "on how it works."
+msgstr "nasıl çalıştığı hakkında."
+
+#: inc/options-page.php
+msgid "External Domain PDFs *BETA*"
+msgstr "Harici Alan PDF'leri *BETA*"
+
+#: inc/options-page.php
+msgid ""
+"By default, PDFs must be hosted on this site. Enable this to allow PDFs from "
+"other domains, such as a CDN."
+msgstr ""
+"Varsayılan olarak, PDF'lerin bu sitede barındırılması gerekir. Bir CDN gibi "
+"diğer etki alanlarından PDF'lere izin vermek için bunu etkinleştirin."
+
+#: inc/options-page.php
+msgid "Allow External Domains"
+msgstr "Harici Etki Alanlarına İzin Ver"
+
+#: inc/options-page.php
+msgid "Security Notice"
+msgstr "Güvenlik Bildirimi"
+
+#: inc/options-page.php
+msgid ""
+"Whitelisted domains are trusted site-wide. Any user who can insert "
+"shortcodes or blocks can load any PDF from these domains."
+msgstr ""
+"Beyaz listedeki etki alanları site genelinde güvenilirdir. Kısa kod veya "
+"blok ekleyebilen herhangi bir kullanıcı, bu etki alanlarından herhangi bir "
+"PDF yükleyebilir."
+
+#: inc/options-page.php
+msgid ""
+"The external server must send CORS headers (Access-Control-Allow-Origin) for "
+"PDFs to load. Most CDNs support this. Standard web servers typically do not."
+msgstr ""
+"PDF'lerin yüklenmesi için harici sunucunun CORS başlıkları (Access-Control-"
+"Allow-Origin) göndermesi gerekir. Çoğu CDN bunu destekler. Standart web "
+"sunucuları genellikle desteklemez."
+
+#: inc/options-page.php
+msgid "Only add domains you fully control or explicitly trust."
+msgstr "Yalnızca tamamen kontrol ettiğiniz veya açıkça güvendiğiniz etki alanlarını ekleyin."
+
+#: inc/options-page.php
+msgid "Allowed Domains"
+msgstr "İzin Verilen Etki Alanları"
+
+#: inc/options-page.php
+msgid ""
+"One hostname per line. Do not include https:// or paths. Example: "
+"cdn.example.com"
+msgstr ""
+"Satır başına bir ana bilgisayar adı. https:// veya yolları eklemeyin. Örnek: "
+"cdn.example.com"
+
+#: inc/options-page.php
 msgid "Save Changes"
 msgstr "Değişiklikleri Kaydet"
 
-#: inc/options-page.php:185
+#: inc/options-page.php
 msgid "Support this plugin"
 msgstr "Bu eklentiyi destekle"
+
+#: inc/options-page.php
+msgid "Settings"
+msgstr "Ayarlar"
+
+#: inc/render-viewer.php
+msgid "Security Error:"
+msgstr "Güvenlik hatası:"
+
+#: inc/render-viewer.php
+msgid "PDF files must be hosted on the same domain as this site."
+msgstr "PDF dosyaları bu siteyle aynı etki alanında barındırılmalıdır."
+
+#. translators: 1: PDF URL host, 2: Current site host
+#: inc/render-viewer.php
+#, php-format
+msgid "PDF is hosted on: %1$s but this site is: %2$s"
+msgstr "PDF şu adreste barındırılmaktadır: %1$s ancak bu site: %2$s"
+
+#: inc/render-viewer.php
+msgid "Open PDF in fullscreen mode"
+msgstr "PDF'yi tam ekran modunda aç"
+
+#. translators: %s: PDF file name
+#: inc/render-viewer.php
+#, php-format
+msgid "PDF document: %s"
+msgstr "PDF belgesi: %s"
+
+#: inc/render-viewer.php
+msgid "Skip to PDF content"
+msgstr "PDF içeriğine geç"
+
+#: blocks/src/block/block.js
+msgid "Embed PDF.js Viewer"
+msgstr "PDF.js görüntüleyiciyi yerleştir"
+
+#: blocks/src/block/block.js
+msgid "PDF Selector"
+msgstr "PDF seçici"
+
+#: blocks/src/block/block.js
+msgid "PDF.js Options"
+msgstr "PDF.js Seçenekleri"
+
+#: blocks/src/block/block.js
+msgid "Show Save Option"
+msgstr "Kaydetme seçeneğini göster"
+
+#: blocks/src/block/block.js
+msgid "Show Print Option"
+msgstr "Yazdırma seçeneğini göster"
+
+#: blocks/src/block/block.js
+msgid "Show Fullscreen Option"
+msgstr "Tam ekran seçeneğini göster"
+
+#: blocks/src/block/block.js
+msgid "Open Fullscreen in new tab?"
+msgstr "Tam ekranda yeni sekmede açılsın mı?"
+
+#: blocks/src/block/block.js
+msgid "Zoom Level"
+msgstr "Yakınlaştırma Seviyesi"
+
+#: blocks/src/block/block.js
+msgid "Viewer Height (pixels)"
+msgstr "Görüntüleyici yüksekliği (piksel)"
+
+#: blocks/src/block/block.js
+msgid "Set the PDF viewer height in pixels. Minimum 0, maximum 5000 pixels."
+msgstr "PDF görüntüleyici yüksekliğini piksel cinsinden ayarlayınız. Minimum 0, maksimum 5000 piksel."
+
+#: blocks/src/block/block.js
+msgid "Viewer Width (pixels)"
+msgstr "Görüntüleyici genişliği (piksel)"
+
+#: blocks/src/block/block.js
+msgid ""
+"Set the PDF viewer width in pixels. Use 0 for 100% width. Minimum 0, maximum "
+"5000 pixels."
+msgstr ""
+"PDF görüntüleyici genişliğini piksel cinsinden ayarlayın. %100 genişlik için "
+"0 kullanın. Minimum 0, maksimum 5000 piksel."
+
+#: blocks/src/block/block.js
+msgid "PDF.js Embed"
+msgstr "PDF.js yerleştirme"
+
+#: blocks/src/block/block.js
+msgid "Remove the current PDF file"
+msgstr "Mevcut PDF dosyasını kaldır"
+
+#: blocks/src/block/block.js
+msgid "Remove PDF"
+msgstr "PDF'yi Kaldır"
+
+#: blocks/src/block/block.js
+msgid "Open media library to choose a PDF file"
+msgstr "PDF dosyasını seçmek için ortam kütüphanesini açın"
+
+#: blocks/src/block/block.js
+msgid "Choose a PDF file"
+msgstr "Bir PDF dosyası seçin"
+
+#: blocks/src/block/block.js
+msgid "PDF Preview"
+msgstr "PDF Önizleme"
+
+#: blocks/src/block/block.js
+msgid "PDF document preview"
+msgstr "PDF belge önizlemesi"
+
+#~ msgid "Insert"
+#~ msgstr "Ekle"
+
+#~ msgid "Insert a PDF"
+#~ msgstr "PDF ekle"
+
+#~ msgid "PDFjs Viewer - Embed PDFs"
+#~ msgstr "PDFjs görüntüleyici - PDF'leri gömün"
+
+#~ msgid "Embed PDFs with the gorgeous PDF.js viewer"
+#~ msgstr "Muhteşem PDF.js görüntüleyici ile PDF'leri gömün"

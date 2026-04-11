@@ -1,10 +1,10 @@
 # PDF.js Viewer
 
--   Contributors: FalconerWeb, twistermc
+-   Contributors: twistermc, FalconerWeb
 -   Tags: pdf, pdfjs, viewer, embed, mozilla
 -   Requires at least: 5.0
--   Tested up to: 6.9
--   Stable tag: 3.0.4
+-   Tested up to: 7.0
+-   Stable tag: 3.1.0
 -   License: GPLv2 or later
 -   License URI: http://www.gnu.org/licenses/gpl-2.0.html
 -   Requires PHP: 7.4
@@ -18,6 +18,7 @@ Incorporate [Mozilla's PDF.js](https://github.com/mozilla/pdf.js/) viewer into y
 Features:
 
 -   Gutenberg Block and Shortcode
+-   Elementor Widget (auto-detects when Elementor is active)
 -   Translation Support (plugin only): Spanish and French included, ready for more languages
 -   Elegant Theme that adapts to dark and light mode (if browser supports dynamic CSS)
 -   Customizable buttons
@@ -28,6 +29,7 @@ Features:
 -   Document outline
 -   Classic Editor: Easy to use editor media button that generates the shortcode for you
 -   Support for mobile devices
+-   Responsive design with mobile support
 
 Shortcode Syntax:
 
@@ -52,7 +54,9 @@ Or use a direct URL:
 -   `openfile` (optional): `true`/`false`, show open file button (default: `false`)
 -   `zoom` (optional): Initial zoom level - `auto`, `page-actual`, `page-fit`, `page-width`, or percentage like `75`, `100`, `150` (default: `auto`)
 
-Want to help develop the plugin? Found a bug? [Find us on GitHub](https://github.com/TwisterMc/PDF.js-Viewer-Shortcode). For build instructions and contribution guidelines see the developer guide in `DEVELOPER.md`.
+## Elementor Widget
+
+If you're using [Elementor](https://elementor.com/), the PDF.js Viewer Elementor widget is automatically available in the Page Builder.
 
 ### Admin Notice After Updates / Invalid Block
 
@@ -69,6 +73,13 @@ This WordPress plugin is licensed under GPLv2 or later.
 PDF.js (included in this plugin) is developed by Mozilla and licensed under the Apache License 2.0. See the [PDF.js repository](https://github.com/mozilla/pdf.js) for details.
 
 ## Changelog
+
+## 3.1.0
+
+-   Cache busting for the pesky pdf.worker.js file to prevent caching issues after updates
+-   Added Elementor widget
+-   Brought Zoom back
+-   Ability to whitelist other domains (like CDNs) to load PDFs from.
 
 ## 3.0.4
 

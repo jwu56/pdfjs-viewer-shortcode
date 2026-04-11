@@ -2,6 +2,35 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
 
 /**
+ * Sanitize the allowed external domains textarea.
+ * Accepts one hostname per line, strips schemes and paths, rejects invalid entries.
+ */
+function pdfjs_sanitize_allowed_domains( $input ) {
+	if ( ! is_string( $input ) ) {
+		return '';
+	}
+	$lines   = explode( "\n", $input );
+	$cleaned = array();
+	foreach ( $lines as $line ) {
+		// Strip whitespace and any accidental scheme (http://, https://)
+		$hostname = trim( $line );
+		$hostname = preg_replace( '#^https?://#i', '', $hostname );
+		// Strip any path or port that may have been included
+		$hostname = strtok( $hostname, '/?' );
+		$hostname = strtok( $hostname, ':' );
+		$hostname = trim( $hostname );
+		if ( empty( $hostname ) ) {
+			continue;
+		}
+		// Validate: must be a proper hostname (labels separated by dots, valid chars)
+		if ( preg_match( '/^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/', $hostname ) ) {
+			$cleaned[] = strtolower( $hostname );
+		}
+	}
+	return implode( "\n", array_unique( $cleaned ) );
+}
+
+/**
  * Sanitize checkbox and text inputs for PDFjs settings.
  */
 function pdfjs_sanitize_option( $input ) {
@@ -40,6 +69,8 @@ function pdfjs_register_settings() {
 	register_setting( 'pdfjs_options_group', 'pdfjs_viewer_scale', 'pdfjs_sanitize_option' );
 	register_setting( 'pdfjs_options_group', 'pdfjs_viewer_pagemode', 'pdfjs_sanitize_option' );
 	register_setting( 'pdfjs_options_group', 'pdfjs_custom_page', 'pdfjs_sanitize_option' );
+	register_setting( 'pdfjs_options_group', 'pdfjs_allow_external_domains', 'pdfjs_sanitize_option' );
+	register_setting( 'pdfjs_options_group', 'pdfjs_allowed_domains', 'pdfjs_sanitize_allowed_domains' );
 }
 add_action( 'admin_init', 'pdfjs_register_settings' );
 
@@ -61,6 +92,8 @@ add_action( 'update_option_pdfjs_viewer_scale', 'pdfjs_clear_options_cache' );
 add_action( 'update_option_pdfjs_viewer_pagemode', 'pdfjs_clear_options_cache' );
 add_action( 'update_option_pdfjs_search_button', 'pdfjs_clear_options_cache' );
 add_action( 'update_option_pdfjs_editing_buttons', 'pdfjs_clear_options_cache' );
+add_action( 'update_option_pdfjs_allow_external_domains', 'pdfjs_clear_options_cache' );
+add_action( 'update_option_pdfjs_allowed_domains', 'pdfjs_clear_options_cache' );
 
 function pdfjs_register_options_page() {
 	global $pdfjs_settings_page;
@@ -92,7 +125,9 @@ function pdfjs_options_page() {
 			$embed_width          = get_option( 'pdfjs_embed_width', 0 );
 			$viewer_scale         = get_option( 'pdfjs_viewer_scale', 'auto' );
 			$viewer_pagemode      = get_option( 'pdfjs_viewer_pagemode', 'none' );
-			$pdfjs_custom_page    = get_option( 'pdfjs_custom_page', '' );
+			$pdfjs_custom_page          = get_option( 'pdfjs_custom_page', '' );
+			$allow_external_domains     = get_option( 'pdfjs_allow_external_domains', '' );
+			$allowed_domains            = get_option( 'pdfjs_allowed_domains', '' );
 			?>
 
 			<h2 class="title"><?php esc_html_e( 'Defaults', 'pdfjs-viewer-shortcode' ); ?></h2>
@@ -183,7 +218,50 @@ function pdfjs_options_page() {
 					<td><input type="checkbox" id="pdfjs_custom_page" name="pdfjs_custom_page" <?php checked( $pdfjs_custom_page, 'on' ); ?> /> <span style="color:rebeccapurple;"> - <?php esc_html_e( 'Beta. Test with caution and', 'pdfjs-viewer-shortcode' ); ?> <a href="https://wordpress.org/support/plugin/pdfjs-viewer-shortcode/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'leave feedback', 'pdfjs-viewer-shortcode' ); ?></a> <?php esc_html_e( 'on how it works.', 'pdfjs-viewer-shortcode' ); ?></span></td>
 				</tr>
 			</table>
-			<div style="display: flex; gap: 10px; align-items: center; padding-top: 10px;">
+			<h2 class="title"><?php esc_html_e( 'External Domain PDFs *BETA*', 'pdfjs-viewer-shortcode' ); ?></h2>
+				<p id="pdfjs-external-help">
+					<?php esc_html_e( 'By default, PDFs must be hosted on this site. Enable this to allow PDFs from other domains, such as a CDN.', 'pdfjs-viewer-shortcode' ); ?>
+				</p>
+				<table class="form-table" role="presentation">
+					<tr>
+						<th scope="row"><label for="pdfjs_allow_external_domains"><?php esc_html_e( 'Allow External Domains', 'pdfjs-viewer-shortcode' ); ?></label></th>
+						<td><input type="checkbox" id="pdfjs_allow_external_domains" name="pdfjs_allow_external_domains" aria-describedby="pdfjs-external-help" aria-controls="pdfjs-external-domains-section" <?php checked( $allow_external_domains, 'on' ); ?> /></td>
+					</tr>
+				</table>
+
+				<div id="pdfjs-external-domains-section" <?php echo ( 'on' !== $allow_external_domains ) ? 'style="display:none;"' : ''; ?>>
+					<div style="padding: 12px 16px; margin: 0 0 16px 0; border-left: 4px solid #dba617; background: #fff8e5; color: #5a4100;">
+						<p style="margin: 0 0 8px 0;"><strong><?php esc_html_e( 'Security Notice', 'pdfjs-viewer-shortcode' ); ?></strong></p>
+						<ul style="margin: 0; padding-left: 1.4em;">
+							<li><?php esc_html_e( 'Whitelisted domains are trusted site-wide. Any user who can insert shortcodes or blocks can load any PDF from these domains.', 'pdfjs-viewer-shortcode' ); ?></li>
+							<li><?php esc_html_e( 'The external server must send CORS headers (Access-Control-Allow-Origin) for PDFs to load. Most CDNs support this. Standard web servers typically do not.', 'pdfjs-viewer-shortcode' ); ?></li>
+							<li><?php esc_html_e( 'Only add domains you fully control or explicitly trust.', 'pdfjs-viewer-shortcode' ); ?></li>
+						</ul>
+					</div>
+					<table class="form-table" role="presentation">
+						<tr>
+							<th scope="row"><label for="pdfjs_allowed_domains"><?php esc_html_e( 'Allowed Domains', 'pdfjs-viewer-shortcode' ); ?></label></th>
+							<td>
+								<textarea id="pdfjs_allowed_domains" name="pdfjs_allowed_domains" rows="5" class="large-text code" aria-describedby="pdfjs-allowed-domains-help" placeholder="cdn.example.com"><?php echo esc_textarea( $allowed_domains ); ?></textarea>
+								<p id="pdfjs-allowed-domains-help" class="description"><?php esc_html_e( 'One hostname per line. Do not include https:// or paths. Example: cdn.example.com', 'pdfjs-viewer-shortcode' ); ?></p>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+				<script>
+				( function() {
+					var checkbox = document.getElementById( 'pdfjs_allow_external_domains' );
+					var section  = document.getElementById( 'pdfjs-external-domains-section' );
+					if ( checkbox && section ) {
+						checkbox.addEventListener( 'change', function() {
+							section.style.display = this.checked ? '' : 'none';
+						} );
+					}
+				} )();
+				</script>
+
+				<div style="display: flex; gap: 10px; align-items: center; padding-top: 10px;">
 				<?php submit_button( __( 'Save Changes', 'pdfjs-viewer-shortcode' ), 'primary', 'submit', false ); ?>
 				<a href="https://ko-fi.com/twistermc" target="_blank" rel="noopener noreferrer" class="button button-secondary"><?php esc_html_e( 'Support this plugin', 'pdfjs-viewer-shortcode' ); ?></a>
 			</div>
@@ -207,11 +285,8 @@ function pdfjs_settings_link( $links ) {
 		)
 	);
 	// Create the link.
-	$settings_link = "<a href='$url'>" . __( 'Settings', 'pdfjs-viewer-shortcode' ) . '</a>';
+	$settings_link = '<a href="' . $url . '">' . esc_html__( 'Settings', 'pdfjs-viewer-shortcode' ) . '</a>';
 	// Adds the link to the end of the array.
-	array_push(
-		$links,
-		$settings_link
-	);
+	$links[] = $settings_link;
 	return $links;
 }

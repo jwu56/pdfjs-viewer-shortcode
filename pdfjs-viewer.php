@@ -3,7 +3,7 @@
 Plugin Name: PDFjs Viewer - Embed PDFs
 Plugin URI: https://github.com/TwisterMc/pdfjs-viewer-shortcode
 Description: Embed PDFs with the gorgeous PDF.js viewer
-Version: 3.0.4
+Version: 3.1.0
 Author: <a href="https://www.twistermc.com/">Thomas McMahon</a>, <a href="https://byterevel.com/">Ben Lawson</a> | <a href="https://ko-fi.com/twistermc">Support this plugin</a>
 Contributors: FalconerWeb, twistermc
 License: GPLv2
@@ -69,6 +69,43 @@ require 'inc/gutenberg-block.php';
  * Options Page
  */
 require 'inc/options-page.php';
+
+/**
+ * Elementor Integration
+ * Follows Elementor's official registration standards
+ */
+
+/**
+ * Register PDF.js Viewer widget with Elementor
+ * Hooks to elementor/widgets/register as per Elementor documentation
+ *
+ * @param \Elementor\Widgets_Manager $widgets_manager The widgets manager.
+ */
+function pdfjs_register_elementor_widget( $widgets_manager ) {
+	// Verify widget file exists
+	$widget_file = plugin_dir_path( __FILE__ ) . 'inc/elementor-widget.php';
+	
+	if ( ! file_exists( $widget_file ) ) {
+		return;
+	}
+	
+	// Load widget class
+	require_once $widget_file;
+	
+	// Register widget with Elementor
+	if ( class_exists( 'PDFjs_Viewer_Elementor_Widget' ) ) {
+		$widgets_manager->register( new PDFjs_Viewer_Elementor_Widget() );
+	}
+}
+
+// Hook to official Elementor registration action
+add_action( 'elementor/widgets/register', 'pdfjs_register_elementor_widget' );
+
+// Load Elementor integration (category registration)
+$elementor_integration_file = plugin_dir_path( __FILE__ ) . 'inc/elementor-integration.php';
+if ( file_exists( $elementor_integration_file ) ) {
+	require_once $elementor_integration_file;
+}
 
 /**
  * Custom URL - Work in Progress

@@ -64,8 +64,8 @@ function pdfjs_render_viewer( $args ) {
 		// Verify attachment exists and is valid
 		$attachment = get_post( $attachment_id );
 		if ( $attachment && 'attachment' === $attachment->post_type ) {
-			// Check if attachment is accessible
-			if ( 'private' !== $attachment->post_status || current_user_can( 'read_private_posts' ) ) {
+			// Check if attachment is accessible (scope permission check to this specific post)
+			if ( 'private' !== $attachment->post_status || current_user_can( 'read_post', $attachment_id ) ) {
 				// Verify the file is actually a PDF
 				$mime_type = get_post_mime_type( $attachment_id );
 				if ( 'application/pdf' === $mime_type ) {
@@ -99,7 +99,7 @@ function pdfjs_render_viewer( $args ) {
 		$file_url = esc_url( $file_url );
 	}
 	
-	$pdfjs_custom_page = false; // DISABLED get_option( 'pdfjs_custom_page', '' );
+	$pdfjs_custom_page = get_option( 'pdfjs_custom_page', false );
 
 	// Store settings in transients for viewer.php to access (expires in 1 hour).
 	set_transient( 'pdfjs_button_download_' . $attachment_id, $download, 3600 );
@@ -128,19 +128,35 @@ function pdfjs_render_viewer( $args ) {
 	
 	// Check if PDF URL has a different host than the current site.
 	if ( ! empty( $parsed_file['host'] ) && $parsed_file['host'] !== $parsed_site['host'] ) {
-		// External URL detected - return error message with details.
-		return '<div class="pdfjs-error" role="alert" aria-live="assertive" style="padding: 20px; border: 2px solid #dc3232; background: #f8d7da; color: #721c24; margin: 20px 0;">' .
-			'<p style="margin: 0 0 10px 0;"><strong>' . esc_html__( 'Security Error:', 'pdfjs-viewer-shortcode' ) . '</strong> ' .
-			esc_html__( 'PDF files must be hosted on the same domain as this site.', 'pdfjs-viewer-shortcode' ) . '</p>' .
-			'<p style="margin: 0; font-size: 0.9em;">' .
-			sprintf(
-				/* translators: 1: PDF URL host, 2: Current site host */
-				esc_html__( 'PDF is hosted on: %1$s but this site is: %2$s', 'pdfjs-viewer-shortcode' ),
-				'<code>' . esc_html( $file_origin ) . '</code>',
-				'<code>' . esc_html( $site_origin ) . '</code>'
-			) .
-			'</p>' .
-			'</div>';
+		$domain_allowed = false;
+
+		// Check if the external domains feature is enabled and the host is whitelisted.
+		if ( 'on' === get_option( 'pdfjs_allow_external_domains', '' ) ) {
+			$allowed_domains = get_option( 'pdfjs_allowed_domains', '' );
+			$allowed_list    = array_filter( array_map( 'trim', explode( "\n", $allowed_domains ) ) );
+			// Exact hostname match only — subdomains are not implicitly trusted.
+			if ( in_array( strtolower( $parsed_file['host'] ), $allowed_list, true ) ) {
+				$domain_allowed = true;
+				// Route external URL through proxy to bypass PDF.js cross-origin restrictions
+				$proxy_base = plugin_dir_url( dirname( __FILE__ ) ) . 'pdfjs/web/pdf-proxy.php';
+				$file_url = add_query_arg( 'url', rawurlencode( $file_url ), $proxy_base );
+			}
+		}
+
+		if ( ! $domain_allowed ) {
+			return '<div class="pdfjs-error" role="alert" aria-live="assertive" style="padding: 20px; border: 2px solid #dc3232; background: #f8d7da; color: #721c24; margin: 20px 0;">' .
+				'<p style="margin: 0 0 10px 0;"><strong>' . esc_html__( 'Security Error:', 'pdfjs-viewer-shortcode' ) . '</strong> ' .
+				esc_html__( 'PDF files must be hosted on the same domain as this site.', 'pdfjs-viewer-shortcode' ) . '</p>' .
+				'<p style="margin: 0; font-size: 0.9em;">' .
+				sprintf(
+					/* translators: 1: PDF URL host, 2: Current site host */
+					esc_html__( 'PDF is hosted on: %1$s but this site is: %2$s', 'pdfjs-viewer-shortcode' ),
+					'<code>' . esc_html( $file_origin ) . '</code>',
+					'<code>' . esc_html( $site_origin ) . '</code>'
+				) .
+				'</p>' .
+				'</div>';
+		}
 	}
 
 	// Normalize dimensions.
@@ -171,9 +187,10 @@ function pdfjs_render_viewer( $args ) {
 		'editButtons'  => $editingbuttons,
 		'v'            => PDFJS_PLUGIN_VERSION,
  	);
-	// Include a nonce in the viewer URL to align with historical behavior
-	// and installations that may expect it.
-	$query_args['_wpnonce'] = wp_create_nonce( 'pdfjs_full_screen' );
+	// Create unique nonce per PDF using attachment_id to prevent replay attacks
+	// If no attachment_id, use file URL hash for uniqueness
+	$nonce_action = 'pdfjs_full_screen_' . ( ! empty( $attachment_id ) ? $attachment_id : md5( $file_url ) );
+	$query_args['_wpnonce'] = wp_create_nonce( $nonce_action );
 	// Note: pagemode and zoom are applied via URL hash, PDF.js reads them from hash
 	// Always include both zoom and pagemode to override any stored preferences
 	$zoom_hash = 'zoom=' . rawurlencode( $zoom ) . '&pagemode=' . rawurlencode( $pagemode );

@@ -39,6 +39,9 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 			type: 'string',
 			default: 'PDF File',
 		},
+		externalURL: {
+			type: 'string',
+		},
 		showDownload: {
 			type: 'boolean',
 			default: !! pdfjsOpts.pdfjs_download_button,
@@ -73,7 +76,11 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 		},
 		viewerScale: {
 			type: 'string',
-			default: pdfjsOpts.pdfjs_viewer_scale || 'auto',
+			default:
+				pdfjsOpts.pdfjs_viewer_scale &&
+				pdfjsOpts.pdfjs_viewer_scale !== '0'
+					? pdfjsOpts.pdfjs_viewer_scale
+					: 'auto',
 		},
 	},
 	keywords: [ __( 'PDF Selector', 'pdfjs-viewer-shortcode' ) ],
@@ -92,6 +99,12 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 				imageURL: null,
 				imgID: null,
 				imgTitle: null,
+			} );
+		};
+
+		const onExternalURLChange = ( value ) => {
+			props.setAttributes( {
+				externalURL: value,
 			} );
 		};
 
@@ -140,20 +153,36 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 		};
 
 		const onFullscreenTextChange = ( value ) => {
-			value = value.replace( /(<([^>]+)>)/gi, '' );
+			// Remove potentially dangerous HTML/scripts from user text input
+			value = value.replace( /<script[^>]*>.*?<\/script>/gi, '' ); // Remove script tags
+			value = value.replace( /on\w+\s*=/gi, '' ); // Remove event handlers
+			value = value.replace( /<\/?[^>]*>/g, '' ); // Remove other HTML tags
 			props.setAttributes( {
 				fullscreenText: value,
+			} );
+		};
+
+		const onScaleChange = ( value ) => {
+			props.setAttributes( {
+				viewerScale: value,
 			} );
 		};
 
 		// Build viewer URL for editor live preview
 		const viewerBase = pdfjsOpts.pdfjs_viewer_url || null;
 
+		// Use external URL if provided, otherwise use library URL
+		const effectiveURL =
+			props.attributes.externalURL || props.attributes.imageURL;
+		const effectiveID = props.attributes.externalURL
+			? ''
+			: props.attributes.imgID;
+
 		let iframeSrc = '';
-		if ( props.attributes.imageURL && viewerBase ) {
+		if ( effectiveURL && viewerBase ) {
 			const params = new URLSearchParams( {
-				file: props.attributes.imageURL,
-				attachment_id: props.attributes.imgID || '',
+				file: effectiveURL,
+				attachment_id: effectiveID || '',
 				dButton: props.attributes.showDownload ? 'true' : 'false',
 				pButton: props.attributes.showPrint ? 'true' : 'false',
 				oButton: 'false',
@@ -161,8 +190,9 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 					pdfjsOpts.pdfjs_editing_buttons === 'on' ? 'true' : 'false',
 				sButton:
 					pdfjsOpts.pdfjs_search_button === 'on' ? 'true' : 'false',
+				v: pdfjsOpts.pdfjs_plugin_version || '',
 			} );
-			const zoom = pdfjsOpts.pdfjs_viewer_scale || 'auto';
+			const zoom = props.attributes.viewerScale || 'auto';
 			const pagemode = pdfjsOpts.pdfjs_viewer_pagemode || 'none';
 			const hash = `zoom=${ encodeURIComponent(
 				zoom
@@ -183,6 +213,31 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 		return [
 			<InspectorControls key="i1">
 				<PanelBody
+					title={ __( 'PDF Source', 'pdfjs-viewer-shortcode' ) }
+				>
+					{ pdfjsOpts.pdfjs_allow_external_domains === 'on' && (
+						<PanelRow>
+							<TextControl
+								label={ __(
+									'External PDF URL',
+									'pdfjs-viewer-shortcode'
+								) }
+								help={ __(
+									'Enter the full URL to a PDF from an allowed domain',
+									'pdfjs-viewer-shortcode'
+								) }
+								value={ props.attributes.externalURL || '' }
+								onChange={ onExternalURLChange }
+								placeholder="https://cdn.example.com/document.pdf"
+								aria-label={ __(
+									'External PDF URL',
+									'pdfjs-viewer-shortcode'
+								) }
+							/>
+						</PanelRow>
+					) }
+				</PanelBody>
+				<PanelBody
 					title={ __( 'PDF.js Options', 'pdfjs-viewer-shortcode' ) }
 				>
 					<PanelRow>
@@ -198,6 +253,10 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 							}
 							checked={ props.attributes.showDownload }
 							onChange={ onToggleDownload }
+							aria-label={ __(
+								'Show Save Option',
+								'pdfjs-viewer-shortcode'
+							) }
 						/>
 					</PanelRow>
 					<PanelRow>
@@ -213,6 +272,10 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 							}
 							checked={ props.attributes.showPrint }
 							onChange={ onTogglePrint }
+							aria-label={ __(
+								'Show Print Option',
+								'pdfjs-viewer-shortcode'
+							) }
 						/>
 					</PanelRow>
 					<PanelRow>
@@ -228,6 +291,10 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 							}
 							checked={ props.attributes.showFullscreen }
 							onChange={ onToggleFullscreen }
+							aria-label={ __(
+								'Show Fullscreen Option',
+								'pdfjs-viewer-shortcode'
+							) }
 						/>
 					</PanelRow>
 					<PanelRow>
@@ -243,6 +310,10 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 							}
 							checked={ props.attributes.openFullscreen }
 							onChange={ onToggleOpenFullscreen }
+							aria-label={ __(
+								'Open Fullscreen in new tab?',
+								'pdfjs-viewer-shortcode'
+							) }
 						/>
 					</PanelRow>
 					<PanelRow>
@@ -254,11 +325,60 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 					</PanelRow>
 				</PanelBody>
 				<PanelBody
+					title={ __( 'Zoom Level', 'pdfjs-viewer-shortcode' ) }
+				>
+					<SelectControl
+						label={ __(
+							'Default Zoom Level',
+							'pdfjs-viewer-shortcode'
+						) }
+						value={ props.attributes.viewerScale }
+						options={ [
+							{
+								label: __( 'Auto', 'pdfjs-viewer-shortcode' ),
+								value: 'auto',
+							},
+							{
+								label: __(
+									'Actual Size',
+									'pdfjs-viewer-shortcode'
+								),
+								value: 'page-actual',
+							},
+							{
+								label: __(
+									'Fit Page',
+									'pdfjs-viewer-shortcode'
+								),
+								value: 'page-fit',
+							},
+							{
+								label: __(
+									'Fit Width',
+									'pdfjs-viewer-shortcode'
+								),
+								value: 'page-width',
+							},
+							{ label: '50%', value: '50' },
+							{ label: '75%', value: '75' },
+							{ label: '100%', value: '100' },
+							{ label: '125%', value: '125' },
+							{ label: '150%', value: '150' },
+							{ label: '200%', value: '200' },
+						] }
+						onChange={ onScaleChange }
+					/>
+				</PanelBody>
+				<PanelBody
 					title={ __( 'Embed Height', 'pdfjs-viewer-shortcode' ) }
 				>
 					<RangeControl
 						label={ __(
 							'Viewer Height (pixels)',
+							'pdfjs-viewer-shortcode'
+						) }
+						aria-label={ __(
+							'Set the PDF viewer height in pixels. Minimum 0, maximum 5000 pixels.',
 							'pdfjs-viewer-shortcode'
 						) }
 						value={ props.attributes.viewerHeight }
@@ -275,6 +395,10 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 					<RangeControl
 						label={ __(
 							'Viewer Width (pixels)',
+							'pdfjs-viewer-shortcode'
+						) }
+						aria-label={ __(
+							'Set the PDF viewer width in pixels. Use 0 for 100% width. Minimum 0, maximum 5000 pixels.',
 							'pdfjs-viewer-shortcode'
 						) }
 						help="By default 0 will be 100%."
@@ -294,12 +418,15 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 					</strong>
 					&nbsp; - &nbsp;
 					<span className="pdfjs-title">
-						{ props.attributes.imgTitle
+						{ props.attributes.externalURL
+							? props.attributes.externalURL
+							: props.attributes.imgTitle
 							? props.attributes.imgTitle
 							: 'Choose a PDF file' }
 					</span>
 					&nbsp; - &nbsp;
-					{ props.attributes.imageURL ? (
+					{ props.attributes.imageURL ||
+					props.attributes.externalURL ? (
 						<Button
 							className="pdfjs-button"
 							onClick={ onRemoveImg }
@@ -389,11 +516,16 @@ registerBlockType( 'pdfjsblock/pdfjs-embed', {
 	},
 
 	save( props ) {
+		// Use external URL if provided, otherwise use library URL
+		const effectiveURL =
+			props.attributes.externalURL || props.attributes.imageURL;
+		const effectiveID = props.attributes.externalURL
+			? ''
+			: props.attributes.imgID;
+
 		return (
 			<div className="pdfjs-wrapper">
-				{ `[pdfjs-viewer attachment_id=${
-					props.attributes.imgID
-				} url=${ props.attributes.imageURL } viewer_width=${
+				{ `[pdfjs-viewer attachment_id=${ effectiveID } url=${ effectiveURL } viewer_width=${
 					props.attributes.viewerWidth !== undefined
 						? props.attributes.viewerWidth
 						: defaultWidth
