@@ -85,6 +85,21 @@ class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 			)
 		);
 
+		// External URL field - only shown when external domains are enabled
+		$allow_external = 'on' === get_option( 'pdfjs_allow_external_domains', '' );
+
+		if ( $allow_external ) {
+			$this->add_control(
+				'external_url',
+				array(
+					'label'       => esc_html__( 'External PDF URL', 'pdfjs-viewer-shortcode' ),
+					'type'        => \Elementor\Controls_Manager::TEXT,
+					'description' => esc_html__( 'Enter the full URL to a PDF from an allowed domain', 'pdfjs-viewer-shortcode' ),
+					'placeholder' => 'https://cdn.example.com/document.pdf',
+				)
+			);
+		}
+
 		$this->end_controls_section();
 
 		// ── Display Options ───────────────────────────────────────────────────
@@ -348,7 +363,11 @@ class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 		$pdf_url       = '';
 		$attachment_id = '';
 
-		if ( ! empty( $settings['attachment_id']['id'] ) ) {
+		// Check for external URL first (takes priority if provided)
+		if ( ! empty( $settings['external_url'] ) ) {
+			$pdf_url = sanitize_url( $settings['external_url'] );
+		} elseif ( ! empty( $settings['attachment_id']['id'] ) ) {
+			// Fall back to media library selection
 			$attachment_id = absint( $settings['attachment_id']['id'] );
 			$pdf_url       = wp_get_attachment_url( $attachment_id );
 		}
