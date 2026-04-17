@@ -345,62 +345,47 @@ msgid "Attachments"
 msgstr "Archivos adjuntos"
 
 #: inc/options-page.php
-msgid "Alternative PDF Loading"
-msgstr "Carga alternativa de PDF"
+msgid "Beta Features"
+msgstr "Funciones beta"
 
 #: inc/options-page.php
-msgid "Beta. Test with caution and"
-msgstr "Beta. Pruebe con cautela y"
+msgid ""
+"These features are experimental and may not work on all sites. Test "
+"carefully before using on a production site, and"
+msgstr ""
+"Estas funciones son experimentales y es posible que no funcionen en todos "
+"los sitios. Pruébalas con cuidado antes de usarlas en un sitio en "
+"producción, y"
 
 #: inc/options-page.php
 msgid "leave feedback"
 msgstr "deja tus comentarios"
 
 #: inc/options-page.php
-msgid "on how it works."
-msgstr "sobre cómo funciona."
-
-#: inc/options-page.php
-msgid "External Domain PDFs *BETA*"
-msgstr "PDFs de dominios externos *BETA*"
+msgid "Alternative PDF Loading"
+msgstr "Carga alternativa de PDF"
 
 #: inc/options-page.php
 msgid ""
-"By default, PDFs must be hosted on this site. Enable this to allow PDFs from "
-"other domains, such as a CDN."
+"Loads the fullscreen viewer via a WordPress page handler instead of directly "
+"through the viewer file. Try this if the fullscreen link shows a security "
+"error."
 msgstr ""
-"De forma predeterminada, los PDFs deben estar alojados en este sitio. Activa "
-"esto para permitir PDFs de otros dominios, como una CDN."
+"Carga el visor de pantalla completa a través de un manejador de páginas de "
+"WordPress en lugar de directamente a través del archivo del visor. Prueba "
+"esto si el enlace de pantalla completa muestra un error de seguridad."
 
 #: inc/options-page.php
-msgid "Allow External Domains"
-msgstr "Permitir dominios externos"
-
-#: inc/options-page.php
-msgid "Security Notice"
-msgstr "Aviso de seguridad"
+msgid "Allow External Domain PDFs"
+msgstr "Permitir PDFs de dominios externos"
 
 #: inc/options-page.php
 msgid ""
-"Whitelisted domains are trusted site-wide. Any user who can insert "
-"shortcodes or blocks can load any PDF from these domains."
+"Allow PDFs hosted on other domains, such as a CDN. Only add domains you "
+"fully control or explicitly trust."
 msgstr ""
-"Los dominios en la lista blanca son de confianza en todo el sitio. Cualquier "
-"usuario que pueda insertar shortcodes o bloques puede cargar cualquier PDF "
-"desde estos dominios."
-
-#: inc/options-page.php
-msgid ""
-"The external server must send CORS headers (Access-Control-Allow-Origin) for "
-"PDFs to load. Most CDNs support this. Standard web servers typically do not."
-msgstr ""
-"El servidor externo debe enviar cabeceras CORS (Access-Control-Allow-Origin) "
-"para que los PDFs se carguen. La mayoría de las CDN admiten esto. Los "
-"servidores web estándar normalmente no lo hacen."
-
-#: inc/options-page.php
-msgid "Only add domains you fully control or explicitly trust."
-msgstr "Solo añade dominios que controles completamente o en los que confíes explícitamente."
+"Permite PDFs alojados en otros dominios, como una CDN. Solo añade dominios "
+"que controles completamente o en los que confíes explícitamente."
 
 #: inc/options-page.php
 msgid "Allowed Domains"
@@ -413,6 +398,15 @@ msgid ""
 msgstr ""
 "Un nombre de host por línea. No incluyas https:// ni rutas. Ejemplo: "
 "cdn.example.com"
+
+#: inc/options-page.php
+msgid ""
+"The external server must send CORS headers (Access-Control-Allow-Origin) for "
+"PDFs to load. Most CDNs support this; standard web servers typically do not."
+msgstr ""
+"El servidor externo debe enviar cabeceras CORS (Access-Control-Allow-Origin) "
+"para que los PDFs se carguen. La mayoría de las CDN admiten esto; los "
+"servidores web estándar normalmente no lo hacen."
 
 #: inc/options-page.php
 msgid "Save Changes"

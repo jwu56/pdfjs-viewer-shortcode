@@ -330,11 +330,13 @@ msgid "Attachments"
 msgstr ""
 
 #: inc/options-page.php
-msgid "Alternative PDF Loading"
+msgid "Beta Features"
 msgstr ""
 
 #: inc/options-page.php
-msgid "Beta. Test with caution and"
+msgid ""
+"These features are experimental and may not work on all sites. Test "
+"carefully before using on a production site, and"
 msgstr ""
 
 #: inc/options-page.php
@@ -342,41 +344,24 @@ msgid "leave feedback"
 msgstr ""
 
 #: inc/options-page.php
-msgid "on how it works."
-msgstr ""
-
-#: inc/options-page.php
-msgid "External Domain PDFs *BETA*"
+msgid "Alternative PDF Loading"
 msgstr ""
 
 #: inc/options-page.php
 msgid ""
-"By default, PDFs must be hosted on this site. Enable this to allow PDFs from "
-"other domains, such as a CDN."
+"Loads the fullscreen viewer via a WordPress page handler instead of directly "
+"through the viewer file. Try this if the fullscreen link shows a security "
+"error."
 msgstr ""
 
 #: inc/options-page.php
-msgid "Allow External Domains"
-msgstr ""
-
-#: inc/options-page.php
-msgid "Security Notice"
-msgstr ""
-
-#: inc/options-page.php
-msgid ""
-"Whitelisted domains are trusted site-wide. Any user who can insert "
-"shortcodes or blocks can load any PDF from these domains."
+msgid "Allow External Domain PDFs"
 msgstr ""
 
 #: inc/options-page.php
 msgid ""
-"The external server must send CORS headers (Access-Control-Allow-Origin) for "
-"PDFs to load. Most CDNs support this. Standard web servers typically do not."
-msgstr ""
-
-#: inc/options-page.php
-msgid "Only add domains you fully control or explicitly trust."
+"Allow PDFs hosted on other domains, such as a CDN. Only add domains you "
+"fully control or explicitly trust."
 msgstr ""
 
 #: inc/options-page.php
@@ -387,6 +372,12 @@ msgstr ""
 msgid ""
 "One hostname per line. Do not include https:// or paths. Example: "
 "cdn.example.com"
+msgstr ""
+
+#: inc/options-page.php
+msgid ""
+"The external server must send CORS headers (Access-Control-Allow-Origin) for "
+"PDFs to load. Most CDNs support this; standard web servers typically do not."
 msgstr ""
 
 #: inc/options-page.php
