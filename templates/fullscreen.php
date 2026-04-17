@@ -17,11 +17,11 @@
 		<meta name="google" content="notranslate">
 
 		<!----- should be enqueued -->
-		<link rel="resource" type="application/l10n" href="<?php echo plugin_dir_url( __DIR__ ) . 'pdfjs/web/locale/locale.json' ?>">
-		<link rel="stylesheet" href="<?php echo plugin_dir_url( __DIR__ ) . 'pdfjs/web/viewer.css' ?>">
-<!--		<script src="--><?php //echo plugin_dir_url( __DIR__ ) . 'pdfjs/build/pdf.worker.js' ?><!--"></script>-->
-		<script src="<?php echo plugin_dir_url( __DIR__ ) . 'pdfjs/build/pdf.js' ?>"></script>
-		<script src="<?php echo plugin_dir_url( __DIR__ ) . 'pdfjs/web/viewer.js' ?>"></script>
+		<link rel="resource" type="application/l10n" href="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'pdfjs/web/locale/locale.json' ); ?>">
+		<link rel="stylesheet" href="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'pdfjs/web/viewer.css' ); ?>">
+<!--		<script src="--><?php //echo esc_url( plugin_dir_url( __DIR__ ) . 'pdfjs/build/pdf.worker.js' ); ?><!--"></script>-->
+		<script src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'pdfjs/build/pdf.js' ); ?>"></script>
+		<script src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'pdfjs/web/viewer.js' ); ?>"></script>
 		<!--- // ----->
 
 		<script>
@@ -31,12 +31,13 @@
 		</script>
 
 		<?php
-		$button_download = get_transient( 'pdfjs_button_download_' . $attachment_id );
-		$button_print    = get_transient( 'pdfjs_button_print_' . $attachment_id );
-		$button_open     = get_transient( 'pdfjs_button_openfile_' . $attachment_id );
-		$button_zoom     = get_transient( 'pdfjs_button_zoom_' . $attachment_id );
-		$button_pagemode = get_transient( 'pdfjs_button_pagemode_' . $attachment_id );
-		$buttoon_search  = get_transient( 'pdfjs_button_searchbutton_' . $attachment_id );
+		$button_download  = get_transient( 'pdfjs_button_download_' . $attachment_id );
+		$button_print     = get_transient( 'pdfjs_button_print_' . $attachment_id );
+		$button_open      = get_transient( 'pdfjs_button_openfile_' . $attachment_id );
+		$button_zoom      = get_transient( 'pdfjs_button_zoom_' . $attachment_id );
+		$button_pagemode  = get_transient( 'pdfjs_button_pagemode_' . $attachment_id );
+		$button_search    = get_transient( 'pdfjs_button_searchbutton_' . $attachment_id );
+		$button_editing   = get_transient( 'pdfjs_button_editingbuttons_' . $attachment_id );
 		
 		// Delete transients after reading to prevent database bloat.
 		delete_transient( 'pdfjs_button_download_' . $attachment_id );
@@ -290,7 +291,7 @@
                                 <span data-l10n-id="pdfjs-toggle-sidebar-button-label">Toggle Sidebar</span>
                             </button>
                             <div class="toolbarButtonSpacer"></div>
-                            <button id="viewFind" class="toolbarButton" <?php if ($buttoon_search!=="true") { echo 'style="display:none;"'; }?> title="Find in Document" tabindex="12" data-l10n-id="pdfjs-findbar-button" aria-expanded="false" aria-controls="findbar">
+                            <button id="viewFind" class="toolbarButton" <?php if ($button_search!=="true") { echo 'style="display:none;"'; }?> title="Find in Document" tabindex="12" data-l10n-id="pdfjs-findbar-button" aria-expanded="false" aria-controls="findbar">
                                 <span data-l10n-id="pdfjs-findbar-button-label">Find</span>
                             </button>
                             <div class="splitToolbarButton hiddenSmallView">
@@ -308,7 +309,7 @@
                             <span id="numPages" class="toolbarLabel"></span>
                         </div>
                         <div id="toolbarViewerRight">
-                            <div id="editorModeButtons" class="splitToolbarButton toggled" role="radiogroup">
+                            <div id="editorModeButtons" class="splitToolbarButton toggled" role="radiogroup" <?php if ($button_editing!=="true") { echo 'style="display:none;"'; }?>>
                                 <button id="editorHighlight" class="toolbarButton" hidden="true" disabled="disabled" title="Highlight" role="radio" aria-checked="false" aria-controls="editorHighlightParamsToolbar" tabindex="31" data-l10n-id="pdfjs-editor-highlight-button">
                                     <span data-l10n-id="pdfjs-editor-highlight-button-label">Highlight</span>
                                 </button>

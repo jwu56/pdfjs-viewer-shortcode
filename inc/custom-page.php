@@ -10,7 +10,12 @@ add_action( 'init', function() {
 		$nonce         = sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) );
 		$attachment_id = absint( wp_unslash( $_GET['pdfjs_id'] ) );
 
-		// Use unique nonce action per attachment
+		// Nonce action must match render-viewer.php: unique per attachment or URL hash
+		// When pdfjs_id=0, the nonce suffix is md5 of the URL — but we don't have the URL
+		// here, so the URL-only path is not supported by the custom-page handler.
+		if ( 0 === $attachment_id ) {
+			wp_die( esc_html__( 'Security Check Failed', 'pdfjs-viewer-shortcode' ) );
+		}
 		$nonce_action = 'pdfjs_full_screen_' . $attachment_id;
 		if ( '' === $nonce || ! wp_verify_nonce( $nonce, $nonce_action ) ) {
 			wp_die( esc_html__( 'Security Check Failed', 'pdfjs-viewer-shortcode' ) );

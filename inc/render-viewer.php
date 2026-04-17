@@ -201,7 +201,8 @@ function pdfjs_render_viewer( $args ) {
 	if ( 'true' === $fullscreen ) {
 		$fullscreen_aria = esc_attr__( 'Open PDF in fullscreen mode', 'pdfjs-viewer-shortcode' );
 		if ( $pdfjs_custom_page ) {
-			$nonce = wp_create_nonce( 'pdfjs_full_screen' );
+			$fs_nonce_action = 'pdfjs_full_screen_' . ( ! empty( $attachment_id ) ? $attachment_id : md5( $file_url ) );
+			$nonce = wp_create_nonce( $fs_nonce_action );
 			$fullscreen_link = '<div class="pdfjs-fullscreen"><a href="?pdfjs_id=' . $attachment_id . '&_wpnonce=' . $nonce . '" ' . $fullscreen_target_attr . ' aria-label="' . $fullscreen_aria . '">' . esc_html( $fullscreen_text ) . '</a></div>';
 		} else {
 			// Non-custom page fullscreen link uses the same viewer URL which now includes the nonce.
