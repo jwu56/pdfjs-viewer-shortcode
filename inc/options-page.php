@@ -228,7 +228,7 @@ function pdfjs_options_page() {
 						<tr>
 							<th scope="row"><label for="pdfjs_custom_page"><?php esc_html_e( 'Alternative PDF Loading', 'pdfjs-viewer-shortcode' ); ?></label></th>
 							<td>
-							<label><input type="checkbox" id="pdfjs_custom_page" name="pdfjs_custom_page" <?php checked( $pdfjs_custom_page, 'on' ); ?> /> <?php esc_html_e( 'Loads the fullscreen viewer via a WordPress page handler instead of directly through the viewer file. Try this if the fullscreen link shows a security error.', 'pdfjs-viewer-shortcode' ); ?></label>
+							<label><input type="checkbox" id="pdfjs_custom_page" name="pdfjs_custom_page" <?php checked( $pdfjs_custom_page, 'on' ); ?> /> <?php esc_html_e( 'Use this if the fullscreen link shows a "Security Check Failed" error or a blank page. It loads the viewer through WordPress instead of directly, which works better on some hosting setups.', 'pdfjs-viewer-shortcode' ); ?></label>
 							</td>
 						</tr>
 						<tr>
