@@ -216,7 +216,7 @@ function pdfjs_options_page() {
 			</table>
 
 			<details id="pdfjs-beta-section" <?php echo ( 'on' === $pdfjs_custom_page || 'on' === $allow_external_domains ) ? 'open' : ''; ?> style="margin-top: 24px;">
-				<summary style="display: inline-flex; align-items: center; gap: 6px; cursor: pointer; font-weight: 600; color: #50575e; user-select: none; list-style: none; width: auto;">
+				<summary style="display: inline-flex; align-items: center; gap: 6px; cursor: pointer; font-weight: 600; font-size: 1.3em; color: #1d2327; user-select: none; list-style: none; width: auto;">
 					<span id="pdfjs-beta-arrow" style="font-size: 0.75em; transition: transform 0.15s; display: inline-block;">&#9654;</span>
 					<?php esc_html_e( 'Beta Features', 'pdfjs-viewer-shortcode' ); ?>
 				</summary>
@@ -273,7 +273,7 @@ function pdfjs_options_page() {
 			} )();
 			</script>
 
-			<div style="display: flex; gap: 10px; align-items: center; padding-top: 10px;">
+			<div style="display: flex; gap: 10px; align-items: center; padding-top: 24px;">
 				<?php submit_button( __( 'Save Changes', 'pdfjs-viewer-shortcode' ), 'primary', 'submit', false ); ?>
 				<a href="https://ko-fi.com/twistermc" target="_blank" rel="noopener noreferrer" class="button button-secondary"><?php esc_html_e( 'Support this plugin', 'pdfjs-viewer-shortcode' ); ?></a>
 			</div>
