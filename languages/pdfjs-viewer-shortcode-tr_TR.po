@@ -345,62 +345,46 @@ msgid "Attachments"
 msgstr "Ekler"
 
 #: inc/options-page.php
-msgid "Alternative PDF Loading"
-msgstr "Alternatif PDF yükleme"
+msgid "Beta Features"
+msgstr "Beta Özellikleri"
 
 #: inc/options-page.php
-msgid "Beta. Test with caution and"
-msgstr "Beta. Dikkatli bir şekilde test edin ve"
+msgid ""
+"These features are experimental and may not work on all sites. Test "
+"carefully before using on a production site, and"
+msgstr ""
+"Bu özellikler deneyseldir ve tüm sitelerde çalışmayabilir. Bir üretim "
+"sitesinde kullanmadan önce dikkatli bir şekilde test edin ve"
 
 #: inc/options-page.php
 msgid "leave feedback"
 msgstr "geri bildirim bırakın"
 
 #: inc/options-page.php
-msgid "on how it works."
-msgstr "nasıl çalıştığı hakkında."
-
-#: inc/options-page.php
-msgid "External Domain PDFs *BETA*"
-msgstr "Harici Alan PDF'leri *BETA*"
+msgid "Alternative PDF Loading"
+msgstr "Alternatif PDF yükleme"
 
 #: inc/options-page.php
 msgid ""
-"By default, PDFs must be hosted on this site. Enable this to allow PDFs from "
-"other domains, such as a CDN."
+"Loads the fullscreen viewer via a WordPress page handler instead of directly "
+"through the viewer file. Try this if the fullscreen link shows a security "
+"error."
 msgstr ""
-"Varsayılan olarak, PDF'lerin bu sitede barındırılması gerekir. Bir CDN gibi "
-"diğer etki alanlarından PDF'lere izin vermek için bunu etkinleştirin."
+"Tam ekran görüntüleyiciyi, doğrudan görüntüleyici dosyası üzerinden değil, "
+"bir WordPress sayfa işleyicisi aracılığıyla yükler. Tam ekran bağlantısı "
+"güvenlik hatası gösteriyorsa bunu deneyin."
 
 #: inc/options-page.php
-msgid "Allow External Domains"
-msgstr "Harici Etki Alanlarına İzin Ver"
-
-#: inc/options-page.php
-msgid "Security Notice"
-msgstr "Güvenlik Bildirimi"
+msgid "Allow External Domain PDFs"
+msgstr "Harici Alan PDF'lerine İzin Ver"
 
 #: inc/options-page.php
 msgid ""
-"Whitelisted domains are trusted site-wide. Any user who can insert "
-"shortcodes or blocks can load any PDF from these domains."
+"Allow PDFs hosted on other domains, such as a CDN. Only add domains you "
+"fully control or explicitly trust."
 msgstr ""
-"Beyaz listedeki etki alanları site genelinde güvenilirdir. Kısa kod veya "
-"blok ekleyebilen herhangi bir kullanıcı, bu etki alanlarından herhangi bir "
-"PDF yükleyebilir."
-
-#: inc/options-page.php
-msgid ""
-"The external server must send CORS headers (Access-Control-Allow-Origin) for "
-"PDFs to load. Most CDNs support this. Standard web servers typically do not."
-msgstr ""
-"PDF'lerin yüklenmesi için harici sunucunun CORS başlıkları (Access-Control-"
-"Allow-Origin) göndermesi gerekir. Çoğu CDN bunu destekler. Standart web "
-"sunucuları genellikle desteklemez."
-
-#: inc/options-page.php
-msgid "Only add domains you fully control or explicitly trust."
-msgstr "Yalnızca tamamen kontrol ettiğiniz veya açıkça güvendiğiniz etki alanlarını ekleyin."
+"CDN gibi diğer etki alanlarında barındırılan PDF'lere izin verin. Yalnızca "
+"tamamen kontrol ettiğiniz veya açıkça güvendiğiniz etki alanlarını ekleyin."
 
 #: inc/options-page.php
 msgid "Allowed Domains"
@@ -413,6 +397,15 @@ msgid ""
 msgstr ""
 "Satır başına bir ana bilgisayar adı. https:// veya yolları eklemeyin. Örnek: "
 "cdn.example.com"
+
+#: inc/options-page.php
+msgid ""
+"The external server must send CORS headers (Access-Control-Allow-Origin) for "
+"PDFs to load. Most CDNs support this; standard web servers typically do not."
+msgstr ""
+"PDF'lerin yüklenmesi için harici sunucunun CORS başlıkları (Access-Control-"
+"Allow-Origin) göndermesi gerekir. Çoğu CDN bunu destekler; standart web "
+"sunucuları genellikle desteklemez."
 
 #: inc/options-page.php
 msgid "Save Changes"
