@@ -4,7 +4,7 @@
 - Tags: pdf, pdfjs, viewer, embed, mozilla
 - Requires at least: 5.0
 - Tested up to: 7.0
-- Stable tag: 3.1.0
+- Stable tag: 3.1.1
 - License: GPLv2 or later
 - License URI: http://www.gnu.org/licenses/gpl-2.0.html
 - Requires PHP: 7.4
@@ -76,8 +76,11 @@ PDF.js (included in this plugin) is developed by Mozilla and licensed under the 
 
 ## 3.1.1
 
-- Re-enabled Alternative PDF Loading and fixed issues with it if it were enabled.
-- Fixing Elementor widget not loading the default options from the options page.
+- Re-enabled Alternative PDF Loading and fixed a full screen issue with it if it were enabled.
+- Fix for widgets not loading default settings from the options page.
+- Update how we load the Elementor widget so hopefully it works better.
+- Internal code cleaup.
+- Translation updates.
 
 ## 3.1.0
 
