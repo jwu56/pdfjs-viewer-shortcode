@@ -200,8 +200,10 @@ function pdfjs_render_viewer( $args ) {
 	$fullscreen_link = '';
 	if ( 'true' === $fullscreen ) {
 		$fullscreen_aria = esc_attr__( 'Open PDF in fullscreen mode', 'pdfjs-viewer-shortcode' );
-		if ( $pdfjs_custom_page ) {
-			$nonce = wp_create_nonce( 'pdfjs_full_screen' );
+		// Custom page only supports attachment_id > 0; URL-only shortcodes use the direct viewer URL.
+		if ( $pdfjs_custom_page && ! empty( $attachment_id ) && $attachment_id > 0 ) {
+			$fs_nonce_action = 'pdfjs_full_screen_' . $attachment_id;
+			$nonce = wp_create_nonce( $fs_nonce_action );
 			$fullscreen_link = '<div class="pdfjs-fullscreen"><a href="?pdfjs_id=' . $attachment_id . '&_wpnonce=' . $nonce . '" ' . $fullscreen_target_attr . ' aria-label="' . $fullscreen_aria . '">' . esc_html( $fullscreen_text ) . '</a></div>';
 		} else {
 			// Non-custom page fullscreen link uses the same viewer URL which now includes the nonce.

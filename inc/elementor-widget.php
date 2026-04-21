@@ -65,6 +65,14 @@ class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 	 * @return void
 	 */
 	protected function register_controls() {
+		$opt_height    = (int) get_option( 'pdfjs_embed_height', 800 );
+		$opt_width     = (int) get_option( 'pdfjs_embed_width', 0 );
+		$opt_zoom      = get_option( 'pdfjs_viewer_scale', 'auto' ) ?: 'auto';
+		$opt_download  = 'on' === get_option( 'pdfjs_download_button', 'on' ) ? 'yes' : '';
+		$opt_print     = 'on' === get_option( 'pdfjs_print_button', 'on' ) ? 'yes' : '';
+		$opt_fullscreen        = 'on' === get_option( 'pdfjs_fullscreen_link', 'on' ) ? 'yes' : '';
+		$opt_fullscreen_text   = get_option( 'pdfjs_fullscreen_link_text', 'View Fullscreen' ) ?: 'View Fullscreen';
+		$opt_fullscreen_target = 'on' === get_option( 'pdfjs_fullscreen_link_target', '' ) ? 'yes' : '';
 
 		// ── Content ──────────────────────────────────────────────────────────
 		$this->start_controls_section(
@@ -129,7 +137,7 @@ class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 				),
 				'default'    => array(
 					'unit' => 'px',
-					'size' => 800,
+					'size' => $opt_height ?: 800,
 				),
 				'selectors'  => array(
 					'{{WRAPPER}} .pdfjs-embed-container' => 'height: {{SIZE}}{{UNIT}};',
@@ -155,7 +163,7 @@ class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 				),
 				'default'    => array(
 					'unit' => '%',
-					'size' => 100,
+					'size' => $opt_width > 0 ? $opt_width : 100,
 				),
 				'selectors'  => array(
 					'{{WRAPPER}} .pdfjs-embed-container' => 'width: {{SIZE}}{{UNIT}};',
@@ -166,7 +174,7 @@ class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'zoom_level',
 			array(
-				'label'   => esc_html__( 'Default Zoom Level', 'pdfjs-viewer-shortcode' ),
+				'label'   => esc_html__( 'Zoom Level', 'pdfjs-viewer-shortcode' ),
 				'type'    => \Elementor\Controls_Manager::SELECT,
 				'options' => array(
 					'auto'       => esc_html__( 'Auto', 'pdfjs-viewer-shortcode' ),
@@ -179,7 +187,7 @@ class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 					'150'        => '150%',
 					'200'        => '200%',
 				),
-				'default' => 'auto',
+				'default' => $opt_zoom,
 			)
 		);
 
@@ -201,7 +209,7 @@ class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 				'type'      => \Elementor\Controls_Manager::SWITCHER,
 				'label_on'  => esc_html__( 'Show', 'pdfjs-viewer-shortcode' ),
 				'label_off' => esc_html__( 'Hide', 'pdfjs-viewer-shortcode' ),
-				'default'   => 'yes',
+				'default'   => $opt_download,
 			)
 		);
 
@@ -212,29 +220,7 @@ class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 				'type'      => \Elementor\Controls_Manager::SWITCHER,
 				'label_on'  => esc_html__( 'Show', 'pdfjs-viewer-shortcode' ),
 				'label_off' => esc_html__( 'Hide', 'pdfjs-viewer-shortcode' ),
-				'default'   => 'yes',
-			)
-		);
-
-		$this->add_control(
-			'show_search',
-			array(
-				'label'     => esc_html__( 'Search Button', 'pdfjs-viewer-shortcode' ),
-				'type'      => \Elementor\Controls_Manager::SWITCHER,
-				'label_on'  => esc_html__( 'Show', 'pdfjs-viewer-shortcode' ),
-				'label_off' => esc_html__( 'Hide', 'pdfjs-viewer-shortcode' ),
-				'default'   => 'yes',
-			)
-		);
-
-		$this->add_control(
-			'show_editing',
-			array(
-				'label'     => esc_html__( 'Editing Buttons', 'pdfjs-viewer-shortcode' ),
-				'type'      => \Elementor\Controls_Manager::SWITCHER,
-				'label_on'  => esc_html__( 'Show', 'pdfjs-viewer-shortcode' ),
-				'label_off' => esc_html__( 'Hide', 'pdfjs-viewer-shortcode' ),
-				'default'   => 'yes',
+				'default'   => $opt_print,
 			)
 		);
 
@@ -256,7 +242,7 @@ class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 				'type'      => \Elementor\Controls_Manager::SWITCHER,
 				'label_on'  => esc_html__( 'Yes', 'pdfjs-viewer-shortcode' ),
 				'label_off' => esc_html__( 'No', 'pdfjs-viewer-shortcode' ),
-				'default'   => 'yes',
+				'default'   => $opt_fullscreen,
 			)
 		);
 
@@ -265,7 +251,7 @@ class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 			array(
 				'label'       => esc_html__( 'Link Text', 'pdfjs-viewer-shortcode' ),
 				'type'        => \Elementor\Controls_Manager::TEXT,
-				'default'     => esc_html__( 'View Fullscreen', 'pdfjs-viewer-shortcode' ),
+				'default'     => $opt_fullscreen_text,
 				'placeholder' => esc_html__( 'View Fullscreen', 'pdfjs-viewer-shortcode' ),
 				'condition'   => array(
 					'show_fullscreen' => 'yes',
@@ -280,7 +266,7 @@ class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 				'type'      => \Elementor\Controls_Manager::SWITCHER,
 				'label_on'  => esc_html__( 'Yes', 'pdfjs-viewer-shortcode' ),
 				'label_off' => esc_html__( 'No', 'pdfjs-viewer-shortcode' ),
-				'default'   => '',
+				'default'   => $opt_fullscreen_target,
 				'condition' => array(
 					'show_fullscreen' => 'yes',
 				),
@@ -394,8 +380,8 @@ class PDFjs_Viewer_Elementor_Widget extends \Elementor\Widget_Base {
 			'print'             => 'yes' === $settings['show_print'] ? 'true' : 'false',
 			'zoom'              => sanitize_text_field( $settings['zoom_level'] ),
 			'attachment_id'     => $attachment_id,
-			'search'            => 'yes' === $settings['show_search'] ? 'true' : 'false',
-			'editing'           => 'yes' === $settings['show_editing'] ? 'true' : 'false',
+			'search'            => 'on' === get_option( 'pdfjs_search_button', 'on' ) ? 'true' : 'false',
+			'editing'           => 'on' === get_option( 'pdfjs_editing_buttons', 'on' ) ? 'true' : 'false',
 		);
 
 		echo '<div class="pdfjs-embed-container">';

@@ -213,55 +213,67 @@ function pdfjs_options_page() {
 						</select>
 					</td>
 				</tr>
-				<tr style="display:none;">
-					<th scope="row"><label for="pdfjs_custom_page"><?php esc_html_e( 'Alternative PDF Loading', 'pdfjs-viewer-shortcode' ); ?></label></th>
-					<td><input type="checkbox" id="pdfjs_custom_page" name="pdfjs_custom_page" <?php checked( $pdfjs_custom_page, 'on' ); ?> /> <span style="color:rebeccapurple;"> - <?php esc_html_e( 'Beta. Test with caution and', 'pdfjs-viewer-shortcode' ); ?> <a href="https://wordpress.org/support/plugin/pdfjs-viewer-shortcode/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'leave feedback', 'pdfjs-viewer-shortcode' ); ?></a> <?php esc_html_e( 'on how it works.', 'pdfjs-viewer-shortcode' ); ?></span></td>
-				</tr>
 			</table>
-			<h2 class="title"><?php esc_html_e( 'External Domain PDFs *BETA*', 'pdfjs-viewer-shortcode' ); ?></h2>
-				<p id="pdfjs-external-help">
-					<?php esc_html_e( 'By default, PDFs must be hosted on this site. Enable this to allow PDFs from other domains, such as a CDN.', 'pdfjs-viewer-shortcode' ); ?>
-				</p>
-				<table class="form-table" role="presentation">
-					<tr>
-						<th scope="row"><label for="pdfjs_allow_external_domains"><?php esc_html_e( 'Allow External Domains', 'pdfjs-viewer-shortcode' ); ?></label></th>
-						<td><input type="checkbox" id="pdfjs_allow_external_domains" name="pdfjs_allow_external_domains" aria-describedby="pdfjs-external-help" aria-controls="pdfjs-external-domains-section" <?php checked( $allow_external_domains, 'on' ); ?> /></td>
-					</tr>
-				</table>
 
-				<div id="pdfjs-external-domains-section" <?php echo ( 'on' !== $allow_external_domains ) ? 'style="display:none;"' : ''; ?>>
-					<div style="padding: 12px 16px; margin: 0 0 16px 0; border-left: 4px solid #dba617; background: #fff8e5; color: #5a4100;">
-						<p style="margin: 0 0 8px 0;"><strong><?php esc_html_e( 'Security Notice', 'pdfjs-viewer-shortcode' ); ?></strong></p>
-						<ul style="margin: 0; padding-left: 1.4em;">
-							<li><?php esc_html_e( 'Whitelisted domains are trusted site-wide. Any user who can insert shortcodes or blocks can load any PDF from these domains.', 'pdfjs-viewer-shortcode' ); ?></li>
-							<li><?php esc_html_e( 'The external server must send CORS headers (Access-Control-Allow-Origin) for PDFs to load. Most CDNs support this. Standard web servers typically do not.', 'pdfjs-viewer-shortcode' ); ?></li>
-							<li><?php esc_html_e( 'Only add domains you fully control or explicitly trust.', 'pdfjs-viewer-shortcode' ); ?></li>
-						</ul>
+			<details id="pdfjs-beta-section" <?php echo ( 'on' === $pdfjs_custom_page || 'on' === $allow_external_domains ) ? 'open' : ''; ?> style="margin-top: 24px;">
+				<summary style="display: inline-flex; align-items: center; gap: 6px; cursor: pointer; font-weight: 600; font-size: 1.3em; color: #1d2327; user-select: none; list-style: none; width: auto;">
+					<span id="pdfjs-beta-arrow" style="font-size: 0.75em; transition: transform 0.15s; display: inline-block;">&#9654;</span>
+					<?php esc_html_e( 'Beta Features', 'pdfjs-viewer-shortcode' ); ?>
+				</summary>
+				<div style="margin-top: 12px; padding: 0 0 4px; border-top: 1px solid #c3c4c7;">
+					<div class="notice notice-error inline" style="margin: 12px 0;">
+						<p><?php esc_html_e( 'These features are experimental and may not work on all sites. Test carefully before using on a production site, and', 'pdfjs-viewer-shortcode' ); ?> <a href="https://wordpress.org/support/plugin/pdfjs-viewer-shortcode/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'leave feedback', 'pdfjs-viewer-shortcode' ); ?></a>.</p>
 					</div>
 					<table class="form-table" role="presentation">
 						<tr>
+							<th scope="row"><label for="pdfjs_custom_page"><?php esc_html_e( 'Alternative PDF Loading', 'pdfjs-viewer-shortcode' ); ?></label></th>
+							<td>
+							<label><input type="checkbox" id="pdfjs_custom_page" name="pdfjs_custom_page" <?php checked( $pdfjs_custom_page, 'on' ); ?> /> <?php esc_html_e( 'Use this if the fullscreen link shows a "Security Check Failed" error or a blank page. It loads the viewer through WordPress instead of directly, which works better on some hosting setups.', 'pdfjs-viewer-shortcode' ); ?></label>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row"><label for="pdfjs_allow_external_domains"><?php esc_html_e( 'Allow External Domain PDFs', 'pdfjs-viewer-shortcode' ); ?></label></th>
+							<td>
+							<label><input type="checkbox" id="pdfjs_allow_external_domains" name="pdfjs_allow_external_domains" aria-controls="pdfjs-external-domains-section" <?php checked( $allow_external_domains, 'on' ); ?> /> <?php esc_html_e( 'Allow PDFs hosted on other domains, such as a CDN. Only add domains you fully control or explicitly trust.', 'pdfjs-viewer-shortcode' ); ?></label>
+							</td>
+						</tr>
+						<tr id="pdfjs-external-domains-section" <?php echo ( 'on' !== $allow_external_domains ) ? 'style="display:none;"' : ''; ?>>
 							<th scope="row"><label for="pdfjs_allowed_domains"><?php esc_html_e( 'Allowed Domains', 'pdfjs-viewer-shortcode' ); ?></label></th>
 							<td>
-								<textarea id="pdfjs_allowed_domains" name="pdfjs_allowed_domains" rows="5" class="large-text code" aria-describedby="pdfjs-allowed-domains-help" placeholder="cdn.example.com"><?php echo esc_textarea( $allowed_domains ); ?></textarea>
+								<textarea id="pdfjs_allowed_domains" name="pdfjs_allowed_domains" rows="4" class="large-text code" aria-describedby="pdfjs-allowed-domains-help" placeholder="cdn.example.com"><?php echo esc_textarea( $allowed_domains ); ?></textarea>
 								<p id="pdfjs-allowed-domains-help" class="description"><?php esc_html_e( 'One hostname per line. Do not include https:// or paths. Example: cdn.example.com', 'pdfjs-viewer-shortcode' ); ?></p>
+								<div class="notice notice-warning inline" style="margin: 6px 0 0;">
+									<p><?php esc_html_e( 'The external server must send CORS headers (Access-Control-Allow-Origin) for PDFs to load. Most CDNs support this; standard web servers typically do not.', 'pdfjs-viewer-shortcode' ); ?></p>
+								</div>
 							</td>
 						</tr>
 					</table>
 				</div>
+			</details>
 
-				<script>
-				( function() {
-					var checkbox = document.getElementById( 'pdfjs_allow_external_domains' );
-					var section  = document.getElementById( 'pdfjs-external-domains-section' );
-					if ( checkbox && section ) {
-						checkbox.addEventListener( 'change', function() {
-							section.style.display = this.checked ? '' : 'none';
-						} );
-					}
-				} )();
-				</script>
+			<script>
+			( function() {
+				var checkbox = document.getElementById( 'pdfjs_allow_external_domains' );
+				var section  = document.getElementById( 'pdfjs-external-domains-section' );
+				if ( checkbox && section ) {
+					checkbox.addEventListener( 'change', function() {
+						section.style.display = this.checked ? '' : 'none';
+					} );
+				}
 
-				<div style="display: flex; gap: 10px; align-items: center; padding-top: 10px;">
+				var details = document.getElementById( 'pdfjs-beta-section' );
+				var arrow   = document.getElementById( 'pdfjs-beta-arrow' );
+				if ( details && arrow ) {
+					var updateArrow = function() {
+						arrow.style.transform = details.open ? 'rotate(90deg)' : '';
+					};
+					updateArrow();
+					details.addEventListener( 'toggle', updateArrow );
+				}
+			} )();
+			</script>
+
+			<div style="display: flex; gap: 10px; align-items: center; padding-top: 24px;">
 				<?php submit_button( __( 'Save Changes', 'pdfjs-viewer-shortcode' ), 'primary', 'submit', false ); ?>
 				<a href="https://ko-fi.com/twistermc" target="_blank" rel="noopener noreferrer" class="button button-secondary"><?php esc_html_e( 'Support this plugin', 'pdfjs-viewer-shortcode' ); ?></a>
 			</div>

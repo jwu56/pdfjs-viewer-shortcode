@@ -56,19 +56,24 @@ function pdfjs_block_render( $attributes ) {
 	// Use external URL if provided, otherwise use library URL
 	$file_url           = isset( $attributes['externalURL'] ) && ! empty( $attributes['externalURL'] ) ? $attributes['externalURL'] : ( isset( $attributes['imageURL'] ) ? $attributes['imageURL'] : '' );
 	$attachment_id      = isset( $attributes['externalURL'] ) && ! empty( $attributes['externalURL'] ) ? '' : ( isset( $attributes['imgID'] ) ? $attributes['imgID'] : '' );
-	
+
+	$opt_height = get_option( 'pdfjs_embed_height', 800 );
+	$opt_width  = (int) get_option( 'pdfjs_embed_width', 0 );
+	$opt_scale  = get_option( 'pdfjs_viewer_scale', 'auto' );
+	$opt_scale  = ( '' === (string) $opt_scale || '0' === (string) $opt_scale ) ? 'auto' : $opt_scale;
+
 	$render_args = array(
 		'url'               => $file_url,
 		'attachment_id'     => $attachment_id,
-		'viewer_height'     => isset( $attributes['viewerHeight'] ) ? $attributes['viewerHeight'] . 'px' : '800px',
-		'viewer_width'      => isset( $attributes['viewerWidth'] ) && 0 !== $attributes['viewerWidth'] ? $attributes['viewerWidth'] . 'px' : '100%',
-		'fullscreen'        => isset( $attributes['showFullscreen'] ) ? ( $attributes['showFullscreen'] ? 'true' : 'false' ) : 'true',
-		'fullscreen_text'   => isset( $attributes['fullscreenText'] ) ? $attributes['fullscreenText'] : 'View Fullscreen',
-		'fullscreen_target' => isset( $attributes['openFullscreen'] ) ? ( $attributes['openFullscreen'] ? 'true' : 'false' ) : 'false',
-		'download'          => isset( $attributes['showDownload'] ) ? ( $attributes['showDownload'] ? 'true' : 'false' ) : 'true',
-		'print'             => isset( $attributes['showPrint'] ) ? ( $attributes['showPrint'] ? 'true' : 'false' ) : 'true',
+		'viewer_height'     => isset( $attributes['viewerHeight'] ) ? $attributes['viewerHeight'] . 'px' : ( $opt_height ? $opt_height . 'px' : '800px' ),
+		'viewer_width'      => isset( $attributes['viewerWidth'] ) ? ( 0 !== $attributes['viewerWidth'] ? $attributes['viewerWidth'] . 'px' : '100%' ) : ( $opt_width > 0 ? $opt_width . 'px' : '100%' ),
+		'fullscreen'        => isset( $attributes['showFullscreen'] ) ? ( $attributes['showFullscreen'] ? 'true' : 'false' ) : ( get_option( 'pdfjs_fullscreen_link', 'on' ) === 'on' ? 'true' : 'false' ),
+		'fullscreen_text'   => isset( $attributes['fullscreenText'] ) ? $attributes['fullscreenText'] : get_option( 'pdfjs_fullscreen_link_text', 'View Fullscreen' ),
+		'fullscreen_target' => isset( $attributes['openFullscreen'] ) ? ( $attributes['openFullscreen'] ? 'true' : 'false' ) : ( get_option( 'pdfjs_fullscreen_link_target', '' ) === 'on' ? 'true' : 'false' ),
+		'download'          => isset( $attributes['showDownload'] ) ? ( $attributes['showDownload'] ? 'true' : 'false' ) : ( get_option( 'pdfjs_download_button', 'on' ) === 'on' ? 'true' : 'false' ),
+		'print'             => isset( $attributes['showPrint'] ) ? ( $attributes['showPrint'] ? 'true' : 'false' ) : ( get_option( 'pdfjs_print_button', 'on' ) === 'on' ? 'true' : 'false' ),
 		'openfile'          => 'false',
-		'zoom'              => isset( $attributes['viewerScale'] ) ? $attributes['viewerScale'] : 'auto',
+		'zoom'              => isset( $attributes['viewerScale'] ) ? $attributes['viewerScale'] : $opt_scale,
 		'search'            => get_option( 'pdfjs_search_button', 'on' ) === 'on' ? 'true' : 'false',
 		'editing'           => get_option( 'pdfjs_editing_buttons', 'on' ) === 'on' ? 'true' : 'false',
 	);
