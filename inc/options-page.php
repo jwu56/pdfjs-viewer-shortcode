@@ -133,7 +133,7 @@ function pdfjs_options_page() {
 			$allow_external_domains     = get_option( 'pdfjs_allow_external_domains', '' );
 			$allowed_domains            = get_option( 'pdfjs_allowed_domains', '' );
 			$hide_toolbars              = get_option ( 'pdfjs_hide_toolbars', 'on' );
-	        $hide_background            = get_option ( 'pdfjs_hide_background', 'on' );
+			$hide_background            = get_option( 'pdfjs_hide_background', 'on' );
 			?>
 
 			<h2 class="title"><?php esc_html_e( 'Defaults', 'pdfjs-viewer-shortcode' ); ?></h2>
