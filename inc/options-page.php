@@ -71,6 +71,8 @@ function pdfjs_register_settings() {
 	register_setting( 'pdfjs_options_group', 'pdfjs_custom_page', 'pdfjs_sanitize_option' );
 	register_setting( 'pdfjs_options_group', 'pdfjs_allow_external_domains', 'pdfjs_sanitize_option' );
 	register_setting( 'pdfjs_options_group', 'pdfjs_allowed_domains', 'pdfjs_sanitize_allowed_domains' );
+	register_setting( 'pdfjs_options_group', 'pdfjs_hide_toolbars', 'pdfjs_sanitize_option' );
+	register_setting( 'pdfjs_options_group', 'pdfjs_hide_background', 'pdfjs_sanitize_option' );
 }
 add_action( 'admin_init', 'pdfjs_register_settings' );
 
@@ -94,6 +96,8 @@ add_action( 'update_option_pdfjs_search_button', 'pdfjs_clear_options_cache' );
 add_action( 'update_option_pdfjs_editing_buttons', 'pdfjs_clear_options_cache' );
 add_action( 'update_option_pdfjs_allow_external_domains', 'pdfjs_clear_options_cache' );
 add_action( 'update_option_pdfjs_allowed_domains', 'pdfjs_clear_options_cache' );
+register_setting( 'update_pdfjs_hide_toolbars', 'pdfjs_sanitize_option' );
+register_setting( 'update_pdfjs_hide_background', 'pdfjs_sanitize_option' );
 
 function pdfjs_register_options_page() {
 	global $pdfjs_settings_page;
@@ -128,6 +132,8 @@ function pdfjs_options_page() {
 			$pdfjs_custom_page          = get_option( 'pdfjs_custom_page', '' );
 			$allow_external_domains     = get_option( 'pdfjs_allow_external_domains', '' );
 			$allowed_domains            = get_option( 'pdfjs_allowed_domains', '' );
+			$hide_toolbars              = get_option ( 'pdfjs_hide_toolbars', 'on' );
+	        $hide_background            = get_option ( 'pdfjs_hide_background', 'on' );
 			?>
 
 			<h2 class="title"><?php esc_html_e( 'Defaults', 'pdfjs-viewer-shortcode' ); ?></h2>
