@@ -78,6 +78,8 @@ function pdfjs_block_render( $attributes ) {
 		'zoom'              => isset( $attributes['viewerScale'] ) ? $attributes['viewerScale'] : $opt_scale,
 		'search'            => get_option( 'pdfjs_search_button', 'on' ) === 'on' ? 'true' : 'false',
 		'editing'           => get_option( 'pdfjs_editing_buttons', 'on' ) === 'on' ? 'true' : 'false',
+		'hide_toolbars'     => isset( $attributes['hideToolbars'] ) ? ( $attributes['hideToolbars'] ? 'true' : 'false' ) : ( get_option( 'pdfjs_hide_toolbars', 'on' ) === 'on' ? 'true' : 'false' ),
+		'hide_background'   => isset( $attributes['hideBackground'] ) ? ( $attributes['hideBackground'] ? 'true' : 'false' ) : ( get_option( 'pdfjs_hide_background', 'on' ) === 'on' ? 'true' : 'false' ),
 	);
 
 	// Use shared rendering function
