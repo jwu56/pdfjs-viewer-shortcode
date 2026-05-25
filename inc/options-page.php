@@ -192,8 +192,8 @@ function pdfjs_options_page() {
 
 
 				<tr>
-					<th scope="row"><label for="pdfjs_hide_toolbar"><?php esc_html_e( 'Hide PDF.js Toolbar', 'pdfjs-viewer-shortcode' ); ?></label></th>
-					<td><input type="checkbox" id="pdfjs_hide_toolbar" name="pdfjs_hide_toolbar" aria-describedby="pdfjs-defaults-help-g" <?php checked( $hide_toolbars, 'on' ); ?> /></td>
+					<th scope="row"><label for="pdfjs_hide_toolbars"><?php esc_html_e( 'Hide PDF.js Toolbar', 'pdfjs-viewer-shortcode' ); ?></label></th>
+					<td><input type="checkbox" id="pdfjs_hide_toolbars" name="pdfjs_hide_toolbars" aria-describedby="pdfjs-defaults-help-g" <?php checked( $hide_toolbars, 'on' ); ?> /></td>
 				</tr>
 
 

@@ -30,6 +30,8 @@ function pdfjs_get_options() {
 		'pdfjs_embed_width'            => get_option( 'pdfjs_embed_width', 0 ),
 		'pdfjs_viewer_scale'           => ( function() { $s = get_option( 'pdfjs_viewer_scale', 'auto' ); return ( '' === (string) $s || '0' === (string) $s || 0 === $s ) ? 'auto' : $s; } )(),
 		'pdfjs_viewer_pagemode'        => get_option( 'pdfjs_viewer_pagemode', 'none' ),
+		'pdfjs_hide_toolbars'          => get_option( 'pdfjs_hide_toolbars', 'on' ),
+		'pdfjs_hide_background'        => get_option( 'pdfjs_hide_background', 'on' ),
 		'pdfjs_allow_external_domains' => get_option( 'pdfjs_allow_external_domains', '' ),
 	);
 	
