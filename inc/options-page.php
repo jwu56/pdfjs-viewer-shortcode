@@ -183,6 +183,18 @@ function pdfjs_options_page() {
 					<th scope="row"><label for="pdfjs_editing_buttons"><?php esc_html_e( 'Show Editing Buttons', 'pdfjs-viewer-shortcode' ); ?></label></th>
 					<td><input type="checkbox" id="pdfjs_editing_buttons" name="pdfjs_editing_buttons" aria-describedby="pdfjs-defaults-help-g" <?php checked( $editing_buttons, 'on' ); ?> /></td>
 				</tr>
+
+
+				<tr>
+					<th scope="row"><label for="pdfjs_hide_toolbar"><?php esc_html_e( 'Hide PDF.js Toolbar', 'pdfjs-viewer-shortcode' ); ?></label></th>
+					<td><input type="checkbox" id="pdfjs_hide_toolbar" name="pdfjs_hide_toolbar" aria-describedby="pdfjs-defaults-help-g" <?php checked( $hide_toolbars, 'on' ); ?> /></td>
+				</tr>
+
+
+				<tr>
+					<th scope="row"><label for="pdfjs_hide_background"><?php esc_html_e( 'Hide PDF.js Default Gray Background', 'pdfjs-viewer-shortcode' ); ?></label></th>
+					<td><input type="checkbox" id="pdfjs_hide_background" name="pdfjs_hide_background" aria-describedby="pdfjs-defaults-help-g" <?php checked( $hide_background, 'on' ); ?> /></td>
+				</tr>
 				
 				<tr>
 					<th scope="row"><label for="pdfjs_viewer_scale"><?php esc_html_e( 'Viewer Scale', 'pdfjs-viewer-shortcode' ); ?></label></th>

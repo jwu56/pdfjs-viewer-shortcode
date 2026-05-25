@@ -27,6 +27,8 @@ function pdfjs_handler( $incoming_from_post ) {
 	$default_print = get_option( 'pdfjs_print_button', 'on' );
 	$default_search = get_option( 'pdfjs_search_button', 'on' );
 	$default_editing = get_option( 'pdfjs_editing_buttons', 'on' );
+	$hide_toolbars = get_option ( 'hide_toolbars', 'off' );
+	$hide_background = get_option ( 'hide_background', 'off' );
 	
 	// Convert numeric defaults to strings with units
 	$default_height_str = is_numeric( $default_height ) ? $default_height . 'px' : ( $default_height ?: '800px' );
@@ -48,6 +50,8 @@ function pdfjs_handler( $incoming_from_post ) {
 			'attachment_id'     => '',
 			'search'            => ( 'on' === $default_search ) ? 'true' : 'false',
 			'editing'           => ( 'on' === $default_editing ) ? 'true' : 'false',
+			'hide_toolbars'     => ( 'on' === $hide_toolbars) ? 'true' : 'false',
+			'hide_background'   => ( 'on' === $hide_background) ? 'true' : 'false',
 		),
 		$incoming_from_post
 	);

@@ -19,6 +19,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
  *     @type string $openfile          Show open file button ('true'/'false').
  *     @type string $zoom              Initial zoom level.
  *     @type string $attachment_id     WordPress attachment ID.
+ *     @type string $hide_toolbars      Hide the toolbar of the PDF.js viewer ('true'/'false')
+ *     @type string $hide_background   Hide the (default) gray background of the PDF.js viewer ('true'/'false')
  * }
  * @return string HTML markup for the PDF viewer.
  */
@@ -37,6 +39,8 @@ function pdfjs_render_viewer( $args ) {
 		'attachment_id'     => '',
 		'search'            => 'true',
 		'editing'           => 'true',
+		'hide_toolbars'     => 'false',
+		'hide_background'   => 'false',
 	);
 
 	$args = wp_parse_args( $args, $defaults );
@@ -55,6 +59,8 @@ function pdfjs_render_viewer( $args ) {
 	$pagemode          = sanitize_text_field( get_option( 'pdfjs_viewer_pagemode', 'none' ) );
 	$searchbutton      = pdfjs_set_true_false( $args['search'] );
 	$editingbuttons    = pdfjs_set_true_false( $args['editing'] );
+	$hide_toolbars     = pdfjs_set_true_false( $args['hide_toolbars'] );
+	$hide_background   = pdfjs_set_true_false( $args['hide_background'] );
 	
 	// Prioritize attachment_id over url for security
 	$attachment_id = pdfjs_sanitize_number( $args['attachment_id'] );
@@ -109,6 +115,8 @@ function pdfjs_render_viewer( $args ) {
 	set_transient( 'pdfjs_button_pagemode_' . $attachment_id, $pagemode, 3600 );
 	set_transient( 'pdfjs_button_searchbutton_' . $attachment_id, $searchbutton, 3600 );
 	set_transient( 'pdfjs_button_editingbuttons_' . $attachment_id, $editingbuttons, 3600 );
+	set_transient( 'pdfjs_hide_toolbars_' . $attachment_id, $hide_toolbars, 3600 );
+	set_transient( 'pdfjs_hide_background_' . $attachment_id, $hide_background, 3600 );
 
 	// Validate PDF URL matches current site domain for security.
 	$site_url = get_site_url();
@@ -185,6 +193,8 @@ function pdfjs_render_viewer( $args ) {
 		'oButton'      => $openfile,
 		'sButton'      => $searchbutton,
 		'editButtons'  => $editingbuttons,
+		'hideToolbars'  => $hide_toolbars,
+		'hideBackground'=>$hide_background,
 		'v'            => PDFJS_PLUGIN_VERSION,
  	);
 	// Create unique nonce per PDF using attachment_id to prevent replay attacks

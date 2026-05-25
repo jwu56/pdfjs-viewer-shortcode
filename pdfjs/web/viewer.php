@@ -95,6 +95,14 @@ Object.keys(OriginalWorker).forEach(key => {
 			hide('editorModeButtons');
 			hide('editorModeSeparator');
 		}
+		if(enabled('hideToolbars')) {
+			hide('toolbarContainer');
+			document.getElementById("toolbarContainer").style.top = "0";
+
+		}
+		if(enabled('hideBackground')) {
+			document.body.style.background = "none";
+		}
 	};
 
 	if (document.readyState === 'loading') {
