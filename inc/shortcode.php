@@ -56,13 +56,6 @@ function pdfjs_handler( $incoming_from_post ) {
 		$incoming_from_post,
 		'pdfjs-viewer'
 	);
-			'search'            => ( 'on' === $default_search ) ? 'true' : 'false',
-			'editing'           => ( 'on' === $default_editing ) ? 'true' : 'false',
-			'hide_toolbars'     => ( 'on' === $hide_toolbars) ? 'true' : 'false',
-			'hide_background'   => ( 'on' === $hide_background) ? 'true' : 'false',
-		),
-		$incoming_from_post
-	);
 
 	// Use shared rendering function.
 	return pdfjs_render_viewer( $incoming_from_post );
